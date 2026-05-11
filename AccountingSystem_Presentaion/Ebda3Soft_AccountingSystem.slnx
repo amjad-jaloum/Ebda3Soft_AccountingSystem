@@ -1,5 +1,5 @@
 <Solution>
   <Project Path="../AccountingSystem_Business/AccountingSystem_Business.csproj" Id="39f3d5df-9681-4a33-81a9-788c68fcd331" />
   <Project Path="../AccountingSystem_DataAccess/AccountingSystem_DataAccess.csproj" Id="b68bb83a-4007-4011-8726-2143381c9e31" />
-  <Project Path="AccountingSystem_Presentaion.csproj" Id="b20d319c-a9cd-4357-a776-27cf243f9420" />
+  <Project Path="AccountingSystem.csproj" Id="b20d319c-a9cd-4357-a776-27cf243f9420" />
 </Solution>
