@@ -35,14 +35,14 @@
             this.lblGender = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -53,7 +53,7 @@
             this.groupBox1.Controls.Add(this.lblGender);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Controls.Add(this.lblPersonID);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.pbPersonImage);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -79,6 +79,7 @@
             this.btnEdit.TabIndex = 19;
             this.btnEdit.Text = "Edit info";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // lblPhone
             // 
@@ -130,17 +131,17 @@
             this.lblPersonID.TabIndex = 10;
             this.lblPersonID.Text = "???";
             // 
-            // pictureBox1
+            // pbPersonImage
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources.male;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 40);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 193);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.pbPersonImage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pbPersonImage.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources.male;
+            this.pbPersonImage.Location = new System.Drawing.Point(22, 40);
+            this.pbPersonImage.Margin = new System.Windows.Forms.Padding(2);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(206, 193);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 9;
+            this.pbPersonImage.TabStop = false;
             // 
             // label8
             // 
@@ -208,7 +209,7 @@
             this.Size = new System.Drawing.Size(663, 315);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +218,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

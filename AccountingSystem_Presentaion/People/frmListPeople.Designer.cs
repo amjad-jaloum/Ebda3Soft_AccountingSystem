@@ -72,7 +72,7 @@
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
-            this.tlpForm.Size = new System.Drawing.Size(800, 450);
+            this.tlpForm.Size = new System.Drawing.Size(852, 354);
             this.tlpForm.TabIndex = 1;
             // 
             // tlpMain
@@ -90,7 +90,7 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tlpMain.Size = new System.Drawing.Size(597, 446);
+            this.tlpMain.Size = new System.Drawing.Size(649, 350);
             this.tlpMain.TabIndex = 1;
             // 
             // dgvPeople
@@ -98,6 +98,7 @@
             this.dgvPeople.AllowUserToAddRows = false;
             this.dgvPeople.AllowUserToDeleteRows = false;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeople.ContextMenuStrip = this.cmsPersonMenu;
             this.dgvPeople.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPeople.Location = new System.Drawing.Point(2, 55);
             this.dgvPeople.Margin = new System.Windows.Forms.Padding(2);
@@ -107,7 +108,7 @@
             this.dgvPeople.RowHeadersWidth = 62;
             this.dgvPeople.RowTemplate.Height = 28;
             this.dgvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPeople.Size = new System.Drawing.Size(593, 336);
+            this.dgvPeople.Size = new System.Drawing.Size(645, 240);
             this.dgvPeople.TabIndex = 2;
             // 
             // tlpMainHeader
@@ -123,7 +124,7 @@
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpMainHeader.Size = new System.Drawing.Size(593, 49);
+            this.tlpMainHeader.Size = new System.Drawing.Size(645, 49);
             this.tlpMainHeader.TabIndex = 1;
             // 
             // MainHeaderPanel
@@ -135,7 +136,7 @@
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
             this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
-            this.MainHeaderPanel.Size = new System.Drawing.Size(387, 45);
+            this.MainHeaderPanel.Size = new System.Drawing.Size(439, 45);
             this.MainHeaderPanel.TabIndex = 1;
             // 
             // mtxbSearch
@@ -146,16 +147,29 @@
             this.mtxbSearch.Name = "mtxbSearch";
             this.mtxbSearch.Size = new System.Drawing.Size(195, 20);
             this.mtxbSearch.TabIndex = 2;
+            this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            this.mtxbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxbSearch_KeyPress);
             // 
             // cbFilter
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "None",
+            "Person ID",
+            "First Name",
+            "Second Name",
+            "Third Name",
+            "Last Name",
+            "Gender",
+            "Phone",
+            "Email"});
             this.cbFilter.Location = new System.Drawing.Point(59, 24);
             this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(181, 21);
             this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -171,13 +185,14 @@
             // btnAddNewPerson
             // 
             this.btnAddNewPerson.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAddNewPerson.Location = new System.Drawing.Point(492, 2);
+            this.btnAddNewPerson.Location = new System.Drawing.Point(544, 2);
             this.btnAddNewPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewPerson.Name = "btnAddNewPerson";
             this.btnAddNewPerson.Size = new System.Drawing.Size(99, 45);
             this.btnAddNewPerson.TabIndex = 2;
             this.btnAddNewPerson.Text = "Add New Person";
             this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
             // 
             // tplMainFooter
             // 
@@ -187,25 +202,26 @@
             this.tplMainFooter.Controls.Add(this.btnClose, 1, 0);
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tplMainFooter.Location = new System.Drawing.Point(2, 395);
+            this.tplMainFooter.Location = new System.Drawing.Point(2, 299);
             this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tplMainFooter.Size = new System.Drawing.Size(593, 49);
+            this.tplMainFooter.Size = new System.Drawing.Size(645, 49);
             this.tplMainFooter.TabIndex = 3;
             // 
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.Location = new System.Drawing.Point(500, 2);
+            this.btnClose.Location = new System.Drawing.Point(544, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(91, 45);
+            this.btnClose.Size = new System.Drawing.Size(99, 45);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
             // 
@@ -215,7 +231,7 @@
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
             this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
-            this.plMainfooterLable.Size = new System.Drawing.Size(494, 45);
+            this.plMainfooterLable.Size = new System.Drawing.Size(538, 45);
             this.plMainfooterLable.TabIndex = 1;
             // 
             // lblRowsCountValue
@@ -245,11 +261,11 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(621, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(673, 20);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
-            this.pictureBox1.Size = new System.Drawing.Size(159, 410);
+            this.pictureBox1.Size = new System.Drawing.Size(159, 314);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -267,20 +283,23 @@
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showDetailsToolStripMenuItem.Text = "Show details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmListPeople
             // 
@@ -289,20 +308,21 @@
             this.ClientSize = new System.Drawing.Size(852, 354);
             this.ControlBox = false;
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmListPeople";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage People";
+            this.Load += new System.EventHandler(this.frmListPeople_Load);
             this.tlpForm.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
-            this.cmsPersonMenu.ResumeLayout(false);
             this.tlpMainHeader.ResumeLayout(false);
             this.MainHeaderPanel.ResumeLayout(false);
             this.MainHeaderPanel.PerformLayout();
             this.tplMainFooter.ResumeLayout(false);
             this.plMainfooterLable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.cmsPersonMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

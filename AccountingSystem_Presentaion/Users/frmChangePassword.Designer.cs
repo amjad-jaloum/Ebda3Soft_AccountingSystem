@@ -35,10 +35,10 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.ctrlUserCard1 = new Ebda3Soft_AccountingSystem.users.ctrlUserCard();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.tbConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.tbCurrentPassword = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
+            this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -78,10 +78,10 @@ namespace Ebda3Soft_AccountingSystem.Users
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.tbConfirmPassword);
+            this.panel1.Controls.Add(this.txtConfirmPassword);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.tbPassword);
-            this.panel1.Controls.Add(this.tbCurrentPassword);
+            this.panel1.Controls.Add(this.txtNewPassword);
+            this.panel1.Controls.Add(this.txtCurrentPassword);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,15 +101,17 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // tbConfirmPassword
+            // txtConfirmPassword
             // 
-            this.tbConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbConfirmPassword.Location = new System.Drawing.Point(457, 36);
-            this.tbConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.tbConfirmPassword.Name = "tbConfirmPassword";
-            this.tbConfirmPassword.Size = new System.Drawing.Size(165, 26);
-            this.tbConfirmPassword.TabIndex = 20;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(457, 36);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtConfirmPassword.TabIndex = 20;
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // label1
             // 
@@ -122,23 +124,25 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.label1.TabIndex = 21;
             this.label1.Text = "Confirm Password";
             // 
-            // tbPassword
+            // txtNewPassword
             // 
-            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbPassword.Location = new System.Drawing.Point(252, 36);
-            this.tbPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(165, 26);
-            this.tbPassword.TabIndex = 19;
+            this.txtNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtNewPassword.Location = new System.Drawing.Point(252, 36);
+            this.txtNewPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtNewPassword.TabIndex = 19;
+            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
             // 
-            // tbCurrentPassword
+            // txtCurrentPassword
             // 
-            this.tbCurrentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbCurrentPassword.Location = new System.Drawing.Point(47, 36);
-            this.tbCurrentPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.tbCurrentPassword.Name = "tbCurrentPassword";
-            this.tbCurrentPassword.Size = new System.Drawing.Size(165, 26);
-            this.tbCurrentPassword.TabIndex = 18;
+            this.txtCurrentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(47, 36);
+            this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtCurrentPassword.TabIndex = 18;
+            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
             // 
             // label3
             // 
@@ -179,6 +183,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Password";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -193,10 +198,10 @@ namespace Ebda3Soft_AccountingSystem.Users
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ctrlUserCard ctrlUserCard1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox tbConfirmPassword;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.TextBox tbCurrentPassword;
+        private System.Windows.Forms.TextBox txtNewPassword;
+        private System.Windows.Forms.TextBox txtCurrentPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;

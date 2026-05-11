@@ -30,32 +30,33 @@ namespace Ebda3Soft_AccountingSystem.Users
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlPersonWithLoggedUserDetails1 = new users.ctrlUserCard();
+            this.ctrlUserCard1 = new Ebda3Soft_AccountingSystem.users.ctrlUserCard();
             this.SuspendLayout();
             // 
-            // ctrlPersonWithLoggedUserDetails1
+            // ctrlUserCard1
             // 
-            this.ctrlPersonWithLoggedUserDetails1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ctrlUserCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ctrlPersonWithLoggedUserDetails1.AutoSize = true;
-            this.ctrlPersonWithLoggedUserDetails1.Location = new System.Drawing.Point(79, 44);
-            this.ctrlPersonWithLoggedUserDetails1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.ctrlPersonWithLoggedUserDetails1.Name = "ctrlPersonWithLoggedUserDetails1";
-            this.ctrlPersonWithLoggedUserDetails1.Size = new System.Drawing.Size(667, 395);
-            this.ctrlPersonWithLoggedUserDetails1.TabIndex = 0;
+            this.ctrlUserCard1.AutoSize = true;
+            this.ctrlUserCard1.Location = new System.Drawing.Point(79, 44);
+            this.ctrlUserCard1.Margin = new System.Windows.Forms.Padding(1);
+            this.ctrlUserCard1.Name = "ctrlUserCard1";
+            this.ctrlUserCard1.Size = new System.Drawing.Size(667, 395);
+            this.ctrlUserCard1.TabIndex = 0;
             // 
             // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 476);
-            this.Controls.Add(this.ctrlPersonWithLoggedUserDetails1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.ctrlUserCard1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUserInfo";
             this.Text = "Show User Details";
+            this.Load += new System.EventHandler(this.frmUserInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -63,6 +64,6 @@ namespace Ebda3Soft_AccountingSystem.Users
 
         #endregion
 
-        private ctrlUserCard ctrlPersonWithLoggedUserDetails1;
+        private ctrlUserCard ctrlUserCard1;
     }
 }

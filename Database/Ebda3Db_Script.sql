@@ -1,5 +1,5 @@
 USE BusinessDB;
-GO
+
 
 CREATE TABLE People (
     PersonId INT PRIMARY KEY IDENTITY(1,1),
@@ -8,7 +8,8 @@ CREATE TABLE People (
     ThirdName NVARCHAR(25),
     LastName NVARCHAR(25) NOT NULL,
     Phone NVARCHAR(15),
-    Email NVARCHAR(50)
+    Email NVARCHAR(50),
+    Gender tinyint DEFAULT 0
 );
 
 CREATE TABLE Users (
@@ -16,7 +17,7 @@ CREATE TABLE Users (
     PersonId INT NOT NULL FOREIGN KEY REFERENCES People(PersonId),
     Username NVARCHAR(25) NOT NULL UNIQUE,
     Password NVARCHAR(50) NOT NULL,
-    IsActive TINYINT NOT NULL DEFAULT 1
+    IsActive BIT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE Accounts (
@@ -73,3 +74,16 @@ CREATE TABLE InvoiceDetails (
     UnitPrice MONEY NOT NULL,
     UnitType NVARCHAR(100) NOT NULL
 );
+
+
+-- Insert into People first
+INSERT INTO People (FirstName, SecondName, ThirdName, LastName, Phone, Gender, Email)
+VALUES ('Amjad', NULL, NULL, 'Al-Hakimi', '777123456', 1 , 'amjad@example.com');
+
+-- Capture the generated PersonId
+DECLARE @NewPersonId INT = SCOPE_IDENTITY();
+
+-- Insert into Users using the new PersonId
+INSERT INTO Users (PersonId, Username, Password, IsActive)
+VALUES (@NewPersonId, 'admin', '123456', 1);
+

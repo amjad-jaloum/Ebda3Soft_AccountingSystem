@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccountingSystem_Business;
 //using DVLD_Business;
 
 namespace _19___Project___DVLD
 {
     public class clsGlobal
     {
-        //public static clsUser CurrentUser;
+        public static clsUser CurrentUser;
         public static bool RemeberUsernameAndPassword(string Username, string Password)
         {
             try

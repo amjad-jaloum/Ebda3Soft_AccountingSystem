@@ -144,6 +144,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnClose.Location = new System.Drawing.Point(97, 309);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
@@ -174,7 +175,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(203, 26);
             this.tbPassword.TabIndex = 12;
-            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
+            this.tbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbPassword_Validating);
             // 
             // tbUsername
             // 
@@ -184,7 +185,7 @@
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(203, 26);
             this.tbUsername.TabIndex = 11;
-            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
+            this.tbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.tbUsername_Validating);
             // 
             // label3
             // 
@@ -221,8 +222,10 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(828, 396);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);

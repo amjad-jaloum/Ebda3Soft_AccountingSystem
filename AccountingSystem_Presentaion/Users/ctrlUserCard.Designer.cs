@@ -49,7 +49,7 @@
             this.gbFilter.Controls.Add(this.label1);
             this.gbFilter.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gbFilter.Location = new System.Drawing.Point(2, 315);
-            this.gbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.gbFilter.Name = "gbFilter";
             this.gbFilter.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.gbFilter.Size = new System.Drawing.Size(663, 77);
@@ -133,7 +133,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.gbFilter);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctrlUserCard";
             this.Size = new System.Drawing.Size(669, 397);
             this.gbFilter.ResumeLayout(false);

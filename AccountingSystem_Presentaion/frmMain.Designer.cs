@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.msMainNavBar = new System.Windows.Forms.MenuStrip();
             this.BasicDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpertationsToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
+            this.الفواتيربيعشراءToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.السنداتقبضصرفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تقريركشفالحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تقريرجردالمخزنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.الفواتيربيعشراءToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.السنداتقبضصرفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تقريركشفالحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تقريرجردالمخزنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssUsernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssDatetimeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssDateTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.PeopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainNavBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -64,6 +66,7 @@
             this.OpertationsToolStripMenuItem_People,
             this.ReportsToolStripMenuItem,
             this.usersToolStripMenuItem,
+            this.PeopleToolStripMenuItem,
             this.accountToolStripMenuItem});
             this.msMainNavBar.Location = new System.Drawing.Point(0, 0);
             this.msMainNavBar.Name = "msMainNavBar";
@@ -104,6 +107,18 @@
             this.OpertationsToolStripMenuItem_People.Size = new System.Drawing.Size(127, 24);
             this.OpertationsToolStripMenuItem_People.Text = "واجهات العمليات";
             // 
+            // الفواتيربيعشراءToolStripMenuItem
+            // 
+            this.الفواتيربيعشراءToolStripMenuItem.Name = "الفواتيربيعشراءToolStripMenuItem";
+            this.الفواتيربيعشراءToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.الفواتيربيعشراءToolStripMenuItem.Text = "الفواتير (بيع / شراء)";
+            // 
+            // السنداتقبضصرفToolStripMenuItem
+            // 
+            this.السنداتقبضصرفToolStripMenuItem.Name = "السنداتقبضصرفToolStripMenuItem";
+            this.السنداتقبضصرفToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.السنداتقبضصرفToolStripMenuItem.Text = "السندات (قبض / صرف)";
+            // 
             // ReportsToolStripMenuItem
             // 
             this.ReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -113,11 +128,24 @@
             this.ReportsToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.ReportsToolStripMenuItem.Text = "واجهات التقارير";
             // 
+            // تقريركشفالحسابToolStripMenuItem
+            // 
+            this.تقريركشفالحسابToolStripMenuItem.Name = "تقريركشفالحسابToolStripMenuItem";
+            this.تقريركشفالحسابToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.تقريركشفالحسابToolStripMenuItem.Text = "تقرير كشف الحساب";
+            // 
+            // تقريرجردالمخزنToolStripMenuItem
+            // 
+            this.تقريرجردالمخزنToolStripMenuItem.Name = "تقريرجردالمخزنToolStripMenuItem";
+            this.تقريرجردالمخزنToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.تقريرجردالمخزنToolStripMenuItem.Text = "تقرير جرد المخزن";
+            // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.usersToolStripMenuItem.Text = "المستخدمين";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
@@ -149,43 +177,21 @@
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.logoutToolStripMenuItem.Text = "تسجيل خروج";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(958, 557);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // الفواتيربيعشراءToolStripMenuItem
-            // 
-            this.الفواتيربيعشراءToolStripMenuItem.Name = "الفواتيربيعشراءToolStripMenuItem";
-            this.الفواتيربيعشراءToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
-            this.الفواتيربيعشراءToolStripMenuItem.Text = "الفواتير (بيع / شراء)";
-            // 
-            // السنداتقبضصرفToolStripMenuItem
-            // 
-            this.السنداتقبضصرفToolStripMenuItem.Name = "السنداتقبضصرفToolStripMenuItem";
-            this.السنداتقبضصرفToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
-            this.السنداتقبضصرفToolStripMenuItem.Text = "السندات (قبض / صرف)";
-            // 
-            // تقريركشفالحسابToolStripMenuItem
-            // 
-            this.تقريركشفالحسابToolStripMenuItem.Name = "تقريركشفالحسابToolStripMenuItem";
-            this.تقريركشفالحسابToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-            this.تقريركشفالحسابToolStripMenuItem.Text = "تقرير كشف الحساب";
-            // 
-            // تقريرجردالمخزنToolStripMenuItem
-            // 
-            this.تقريرجردالمخزنToolStripMenuItem.Name = "تقريرجردالمخزنToolStripMenuItem";
-            this.تقريرجردالمخزنToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-            this.تقريرجردالمخزنToolStripMenuItem.Text = "تقرير جرد المخزن";
             // 
             // statusStrip1
             // 
@@ -224,6 +230,13 @@
             this.tssDateTime.Size = new System.Drawing.Size(28, 17);
             this.tssDateTime.Text = "###";
             // 
+            // PeopleToolStripMenuItem
+            // 
+            this.PeopleToolStripMenuItem.Name = "PeopleToolStripMenuItem";
+            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.PeopleToolStripMenuItem.Text = "الاشخاص";
+            this.PeopleToolStripMenuItem.Click += new System.EventHandler(this.PeopleToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +259,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "الشاشة الرئيسية";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.msMainNavBar.ResumeLayout(false);
             this.msMainNavBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -279,6 +293,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tssUsername;
         private System.Windows.Forms.ToolStripStatusLabel tssDatetimeLabel;
         private System.Windows.Forms.ToolStripStatusLabel tssDateTime;
+        private System.Windows.Forms.ToolStripMenuItem PeopleToolStripMenuItem;
     }
 }
 

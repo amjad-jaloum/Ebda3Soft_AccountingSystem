@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using DVLD_Business;
+using AccountingSystem_Business;
+using Ebda3Soft_AccountingSystem;
 
 namespace _19___Project___DVLD
 {
@@ -19,65 +20,84 @@ namespace _19___Project___DVLD
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text);
+            if (!ValidateChildren())
+            {
+                MessageBox.Show("Please fix the validation errors before login",
+                    "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //if (user != null)
-            //{
-            //    if (chxRememberMe.Checked)
-            //        clsGlobal.RemeberUsernameAndPassword(tbUsername.Text, tbPassword.Text);
-            //    else
-            //        clsGlobal.RemeberUsernameAndPassword("", ""); // reset
+            clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text);
 
-            //    if (user.IsActive)
-            //    {
-            //        clsGlobal.CurrentUser = user;
-            //        this.Hide();
-            //        frmMain frmMain = new frmMain(this);
-            //        frmMain.ShowDialog();
-            //    }
-            //    else
-            //        MessageBox.Show("The user is not allowed to login, please try another user",
-            //            "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The Username/Password is wrong",
-            //        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            if (user != null)
+            {
+                if (chxRememberMe.Checked)
+                    clsGlobal.RemeberUsernameAndPassword(tbUsername.Text, tbPassword.Text);
+                else
+                    clsGlobal.RemeberUsernameAndPassword("", ""); // reset
+
+                if (user.IsActive)
+                {
+                    clsGlobal.CurrentUser = user;
+                    this.Hide();
+                    frmMain frm = new frmMain(this);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("The user is not allowed to login, please try another user",
+                        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("The Username/Password is wrong",
+                    "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void tbUsername_Leave(object sender, EventArgs e)
-        {
-            if (tbUsername.Text == string.Empty)
-                errorProvider1.SetError(tbUsername, "This field is required");
-            else
-                errorProvider1.SetError(tbUsername, string.Empty);
-        }
-
-        private void tbPassword_Leave(object sender, EventArgs e)
-        {
-            //clsCommonMethods.MakeTextBoxFieldRequired(tbPassword, errorProvider1);
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            //string username = "", password = "";
-            //if (clsGlobal.GetStoredCredential(ref username, ref password))
-            //{
-            //    tbUsername.Text = username;
-            //    tbPassword.Text = password;
-            //    chxRememberMe.Checked = true;
-            //}
-            //else
-            //    chxRememberMe.Checked = false;
+            string username = "", password = "";
+            if (clsGlobal.GetStoredCredential(ref username, ref password))
+            {
+                tbUsername.Text = username;
+                tbPassword.Text = password;
+                chxRememberMe.Checked = true;
+            }
+            else
+                chxRememberMe.Checked = false;
         }
 
+        private void tbUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbUsername.Text.Trim()))
+            {
+                errorProvider1.SetError(tbUsername, "Username is required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(tbUsername, "");
+            }
+        }
+
+        private void tbPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbPassword.Text.Trim()))
+            {
+                errorProvider1.SetError(tbPassword, "Password is required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(tbPassword, "");
+            }
+
+        }
     }
 }

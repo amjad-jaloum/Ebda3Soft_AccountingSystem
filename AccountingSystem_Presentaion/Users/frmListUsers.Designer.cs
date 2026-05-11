@@ -42,16 +42,16 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
-            this.cbActiveStatus = new System.Windows.Forms.ComboBox();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.txtFilterValue = new System.Windows.Forms.MaskedTextBox();
+            this.cbIsActive = new System.Windows.Forms.ComboBox();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.plMainfooterLable = new System.Windows.Forms.Panel();
-            this.lblRowsCountValue = new System.Windows.Forms.Label();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tlpForm.SuspendLayout();
@@ -119,6 +119,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(645, 240);
             this.dgvUsers.TabIndex = 2;
+            this.dgvUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentDoubleClick);
             // 
             // cmsUsers
             // 
@@ -134,26 +135,30 @@ namespace Ebda3Soft_AccountingSystem.Users
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordtoolStripMenuItem_Click);
             // 
             // tlpMainHeader
             // 
@@ -175,7 +180,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             // MainHeaderPanel
             // 
             this.MainHeaderPanel.Controls.Add(this.flowLayoutPanel1);
-            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.cbFilterBy);
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
@@ -186,53 +191,57 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
-            this.flowLayoutPanel1.Controls.Add(this.cbActiveStatus);
+            this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
+            this.flowLayoutPanel1.Controls.Add(this.cbIsActive);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 18);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(242, 27);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // mtxbSearch
+            // txtFilterValue
             // 
-            this.mtxbSearch.Location = new System.Drawing.Point(2, 2);
-            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.mtxbSearch.Name = "mtxbSearch";
-            this.mtxbSearch.Size = new System.Drawing.Size(116, 20);
-            this.mtxbSearch.TabIndex = 5;
+            this.txtFilterValue.Location = new System.Drawing.Point(2, 2);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
+            this.txtFilterValue.TabIndex = 5;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
-            // cbActiveStatus
+            // cbIsActive
             // 
-            this.cbActiveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbActiveStatus.FormattingEnabled = true;
-            this.cbActiveStatus.Items.AddRange(new object[] {
+            this.cbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIsActive.FormattingEnabled = true;
+            this.cbIsActive.Items.AddRange(new object[] {
             "All",
             "Yes",
             "No"});
-            this.cbActiveStatus.Location = new System.Drawing.Point(122, 2);
-            this.cbActiveStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.cbActiveStatus.Name = "cbActiveStatus";
-            this.cbActiveStatus.Size = new System.Drawing.Size(105, 21);
-            this.cbActiveStatus.TabIndex = 4;
-            this.cbActiveStatus.Visible = false;
+            this.cbIsActive.Location = new System.Drawing.Point(122, 2);
+            this.cbIsActive.Margin = new System.Windows.Forms.Padding(2);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(105, 21);
+            this.cbIsActive.TabIndex = 4;
+            this.cbIsActive.Visible = false;
+            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
             // 
-            // cbFilter
+            // cbFilterBy
             // 
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Items.AddRange(new object[] {
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
             "None",
             "User ID",
             "UserName",
             "Person ID",
             "Full Name",
             "Is Active"});
-            this.cbFilter.Location = new System.Drawing.Point(59, 20);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(135, 21);
-            this.cbFilter.TabIndex = 1;
+            this.cbFilterBy.Location = new System.Drawing.Point(59, 20);
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(135, 21);
+            this.cbFilterBy.TabIndex = 1;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -265,6 +274,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.btnAddNewUser.TabIndex = 3;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.UseVisualStyleBackColor = true;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // tplMainFooter
             // 
@@ -293,10 +303,11 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
             // 
-            this.plMainfooterLable.Controls.Add(this.lblRowsCountValue);
+            this.plMainfooterLable.Controls.Add(this.lblRecordsCount);
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
@@ -305,17 +316,17 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.plMainfooterLable.Size = new System.Drawing.Size(538, 45);
             this.plMainfooterLable.TabIndex = 1;
             // 
-            // lblRowsCountValue
+            // lblRecordsCount
             // 
-            this.lblRowsCountValue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblRowsCountValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowsCountValue.Location = new System.Drawing.Point(79, 0);
-            this.lblRowsCountValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRowsCountValue.Name = "lblRowsCountValue";
-            this.lblRowsCountValue.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.lblRowsCountValue.Size = new System.Drawing.Size(66, 45);
-            this.lblRowsCountValue.TabIndex = 3;
-            this.lblRowsCountValue.Text = "### ";
+            this.lblRecordsCount.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsCount.Location = new System.Drawing.Point(79, 0);
+            this.lblRecordsCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.lblRecordsCount.Size = new System.Drawing.Size(66, 45);
+            this.lblRecordsCount.TabIndex = 3;
+            this.lblRecordsCount.Text = "### ";
             // 
             // lblRecordsNumber
             // 
@@ -353,6 +364,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.Name = "frmListUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
+            this.Load += new System.EventHandler(this.frmListUsers_Load);
             this.tlpForm.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
@@ -377,23 +389,23 @@ namespace Ebda3Soft_AccountingSystem.Users
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.TableLayoutPanel tlpMainHeader;
         private System.Windows.Forms.Panel MainHeaderPanel;
-        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tplMainFooter;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel plMainfooterLable;
-        private System.Windows.Forms.Label lblRowsCountValue;
+        private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAddNewUser;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ComboBox cbActiveStatus;
+        private System.Windows.Forms.ComboBox cbIsActive;
         private System.Windows.Forms.ContextMenuStrip cmsUsers;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.MaskedTextBox mtxbSearch;
+        private System.Windows.Forms.MaskedTextBox txtFilterValue;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

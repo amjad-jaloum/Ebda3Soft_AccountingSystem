@@ -12,9 +12,15 @@ namespace Ebda3Soft_AccountingSystem.people
 {
     public partial class frmShowPersonInfo : Form
     {
-        public frmShowPersonInfo()
+        public frmShowPersonInfo(int personID)
         {
             InitializeComponent();
+            ctrlPersonCard1.LoadPersonInfo(personID);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

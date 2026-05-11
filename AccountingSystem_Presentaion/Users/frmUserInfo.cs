@@ -7,14 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ebda3Soft_AccountingSystem.users;
 
 namespace Ebda3Soft_AccountingSystem.Users
 {
     public partial class frmUserInfo : Form
     {
-        public frmUserInfo()
+        private int _UserID;
+
+        public frmUserInfo(int UserID)
         {
             InitializeComponent();
+            _UserID = UserID;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmUserInfo_Load(object sender, EventArgs e)
+        {
+            ctrlUserCard1.LoadUserInfo(_UserID);
         }
     }
 }
