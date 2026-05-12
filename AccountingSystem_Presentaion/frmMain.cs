@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD;
+using Ebda3Soft_AccountingSystem.BasicData;
 using Ebda3Soft_AccountingSystem.people;
 using Ebda3Soft_AccountingSystem.Users;
 
@@ -45,6 +46,12 @@ namespace Ebda3Soft_AccountingSystem
         {
             clsGlobal.CurrentUser = null;
             _frmLogin.Close();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmListAccounts frm = new frmListAccounts();
+            frm.ShowDialog();
         }
     }
 }
