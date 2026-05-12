@@ -5,7 +5,7 @@ using AccountingSystem_DataAccess;
 
 namespace Ebda3Soft_DataAccess
 {
-    public static class clsAccountData
+    public class clsAccountData
     {
         public static bool GetAccountInfoByID(int AccountID, ref string Name,
             ref int PersonID, ref byte Type)
