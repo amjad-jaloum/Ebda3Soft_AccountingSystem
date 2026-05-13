@@ -24,7 +24,27 @@ namespace Ebda3Soft_Business
 
         // composition relation to access person information related to this account
         public clsPerson PersonInfo;
-
+        public string GetAccountTypeText
+        {
+            get
+            {
+                switch ((enAccountType)Type)
+                {
+                    case enAccountType.Customer:
+                        return "عميل";
+                    case enAccountType.Supplier:
+                        return "مورد";
+                    case enAccountType.Employee:
+                        return "موظف";
+                    case enAccountType.ServiceProvider:
+                        return "مزود خدمة";
+                    case enAccountType.Partner:
+                        return "شريك";
+                    default:
+                        return "غير محدد";
+                }
+            }
+        }
         public clsAccount()
         {
             this.AccountID = -1;
@@ -124,5 +144,7 @@ namespace Ebda3Soft_Business
         {
             return clsAccountData.IsAccountExist(ID);
         }
+
+
     }
 }

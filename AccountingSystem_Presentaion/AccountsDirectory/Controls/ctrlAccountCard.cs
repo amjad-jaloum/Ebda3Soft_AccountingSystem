@@ -55,26 +55,9 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory.Controls
                 lblPersonName.Text = "[???]";
 
             // عرض نوع الحساب (Customer, Supplier, etc...)
-            lblAccountType.Text = _GetAccountTypeText((enAccountType)_Account.Type);
+            lblAccountType.Text = _Account.GetAccountTypeText;
         }
-        private string _GetAccountTypeText(enAccountType AccountType)
-        {
-            switch (AccountType)
-            {
-                case enAccountType.Customer:
-                    return "عميل";
-                case enAccountType.Supplier:
-                    return "مورد";
-                case enAccountType.Employee:
-                    return "موظف";
-                case enAccountType.ServiceProvider:
-                    return "مزود خدمة";
-                case enAccountType.Partner:
-                    return "شريك";
-                default:
-                    return "غير محدد";
-            }
-        }
+        
         public void ResetAccountInfo()
         {
             _AccountID = -1;
