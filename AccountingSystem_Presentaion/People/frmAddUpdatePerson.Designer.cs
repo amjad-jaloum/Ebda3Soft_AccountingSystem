@@ -152,7 +152,7 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(173, 26);
             this.tbEmail.TabIndex = 8;
-            this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
+            this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmail_Validating);
             // 
             // label3
             // 

@@ -38,21 +38,25 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.cmsAccountMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.txtFilterValue = new System.Windows.Forms.TextBox();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnAddNewAccount = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.plMainfooterLable = new System.Windows.Forms.Panel();
-            this.lblRowsCountValue = new System.Windows.Forms.Label();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAccountInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAccountIcon)).BeginInit();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
+            this.cmsAccountMenu.SuspendLayout();
             this.tlpMainHeader.SuspendLayout();
             this.MainHeaderPanel.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
@@ -118,8 +122,12 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             // 
             // cmsAccountMenu
             // 
+            this.cmsAccountMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showAccountInfoToolStripMenuItem,
+            this.editAccountToolStripMenuItem,
+            this.deleteAccountToolStripMenuItem});
             this.cmsAccountMenu.Name = "cmsAccountMenu";
-            this.cmsAccountMenu.Size = new System.Drawing.Size(61, 4);
+            this.cmsAccountMenu.Size = new System.Drawing.Size(176, 70);
             // 
             // tlpMainHeader
             // 
@@ -138,8 +146,8 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             // 
             // MainHeaderPanel
             // 
-            this.MainHeaderPanel.Controls.Add(this.txtSearch);
-            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.txtFilterValue);
+            this.MainHeaderPanel.Controls.Add(this.cbFilterBy);
             this.MainHeaderPanel.Controls.Add(this.lblFilter);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(183, 3);
@@ -147,25 +155,28 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.MainHeaderPanel.Size = new System.Drawing.Size(707, 48);
             this.MainHeaderPanel.TabIndex = 0;
             // 
-            // txtSearch
+            // txtFilterValue
             // 
-            this.txtSearch.Location = new System.Drawing.Point(268, 15);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
-            this.txtSearch.TabIndex = 0;
+            this.txtFilterValue.Location = new System.Drawing.Point(268, 15);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(200, 20);
+            this.txtFilterValue.TabIndex = 0;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
-            // cbFilter
+            // cbFilterBy
             // 
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.Items.AddRange(new object[] {
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.Items.AddRange(new object[] {
             "None",
             "Account ID",
             "Account Name",
             "Type"});
-            this.cbFilter.Location = new System.Drawing.Point(478, 15);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(140, 21);
-            this.cbFilter.TabIndex = 1;
+            this.cbFilterBy.Location = new System.Drawing.Point(478, 15);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(140, 21);
+            this.cbFilterBy.TabIndex = 1;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // lblFilter
             // 
@@ -185,6 +196,7 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.btnAddNewAccount.TabIndex = 1;
             this.btnAddNewAccount.Text = "إضافة حساب جديد";
             this.btnAddNewAccount.UseVisualStyleBackColor = true;
+            this.btnAddNewAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // tplMainFooter
             // 
@@ -209,10 +221,11 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.btnClose.Size = new System.Drawing.Size(262, 48);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
             // 
-            this.plMainfooterLable.Controls.Add(this.lblRowsCountValue);
+            this.plMainfooterLable.Controls.Add(this.lblRecordsCount);
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(271, 3);
@@ -220,14 +233,14 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.plMainfooterLable.Size = new System.Drawing.Size(619, 48);
             this.plMainfooterLable.TabIndex = 1;
             // 
-            // lblRowsCountValue
+            // lblRecordsCount
             // 
-            this.lblRowsCountValue.AutoSize = true;
-            this.lblRowsCountValue.Location = new System.Drawing.Point(506, 18);
-            this.lblRowsCountValue.Name = "lblRowsCountValue";
-            this.lblRowsCountValue.Size = new System.Drawing.Size(13, 13);
-            this.lblRowsCountValue.TabIndex = 0;
-            this.lblRowsCountValue.Text = "0";
+            this.lblRecordsCount.AutoSize = true;
+            this.lblRecordsCount.Location = new System.Drawing.Point(506, 18);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Size = new System.Drawing.Size(13, 13);
+            this.lblRecordsCount.TabIndex = 0;
+            this.lblRecordsCount.Text = "0";
             // 
             // lblRecordsNumber
             // 
@@ -249,6 +262,27 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.editAccountToolStripMenuItem.Text = "Edit Account";
+            this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteAccountToolStripMenuItem
+            // 
+            this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
+            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.deleteAccountToolStripMenuItem.Text = "Delete Account";
+            this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // showAccountInfoToolStripMenuItem
+            // 
+            this.showAccountInfoToolStripMenuItem.Name = "showAccountInfoToolStripMenuItem";
+            this.showAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.showAccountInfoToolStripMenuItem.Text = "Show Account Info";
+            this.showAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
             // frmListAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,10 +298,12 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إدارة الحسابات";
+            this.Load += new System.EventHandler(this.frmListAccounts_Load);
             this.tlpForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAccountIcon)).EndInit();
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
+            this.cmsAccountMenu.ResumeLayout(false);
             this.tlpMainHeader.ResumeLayout(false);
             this.MainHeaderPanel.ResumeLayout(false);
             this.MainHeaderPanel.PerformLayout();
@@ -289,12 +325,12 @@ namespace Ebda3Soft_AccountingSystem.BasicData
 
         // Controls
         private System.Windows.Forms.DataGridView dgvAccounts;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.TextBox txtFilterValue;
+        private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.Button btnAddNewAccount;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label lblRowsCountValue;
+        private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.PictureBox pbAccountIcon;
 
@@ -303,5 +339,8 @@ namespace Ebda3Soft_AccountingSystem.BasicData
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLedgerToolStripMenuItem;
+        private ToolStripMenuItem showAccountInfoToolStripMenuItem;
+        private ToolStripMenuItem editAccountToolStripMenuItem;
+        private ToolStripMenuItem deleteAccountToolStripMenuItem;
     }
 }

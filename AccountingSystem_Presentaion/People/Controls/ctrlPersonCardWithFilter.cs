@@ -40,6 +40,8 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
         }
 
         private bool _FilterEnabled = true;
+        public bool IsServiceProvider { get { return chxIsServiceProvider.Checked; } }
+
         public bool FilterEnabled
         {
             get
@@ -80,7 +82,6 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             {
                 case "Person ID":
                     ctrlPersonCard1.LoadPersonInfo(int.Parse(txtFilterValue.Text));
-
                     break;
 
                 default:
@@ -121,8 +122,12 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
 
             if (string.IsNullOrEmpty(txtFilterValue.Text.Trim()))
             {
-                e.Cancel = true;
+                //e.Cancel = true;
                 errorProvider1.SetError(txtFilterValue, "This field is required!");
+            }
+            else if (chxIsServiceProvider.Checked)
+            {
+                errorProvider1.SetError(txtFilterValue, null);
             }
             else
             {
@@ -163,6 +168,12 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             //this will allow only digits if person id is selected
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+
+        private void chxIsServiceProvider_CheckedChanged(object sender, EventArgs e)
+        {
+            txtFilterValue.Text = chxIsServiceProvider.Checked ? "-1" : string.Empty;
         }
     }
 }

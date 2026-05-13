@@ -35,6 +35,7 @@
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.txtFilterValue = new System.Windows.Forms.MaskedTextBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
+            this.chxIsServiceProvider = new System.Windows.Forms.CheckBox();
             this.ctrlPersonCard1 = new Ebda3Soft_AccountingSystem.people.Controls.ctrlPersonCard();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.gbFilter.SuspendLayout();
@@ -93,6 +94,7 @@
             this.txtFilterValue.Size = new System.Drawing.Size(223, 29);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
             // cbFilterBy
             // 
@@ -106,6 +108,18 @@
             this.cbFilterBy.Size = new System.Drawing.Size(261, 29);
             this.cbFilterBy.TabIndex = 4;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
+            // 
+            // chxIsServiceProvider
+            // 
+            this.chxIsServiceProvider.AutoSize = true;
+            this.chxIsServiceProvider.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chxIsServiceProvider.Location = new System.Drawing.Point(261, 338);
+            this.chxIsServiceProvider.Name = "chxIsServiceProvider";
+            this.chxIsServiceProvider.Size = new System.Drawing.Size(157, 24);
+            this.chxIsServiceProvider.TabIndex = 8;
+            this.chxIsServiceProvider.Text = "Is Service Provider";
+            this.chxIsServiceProvider.UseVisualStyleBackColor = true;
+            this.chxIsServiceProvider.CheckedChanged += new System.EventHandler(this.chxIsServiceProvider_CheckedChanged);
             // 
             // ctrlPersonCard1
             // 
@@ -121,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chxIsServiceProvider);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.gbFilter);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -132,6 +147,7 @@
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,5 +161,6 @@
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.MaskedTextBox txtFilterValue;
         private System.Windows.Forms.ComboBox cbFilterBy;
+        private System.Windows.Forms.CheckBox chxIsServiceProvider;
     }
 }

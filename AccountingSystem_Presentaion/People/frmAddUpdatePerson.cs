@@ -184,7 +184,10 @@ namespace Ebda3Soft_AccountingSystem.people
         {
             //no need to validate the email incase it's empty.
             if (tbEmail.Text.Trim() == "")
+            {
+                ValidateEmptyTextBox(sender, e);
                 return;
+            }
 
             //validate email format
             if (!clsValidation.ValidateEmail(tbEmail.Text))

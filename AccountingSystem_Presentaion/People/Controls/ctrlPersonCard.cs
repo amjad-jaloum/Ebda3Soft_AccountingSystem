@@ -77,9 +77,9 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             LoadPersonInfo(_PersonID);
         }
 
-        internal void FilterFocus()
+        public void FilterFocus()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

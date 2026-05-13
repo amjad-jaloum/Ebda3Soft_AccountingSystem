@@ -9,7 +9,14 @@ namespace Ebda3Soft_Business
     {
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
-
+        public enum enAccountType
+        {
+            Customer = 0,
+            Supplier = 1,
+            Employee = 2,
+            ServiceProvider = 3,
+            Partner = 4
+        };
         public int AccountID { set; get; }
         public string Name { set; get; }
         public int PersonID { set; get; }
