@@ -27,7 +27,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     AccountID = (int)reader["AccountId"];
                     Amount = (decimal)reader["Amount"];
                     Type = (byte)reader["Type"];
-                    Date = (DateTime)reader["Date"];
+                    Date = (DateTime)reader["CreatedDate"];
                     Notes = (reader["Notes"] == DBNull.Value) ? "" : (string)reader["Notes"];
                 }
                 reader.Close();
@@ -44,20 +44,23 @@ namespace Ebda3Soft_AccountingDataLayer
             return isFound;
         }
 
-        public static int AddNewVoucher(int AccountID, decimal Amount, byte Type, DateTime Date, string Notes)
+        public static int AddNewVoucher(int AccountID, decimal Amount, byte Type, DateTime CreatedDate, string Notes)
         {
             int VoucherID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"INSERT INTO Vouchers (AccountId, Amount, Type, Date, Notes)
-                             VALUES (@AccountId, @Amount, @Type, @Date, @Notes);
+            string query = @"INSERT INTO Vouchers (AccountId, Amount, Type, CreatedDate, Notes)
+                             VALUES (@AccountId, @Amount, @Type, @CreatedDate, @Notes);
                              SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@AccountId", AccountID);
             command.Parameters.AddWithValue("@Amount", Amount);
             command.Parameters.AddWithValue("@Type", Type);
-            command.Parameters.AddWithValue("@Date", Date);
-            command.Parameters.AddWithValue("@Notes", (object)Notes ?? DBNull.Value);
+            command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+            if (string.IsNullOrEmpty(Notes))
+                command.Parameters.AddWithValue("@Notes", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Notes", Notes);
 
             try
             {
@@ -81,7 +84,7 @@ namespace Ebda3Soft_AccountingDataLayer
             return VoucherID;
         }
 
-        public static bool UpdateVoucher(int VoucherID, int AccountID, decimal Amount, byte Type, DateTime Date, string Notes)
+        public static bool UpdateVoucher(int VoucherID, int AccountID, decimal Amount, byte Type, DateTime CreatedDate, string Notes)
         {
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -89,7 +92,7 @@ namespace Ebda3Soft_AccountingDataLayer
                              SET AccountId = @AccountId,
                                  Amount = @Amount,
                                  Type = @Type,
-                                 Date = @Date,
+                                 CreatedDate = @CreatedDate,
                                  Notes = @Notes
                              WHERE VoucherId = @VoucherId";
 
@@ -98,7 +101,7 @@ namespace Ebda3Soft_AccountingDataLayer
             command.Parameters.AddWithValue("@AccountId", AccountID);
             command.Parameters.AddWithValue("@Amount", Amount);
             command.Parameters.AddWithValue("@Type", Type);
-            command.Parameters.AddWithValue("@Date", Date);
+            command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
             command.Parameters.AddWithValue("@Notes", (object)Notes ?? DBNull.Value);
 
             try
@@ -147,11 +150,21 @@ namespace Ebda3Soft_AccountingDataLayer
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"SELECT Vouchers.VoucherId, Vouchers.AccountId, Accounts.Name, 
-                             Vouchers.Amount, Vouchers.Type, Vouchers.Date 
-                             FROM Vouchers 
-                             INNER JOIN Accounts ON Vouchers.AccountId = Accounts.AccountId
-                             ORDER BY Vouchers.Date DESC";
+            string query = @"SELECT 
+                            Vouchers.VoucherId, 
+                            Vouchers.AccountId, 
+                            Accounts.Name, 
+                            Vouchers.Amount, 
+                            CASE 
+                                WHEN Vouchers.Type = 1 THEN 'قبض'
+                                WHEN Vouchers.Type = 2 THEN 'صرف'
+                                ELSE 'Unknown'
+                            END AS TypeName,
+                            Vouchers.Type, -- نتركه إذا كنا نحتاجه للفلترة الرقمية خلف الكواليس
+                            Vouchers.CreatedDate 
+                        FROM Vouchers 
+                        INNER JOIN Accounts ON Vouchers.AccountId = Accounts.AccountId
+                        ORDER BY Vouchers.CreatedDate DESC";
 
             SqlCommand command = new SqlCommand(query, connection);
 

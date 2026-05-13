@@ -245,5 +245,42 @@ namespace Ebda3Soft_DataAccess
 
             return isFound;
         }
+
+        public static bool GetAccountInfoByName(string AccountName, ref int AccountID, ref int PersonID, ref short AccountType)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            // نستخدم N قبل علامة التنصيص لدعم اللغة العربية في SQL
+            string query = "SELECT * FROM Accounts WHERE AccountName = @AccountName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@AccountName", AccountName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+                    AccountID = (int)reader["AccountID"];
+                    PersonID = (int)reader["PersonID"];
+                    AccountType = Convert.ToInt16(reader["AccountType"]);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
     }
 }

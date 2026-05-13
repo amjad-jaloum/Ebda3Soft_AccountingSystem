@@ -9,6 +9,12 @@ namespace Ebda3Soft_AccountingSystem
 {
     public partial class frmAddUpdateAccount : Form
     {
+        // Declare a delegate
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
+
         // Enum to manage form state
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
@@ -146,6 +152,8 @@ namespace Ebda3Soft_AccountingSystem
 
                 MessageBox.Show("Data Saved Successfully.", "Saved",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DataBack?.Invoke(this, _Account.PersonID);
             }
             else
             {

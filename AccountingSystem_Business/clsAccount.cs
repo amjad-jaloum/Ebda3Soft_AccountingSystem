@@ -23,7 +23,7 @@ namespace Ebda3Soft_Business
         public byte Type { set; get; }
 
         // composition relation to access person information related to this account
-        public clsPerson PersonInfo; 
+        public clsPerson PersonInfo;
 
         public clsAccount()
         {
@@ -73,7 +73,21 @@ namespace Ebda3Soft_Business
             else
                 return null;
         }
+        public static clsAccount Find(string AccountName)
+        {
+            int AccountID = -1;
+            int PersonID = -1;
+            short AccountType = 0;
 
+            if (clsAccountData.GetAccountInfoByName(AccountName, ref AccountID, ref PersonID, ref AccountType))
+            {
+                return new clsAccount(AccountID, AccountName, PersonID, (byte)AccountType);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public bool Save()
         {
             switch (Mode)

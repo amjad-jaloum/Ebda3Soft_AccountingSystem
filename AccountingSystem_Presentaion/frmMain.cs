@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD;
+using Ebda3Soft_AccountingSystem.AccountsDirectory;
 using Ebda3Soft_AccountingSystem.BasicData;
 using Ebda3Soft_AccountingSystem.people;
 using Ebda3Soft_AccountingSystem.Users;
@@ -63,6 +64,12 @@ namespace Ebda3Soft_AccountingSystem
         private void ItemsDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListItems frm = new frmListItems();
+            frm.ShowDialog();
+        }
+
+        private void VouchersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListVouchers frm = new frmListVouchers();
             frm.ShowDialog();
         }
     }
