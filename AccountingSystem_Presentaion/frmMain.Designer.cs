@@ -265,6 +265,7 @@
             this.Text = "الشاشة الرئيسية";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.msMainNavBar.ResumeLayout(false);
             this.msMainNavBar.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

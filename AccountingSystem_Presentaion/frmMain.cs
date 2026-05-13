@@ -53,5 +53,11 @@ namespace Ebda3Soft_AccountingSystem
             frmListAccounts frm = new frmListAccounts();
             frm.ShowDialog();
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            tssDateTime.Text = DateTime.Now.ToShortDateString();
+            tssUsername.Text = clsGlobal.CurrentUser.UserName;
+        }
     }
 }
