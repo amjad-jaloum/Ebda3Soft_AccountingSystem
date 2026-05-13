@@ -52,11 +52,10 @@
             this.gbFilter.Controls.Add(this.txtFilterValue);
             this.gbFilter.Controls.Add(this.cbFilterBy);
             this.gbFilter.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gbFilter.Location = new System.Drawing.Point(7, 6);
-            this.gbFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.gbFilter.Location = new System.Drawing.Point(10, 9);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.gbFilter.Size = new System.Drawing.Size(673, 69);
+            this.gbFilter.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.gbFilter.Size = new System.Drawing.Size(1010, 106);
             this.gbFilter.TabIndex = 5;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
@@ -64,10 +63,9 @@
             // btnFindPerson
             // 
             this.btnFindPerson.AutoSize = true;
-            this.btnFindPerson.Location = new System.Drawing.Point(498, 29);
-            this.btnFindPerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFindPerson.Location = new System.Drawing.Point(747, 45);
             this.btnFindPerson.Name = "btnFindPerson";
-            this.btnFindPerson.Size = new System.Drawing.Size(50, 31);
+            this.btnFindPerson.Size = new System.Drawing.Size(105, 49);
             this.btnFindPerson.TabIndex = 6;
             this.btnFindPerson.Text = "Find";
             this.btnFindPerson.UseVisualStyleBackColor = true;
@@ -76,10 +74,9 @@
             // btnAddPerson
             // 
             this.btnAddPerson.AutoSize = true;
-            this.btnAddPerson.Location = new System.Drawing.Point(549, 29);
-            this.btnAddPerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddPerson.Location = new System.Drawing.Point(858, 45);
             this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(119, 31);
+            this.btnAddPerson.Size = new System.Drawing.Size(145, 49);
             this.btnAddPerson.TabIndex = 7;
             this.btnAddPerson.Text = "Add Person";
             this.btnAddPerson.UseVisualStyleBackColor = true;
@@ -88,10 +85,9 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BeepOnError = true;
-            this.txtFilterValue.Location = new System.Drawing.Point(273, 31);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilterValue.Location = new System.Drawing.Point(410, 48);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(223, 29);
+            this.txtFilterValue.Size = new System.Drawing.Size(332, 39);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
@@ -102,10 +98,9 @@
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {
             "Person ID"});
-            this.cbFilterBy.Location = new System.Drawing.Point(9, 31);
-            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterBy.Location = new System.Drawing.Point(14, 48);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(261, 29);
+            this.cbFilterBy.Size = new System.Drawing.Size(390, 40);
             this.cbFilterBy.TabIndex = 4;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
@@ -113,9 +108,10 @@
             // 
             this.chxIsServiceProvider.AutoSize = true;
             this.chxIsServiceProvider.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chxIsServiceProvider.Location = new System.Drawing.Point(261, 338);
+            this.chxIsServiceProvider.Location = new System.Drawing.Point(392, 520);
+            this.chxIsServiceProvider.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chxIsServiceProvider.Name = "chxIsServiceProvider";
-            this.chxIsServiceProvider.Size = new System.Drawing.Size(157, 24);
+            this.chxIsServiceProvider.Size = new System.Drawing.Size(232, 34);
             this.chxIsServiceProvider.TabIndex = 8;
             this.chxIsServiceProvider.Text = "Is Service Provider";
             this.chxIsServiceProvider.UseVisualStyleBackColor = true;
@@ -124,24 +120,23 @@
             // ctrlPersonCard1
             // 
             this.ctrlPersonCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(7, 80);
-            this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(1);
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(10, 123);
+            this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(675, 317);
+            this.ctrlPersonCard1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(1014, 488);
             this.ctrlPersonCard1.TabIndex = 6;
             // 
             // ctrlPersonCardWithFilter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chxIsServiceProvider);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.gbFilter);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctrlPersonCardWithFilter";
-            this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.Size = new System.Drawing.Size(689, 403);
+            this.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.Size = new System.Drawing.Size(1034, 620);
             this.Load += new System.EventHandler(this.ctrlPersonCardWithFilter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.gbFilter.ResumeLayout(false);

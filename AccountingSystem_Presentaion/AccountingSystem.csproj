@@ -48,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsDirectory\Controls\ctrlAccountCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AccountsDirectory\Controls\ctrlAccountCard.Designer.cs">
+      <DependentUpon>ctrlAccountCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountsDirectory\Controls\ctrlAccountCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AccountsDirectory\Controls\ctrlAccountCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlAccountCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountsDirectory\frmAddUpdateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +172,24 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vouchers\frmAddUpdateVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vouchers\frmAddUpdateVoucher.Designer.cs">
+      <DependentUpon>frmAddUpdateVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vouchers\frmListVouchers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vouchers\frmListVouchers.Designer.cs">
+      <DependentUpon>frmListVouchers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccountsDirectory\Controls\ctrlAccountCard.resx">
+      <DependentUpon>ctrlAccountCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountsDirectory\Controls\ctrlAccountCardWithFilter.resx">
+      <DependentUpon>ctrlAccountCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AccountsDirectory\frmAddUpdateAccount.resx">
       <DependentUpon>frmAddUpdateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vouchers\frmAddUpdateVoucher.resx">
+      <DependentUpon>frmAddUpdateVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vouchers\frmListVouchers.resx">
+      <DependentUpon>frmListVouchers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
