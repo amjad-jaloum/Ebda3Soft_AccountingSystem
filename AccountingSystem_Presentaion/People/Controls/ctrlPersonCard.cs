@@ -72,10 +72,6 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
         {
             return Convert.ToBoolean(_Person.Gender) ? Resources.female : Resources.male;
         }
-        public void ctrlShowPersonDetails_Load(object sender, EventArgs e)
-        {
-            LoadPersonInfo(_PersonID);
-        }
 
         public void FilterFocus()
         {

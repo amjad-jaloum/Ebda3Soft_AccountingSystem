@@ -207,7 +207,6 @@
             this.Name = "ctrlPersonCard";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Size = new System.Drawing.Size(663, 315);
-            this.Load += new System.EventHandler(this.ctrlShowPersonDetails_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
