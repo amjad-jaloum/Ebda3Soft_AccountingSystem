@@ -60,6 +60,7 @@
             // 
             this.msMainNavBar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.msMainNavBar.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.msMainNavBar.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.msMainNavBar.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.msMainNavBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BasicDataToolStripMenuItem,
@@ -70,8 +71,8 @@
             this.accountToolStripMenuItem});
             this.msMainNavBar.Location = new System.Drawing.Point(0, 0);
             this.msMainNavBar.Name = "msMainNavBar";
-            this.msMainNavBar.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.msMainNavBar.Size = new System.Drawing.Size(958, 26);
+            this.msMainNavBar.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.msMainNavBar.Size = new System.Drawing.Size(1437, 38);
             this.msMainNavBar.TabIndex = 0;
             this.msMainNavBar.Text = "menuStrip1";
             // 
@@ -82,21 +83,21 @@
             this.manageApplicationsToolStripMenuItem});
             this.BasicDataToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.BasicDataToolStripMenuItem.Name = "BasicDataToolStripMenuItem";
-            this.BasicDataToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
+            this.BasicDataToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
             this.BasicDataToolStripMenuItem.Text = "البيانات الأساسية";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(245, 38);
             this.toolStripMenuItem2.Text = "دليل الحسابات";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
-            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
             this.manageApplicationsToolStripMenuItem.Text = "دليل الأصناف";
             // 
             // OpertationsToolStripMenuItem_People
@@ -105,19 +106,19 @@
             this.الفواتيربيعشراءToolStripMenuItem,
             this.السنداتقبضصرفToolStripMenuItem});
             this.OpertationsToolStripMenuItem_People.Name = "OpertationsToolStripMenuItem_People";
-            this.OpertationsToolStripMenuItem_People.Size = new System.Drawing.Size(127, 24);
+            this.OpertationsToolStripMenuItem_People.Size = new System.Drawing.Size(181, 34);
             this.OpertationsToolStripMenuItem_People.Text = "واجهات العمليات";
             // 
             // الفواتيربيعشراءToolStripMenuItem
             // 
             this.الفواتيربيعشراءToolStripMenuItem.Name = "الفواتيربيعشراءToolStripMenuItem";
-            this.الفواتيربيعشراءToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.الفواتيربيعشراءToolStripMenuItem.Size = new System.Drawing.Size(328, 38);
             this.الفواتيربيعشراءToolStripMenuItem.Text = "الفواتير (بيع / شراء)";
             // 
             // السنداتقبضصرفToolStripMenuItem
             // 
             this.السنداتقبضصرفToolStripMenuItem.Name = "السنداتقبضصرفToolStripMenuItem";
-            this.السنداتقبضصرفToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.السنداتقبضصرفToolStripMenuItem.Size = new System.Drawing.Size(328, 38);
             this.السنداتقبضصرفToolStripMenuItem.Text = "السندات (قبض / صرف)";
             // 
             // ReportsToolStripMenuItem
@@ -126,32 +127,32 @@
             this.تقريركشفالحسابToolStripMenuItem,
             this.تقريرجردالمخزنToolStripMenuItem});
             this.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem";
-            this.ReportsToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.ReportsToolStripMenuItem.Size = new System.Drawing.Size(166, 34);
             this.ReportsToolStripMenuItem.Text = "واجهات التقارير";
             // 
             // تقريركشفالحسابToolStripMenuItem
             // 
             this.تقريركشفالحسابToolStripMenuItem.Name = "تقريركشفالحسابToolStripMenuItem";
-            this.تقريركشفالحسابToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.تقريركشفالحسابToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.تقريركشفالحسابToolStripMenuItem.Text = "تقرير كشف الحساب";
             // 
             // تقريرجردالمخزنToolStripMenuItem
             // 
             this.تقريرجردالمخزنToolStripMenuItem.Name = "تقريرجردالمخزنToolStripMenuItem";
-            this.تقريرجردالمخزنToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.تقريرجردالمخزنToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.تقريرجردالمخزنToolStripMenuItem.Text = "تقرير جرد المخزن";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(139, 34);
             this.usersToolStripMenuItem.Text = "المستخدمين";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // PeopleToolStripMenuItem
             // 
             this.PeopleToolStripMenuItem.Name = "PeopleToolStripMenuItem";
-            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(114, 34);
             this.PeopleToolStripMenuItem.Text = "الاشخاص";
             this.PeopleToolStripMenuItem.Click += new System.EventHandler(this.PeopleToolStripMenuItem_Click);
             // 
@@ -162,66 +163,68 @@
             this.changePasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
             this.accountToolStripMenuItem.Text = "اعدادات الحساب";
             // 
             // showCurrentUserToolStripMenuItem
             // 
             this.showCurrentUserToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.showCurrentUserToolStripMenuItem.Name = "showCurrentUserToolStripMenuItem";
-            this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(299, 38);
             this.showCurrentUserToolStripMenuItem.Text = "معلومات المستخدم ";
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(299, 38);
             this.changePasswordToolStripMenuItem.Text = "تغيير كلمة المرور";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(299, 38);
             this.logoutToolStripMenuItem.Text = "تسجيل خروج";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssUsernameLabel,
             this.tssUsername,
             this.tssDatetimeLabel,
             this.tssDateTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 561);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 865);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(958, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(21, 0, 2, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1437, 32);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tssUsernameLabel
             // 
             this.tssUsernameLabel.Name = "tssUsernameLabel";
-            this.tssUsernameLabel.Size = new System.Drawing.Size(84, 17);
+            this.tssUsernameLabel.Size = new System.Drawing.Size(131, 25);
             this.tssUsernameLabel.Text = "اسم المستخدم: ";
             // 
             // tssUsername
             // 
             this.tssUsername.Name = "tssUsername";
-            this.tssUsername.Size = new System.Drawing.Size(28, 17);
+            this.tssUsername.Size = new System.Drawing.Size(45, 25);
             this.tssUsername.Text = "###";
             // 
             // tssDatetimeLabel
             // 
             this.tssDatetimeLabel.Name = "tssDatetimeLabel";
-            this.tssDatetimeLabel.Size = new System.Drawing.Size(83, 17);
+            this.tssDatetimeLabel.Size = new System.Drawing.Size(130, 25);
             this.tssDatetimeLabel.Text = "التاريخ والوقت: ";
             // 
             // tssDateTime
             // 
             this.tssDateTime.Name = "tssDateTime";
-            this.tssDateTime.Size = new System.Drawing.Size(28, 17);
+            this.tssDateTime.Size = new System.Drawing.Size(45, 25);
             this.tssDateTime.Text = "###";
             // 
             // pictureBox1
@@ -230,28 +233,29 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(60);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(958, 557);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.Size = new System.Drawing.Size(1437, 859);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(958, 583);
+            this.ClientSize = new System.Drawing.Size(1437, 897);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.msMainNavBar);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMainNavBar;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";

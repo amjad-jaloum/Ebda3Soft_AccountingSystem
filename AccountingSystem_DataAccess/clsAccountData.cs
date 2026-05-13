@@ -179,7 +179,14 @@ namespace Ebda3Soft_DataAccess
             // Using Inner Join to get Person Names if needed, or simple select
             string query = @"SELECT Accounts.AccountID, Accounts.Name, 
                              ISNULL(People.FirstName + ' ' + People.LastName, 'N/A') as FullName,
-                             Accounts.Type
+                             CASE 
+                                WHEN Type = 0 THEN 'Customer'
+                                WHEN Type = 1 THEN 'Supplier'
+                                WHEN Type = 2 THEN 'Employee'
+                                WHEN Type = 3 THEN 'Service Provider'
+                                WHEN Type = 4 THEN 'Partner'
+                                ELSE 'Unknown'
+                             END AS TypeCaption
                              FROM Accounts 
                              LEFT JOIN People ON Accounts.PersonID = People.PersonID
                              ORDER BY Accounts.Name";

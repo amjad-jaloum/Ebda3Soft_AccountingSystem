@@ -71,16 +71,15 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.tlpForm.ColumnCount = 2;
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
             this.tlpForm.Controls.Add(this.tlpMain, 0, 0);
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
-            this.tlpForm.Size = new System.Drawing.Size(852, 354);
+            this.tlpForm.Size = new System.Drawing.Size(1278, 545);
             this.tlpForm.TabIndex = 1;
             // 
             // tlpMain
@@ -91,14 +90,13 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tlpMain.Controls.Add(this.tlpMainHeader, 0, 0);
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
+            this.tlpMain.Location = new System.Drawing.Point(3, 3);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tlpMain.Size = new System.Drawing.Size(649, 350);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tlpMain.Size = new System.Drawing.Size(974, 539);
             this.tlpMain.TabIndex = 1;
             // 
             // dgvUsers
@@ -109,15 +107,14 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.ContextMenuStrip = this.cmsUsers;
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUsers.Location = new System.Drawing.Point(2, 55);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvUsers.Location = new System.Drawing.Point(3, 85);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 62;
             this.dgvUsers.RowTemplate.Height = 28;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(645, 240);
+            this.dgvUsers.Size = new System.Drawing.Size(968, 369);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentDoubleClick);
             // 
@@ -130,33 +127,33 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.deleteToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.cmsUsers.Name = "cmsUsers";
-            this.cmsUsers.Size = new System.Drawing.Size(169, 92);
+            this.cmsUsers.Size = new System.Drawing.Size(225, 132);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordtoolStripMenuItem_Click);
             // 
@@ -165,16 +162,15 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tlpMainHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpMainHeader.ColumnCount = 2;
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
+            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 303F));
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.panel1, 1, 0);
-            this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.tlpMainHeader.Location = new System.Drawing.Point(3, 3);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tlpMainHeader.Size = new System.Drawing.Size(645, 49);
+            this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tlpMainHeader.Size = new System.Drawing.Size(968, 75);
             this.tlpMainHeader.TabIndex = 1;
             // 
             // MainHeaderPanel
@@ -183,28 +179,25 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.MainHeaderPanel.Controls.Add(this.cbFilterBy);
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
-            this.MainHeaderPanel.Size = new System.Drawing.Size(439, 45);
+            this.MainHeaderPanel.Size = new System.Drawing.Size(659, 69);
             this.MainHeaderPanel.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
             this.flowLayoutPanel1.Controls.Add(this.cbIsActive);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 18);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 28);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(242, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 42);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // txtFilterValue
             // 
-            this.txtFilterValue.Location = new System.Drawing.Point(2, 2);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilterValue.Location = new System.Drawing.Point(3, 3);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
+            this.txtFilterValue.Size = new System.Drawing.Size(172, 26);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
@@ -217,10 +210,9 @@ namespace Ebda3Soft_AccountingSystem.Users
             "All",
             "Yes",
             "No"});
-            this.cbIsActive.Location = new System.Drawing.Point(122, 2);
-            this.cbIsActive.Margin = new System.Windows.Forms.Padding(2);
+            this.cbIsActive.Location = new System.Drawing.Point(181, 3);
             this.cbIsActive.Name = "cbIsActive";
-            this.cbIsActive.Size = new System.Drawing.Size(105, 21);
+            this.cbIsActive.Size = new System.Drawing.Size(156, 28);
             this.cbIsActive.TabIndex = 4;
             this.cbIsActive.Visible = false;
             this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
@@ -236,20 +228,19 @@ namespace Ebda3Soft_AccountingSystem.Users
             "Person ID",
             "Full Name",
             "Is Active"});
-            this.cbFilterBy.Location = new System.Drawing.Point(59, 20);
-            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterBy.Location = new System.Drawing.Point(88, 31);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(135, 21);
+            this.cbFilterBy.Size = new System.Drawing.Size(200, 28);
             this.cbFilterBy.TabIndex = 1;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 27);
+            this.label1.Location = new System.Drawing.Point(4, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Filter by";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -258,19 +249,17 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.panel1.Controls.Add(this.btnAddNewUser);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(445, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(668, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 45);
+            this.panel1.Size = new System.Drawing.Size(297, 69);
             this.panel1.TabIndex = 2;
             // 
             // btnAddNewUser
             // 
             this.btnAddNewUser.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAddNewUser.Location = new System.Drawing.Point(99, 0);
-            this.btnAddNewUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNewUser.Location = new System.Drawing.Point(149, 0);
             this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(99, 45);
+            this.btnAddNewUser.Size = new System.Drawing.Size(148, 69);
             this.btnAddNewUser.TabIndex = 3;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.UseVisualStyleBackColor = true;
@@ -284,22 +273,20 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tplMainFooter.Controls.Add(this.btnClose, 1, 0);
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tplMainFooter.Location = new System.Drawing.Point(2, 299);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.tplMainFooter.Location = new System.Drawing.Point(3, 460);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tplMainFooter.Size = new System.Drawing.Size(645, 49);
+            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tplMainFooter.Size = new System.Drawing.Size(968, 76);
             this.tplMainFooter.TabIndex = 3;
             // 
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.Location = new System.Drawing.Point(544, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Location = new System.Drawing.Point(816, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(99, 45);
+            this.btnClose.Size = new System.Drawing.Size(149, 70);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -310,21 +297,19 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.plMainfooterLable.Controls.Add(this.lblRecordsCount);
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
+            this.plMainfooterLable.Location = new System.Drawing.Point(3, 3);
             this.plMainfooterLable.Name = "plMainfooterLable";
-            this.plMainfooterLable.Size = new System.Drawing.Size(538, 45);
+            this.plMainfooterLable.Size = new System.Drawing.Size(807, 70);
             this.plMainfooterLable.TabIndex = 1;
             // 
             // lblRecordsCount
             // 
             this.lblRecordsCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(79, 0);
-            this.lblRecordsCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordsCount.Location = new System.Drawing.Point(118, 0);
             this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.lblRecordsCount.Size = new System.Drawing.Size(66, 45);
+            this.lblRecordsCount.Padding = new System.Windows.Forms.Padding(4, 5, 0, 5);
+            this.lblRecordsCount.Size = new System.Drawing.Size(99, 70);
             this.lblRecordsCount.TabIndex = 3;
             this.lblRecordsCount.Text = "### ";
             // 
@@ -333,32 +318,31 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.lblRecordsNumber.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblRecordsNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsNumber.Location = new System.Drawing.Point(0, 0);
-            this.lblRecordsNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordsNumber.Name = "lblRecordsNumber";
-            this.lblRecordsNumber.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.lblRecordsNumber.Size = new System.Drawing.Size(79, 45);
+            this.lblRecordsNumber.Padding = new System.Windows.Forms.Padding(4, 5, 0, 5);
+            this.lblRecordsNumber.Size = new System.Drawing.Size(118, 70);
             this.lblRecordsNumber.TabIndex = 2;
             this.lblRecordsNumber.Text = "# Records: ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(673, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
+            this.pictureBox1.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources.male;
+            this.pictureBox1.Location = new System.Drawing.Point(1010, 31);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(30, 31, 30, 31);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
-            this.pictureBox1.Size = new System.Drawing.Size(159, 314);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 483);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // frmListUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 354);
+            this.ClientSize = new System.Drawing.Size(1278, 545);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmListUsers";
