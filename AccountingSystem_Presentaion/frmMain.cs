@@ -48,7 +48,7 @@ namespace Ebda3Soft_AccountingSystem
             _frmLogin.Close();
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void AccountsDirectorytoolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListAccounts frm = new frmListAccounts();
             frm.ShowDialog();
@@ -58,6 +58,12 @@ namespace Ebda3Soft_AccountingSystem
         {
             tssDateTime.Text = DateTime.Now.ToShortDateString();
             tssUsername.Text = clsGlobal.CurrentUser.UserName;
+        }
+
+        private void ItemsDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListItems frm = new frmListItems();
+            frm.ShowDialog();
         }
     }
 }

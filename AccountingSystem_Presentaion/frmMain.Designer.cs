@@ -71,7 +71,6 @@
             this.accountToolStripMenuItem});
             this.msMainNavBar.Location = new System.Drawing.Point(0, 0);
             this.msMainNavBar.Name = "msMainNavBar";
-            this.msMainNavBar.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.msMainNavBar.Size = new System.Drawing.Size(1437, 38);
             this.msMainNavBar.TabIndex = 0;
             this.msMainNavBar.Text = "menuStrip1";
@@ -90,15 +89,16 @@
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(245, 38);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(270, 38);
             this.toolStripMenuItem2.Text = "دليل الحسابات";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.AccountsDirectorytoolStripMenuItem_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
-            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
+            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(270, 38);
             this.manageApplicationsToolStripMenuItem.Text = "دليل الأصناف";
+            this.manageApplicationsToolStripMenuItem.Click += new System.EventHandler(this.ItemsDirectoryToolStripMenuItem_Click);
             // 
             // OpertationsToolStripMenuItem_People
             // 

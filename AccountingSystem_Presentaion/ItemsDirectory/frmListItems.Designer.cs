@@ -1,4 +1,4 @@
-﻿namespace Ebda3Soft_AccountingSystem.BasicData
+﻿namespace Ebda3Soft_AccountingSystem
 {
     partial class frmListItems
     {
@@ -141,12 +141,14 @@
             this.showItemInfoToolStripMenuItem.Name = "showItemInfoToolStripMenuItem";
             this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(165, 32);
             this.showItemInfoToolStripMenuItem.Text = "Show Info";
+            this.showItemInfoToolStripMenuItem.Click += new System.EventHandler(this.showItemInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(165, 32);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -189,6 +191,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(298, 26);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cbFilter
             // 
@@ -197,32 +200,36 @@
             "None",
             "Item ID",
             "Item Name",
-            "Unit Type"});
+            "Unit Name"});
             this.cbFilter.Location = new System.Drawing.Point(672, 23);
             this.cbFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(208, 28);
             this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // lblFilter
             // 
             this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(920, 28);
+            this.lblFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilter.Location = new System.Drawing.Point(907, 23);
             this.lblFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(79, 20);
+            this.lblFilter.Size = new System.Drawing.Size(109, 26);
             this.lblFilter.TabIndex = 2;
             this.lblFilter.Text = "تصفية حسب:";
             // 
             // btnAddNewItem
             // 
             this.btnAddNewItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddNewItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewItem.Location = new System.Drawing.Point(4, 5);
             this.btnAddNewItem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddNewItem.Name = "btnAddNewItem";
             this.btnAddNewItem.Size = new System.Drawing.Size(262, 72);
             this.btnAddNewItem.TabIndex = 1;
             this.btnAddNewItem.Text = "إضافة صنف جديد";
+            this.btnAddNewItem.Click += new System.EventHandler(this.btnAddNewItem_Click);
             // 
             // tplMainFooter
             // 
@@ -243,12 +250,14 @@
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(4, 5);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(388, 72);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
             // 
@@ -264,21 +273,22 @@
             // lblRowsCountValue
             // 
             this.lblRowsCountValue.AutoSize = true;
-            this.lblRowsCountValue.Location = new System.Drawing.Point(741, 28);
+            this.lblRowsCountValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowsCountValue.Location = new System.Drawing.Point(749, 23);
             this.lblRowsCountValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRowsCountValue.Name = "lblRowsCountValue";
-            this.lblRowsCountValue.Size = new System.Drawing.Size(17, 20);
+            this.lblRowsCountValue.Size = new System.Drawing.Size(24, 26);
             this.lblRowsCountValue.TabIndex = 0;
             this.lblRowsCountValue.Text = "0";
             // 
             // lblRecordsNumber
             // 
             this.lblRecordsNumber.AutoSize = true;
-            this.lblRecordsNumber.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.lblRecordsNumber.Location = new System.Drawing.Point(771, 28);
+            this.lblRecordsNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsNumber.Location = new System.Drawing.Point(781, 23);
             this.lblRecordsNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRecordsNumber.Name = "lblRecordsNumber";
-            this.lblRecordsNumber.Size = new System.Drawing.Size(106, 19);
+            this.lblRecordsNumber.Size = new System.Drawing.Size(113, 26);
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد الأصناف:";
             // 
@@ -294,6 +304,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "دليل الأصناف المخزنية";
+            this.Load += new System.EventHandler(this.frmListItems_Load);
             this.tlpForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbItemIcon)).EndInit();
             this.tlpMain.ResumeLayout(false);
