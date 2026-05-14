@@ -62,7 +62,7 @@ CREATE TABLE Invoices (
     PaymentMethod TINYINT NOT NULL,
     AccountId INT NOT NULL FOREIGN KEY REFERENCES Accounts(AccountId),
     Notes NVARCHAR(255),
-    TotalAmount MONEY NOT NULL,
+    TotalAmount MONEY NOT NULL DEFAULT 0,
     CreatedBy INT NOT NULL FOREIGN KEY REFERENCES Users(UserId)
 );
 
@@ -73,6 +73,7 @@ CREATE TABLE InvoiceDetails (
     Quantity INT NOT NULL,
     UnitPrice MONEY NOT NULL,
     UnitType NVARCHAR(100) NOT NULL
+    -- + derived column 'total' 
 );
 
 
