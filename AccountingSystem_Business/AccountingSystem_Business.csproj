@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAccount.cs" />
+    <Compile Include="clsInvoice.cs" />
+    <Compile Include="clsInvoiceDetails.cs" />
     <Compile Include="clsItem.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsUser.cs" />
