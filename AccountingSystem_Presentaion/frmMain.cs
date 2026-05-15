@@ -12,6 +12,7 @@ using Ebda3Soft_AccountingSystem.AccountsDirectory;
 using Ebda3Soft_AccountingSystem.BasicData;
 using Ebda3Soft_AccountingSystem.Invoices;
 using Ebda3Soft_AccountingSystem.people;
+using Ebda3Soft_AccountingSystem.Reports;
 using Ebda3Soft_AccountingSystem.Users;
 
 namespace Ebda3Soft_AccountingSystem
@@ -77,6 +78,18 @@ namespace Ebda3Soft_AccountingSystem
         private void InvoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListInvoices frm = new frmListInvoices();
+            frm.ShowDialog();
+        }
+
+        private void AccountStatusReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAccountStateReport frm = new frmAccountStateReport();
+            frm.ShowDialog();
+        }
+
+        private void ItemsInventoryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInventoryReport frm = new frmInventoryReport();
             frm.ShowDialog();
         }
     }

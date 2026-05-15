@@ -114,5 +114,10 @@ namespace Ebda3Soft_Business
             // استدعاء طبقة البيانات
             return clsItemData.GetItemIDByName(Name);
         }
+
+        public static DataTable GetItemsInventory()
+        {
+            return clsItemData.GetItemsInventory();
+        }
     }
 }

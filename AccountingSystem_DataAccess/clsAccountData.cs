@@ -282,5 +282,42 @@ namespace Ebda3Soft_DataAccess
 
             return isFound;
         }
+       
+        public static DataTable GetAccountStatement(int AccountID)
+        {
+            DataTable dt = new DataTable();
+
+            // تأكد من استخدام اسم كلاس الاتصال الخاص بك (مثلاً clsDataAccessSettings)
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                // استدعاء البيانات من الـ View التي أنشأناها
+                string query = @"SELECT TransactionDate, ReferenceNo, Description, Debit, Credit 
+                         FROM View_AccountStatement 
+                         WHERE AccountID = @AccountID 
+                         ORDER BY TransactionDate";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // سجل الخطأ هنا (مثلاً في الـ Event Viewer)
+                    }
+                }
+            }
+            return dt;
+        }
     }
 }

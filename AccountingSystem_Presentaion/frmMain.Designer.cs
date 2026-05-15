@@ -37,8 +37,8 @@
             this.InvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VouchersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تقريركشفالحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تقريرجردالمخزنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AccountStatusReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemsInventoryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PeopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,23 +126,25 @@
             // ReportsToolStripMenuItem
             // 
             this.ReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.تقريركشفالحسابToolStripMenuItem,
-            this.تقريرجردالمخزنToolStripMenuItem});
+            this.AccountStatusReportToolStripMenuItem,
+            this.ItemsInventoryReportToolStripMenuItem});
             this.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem";
             this.ReportsToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.ReportsToolStripMenuItem.Text = "واجهات التقارير";
             // 
-            // تقريركشفالحسابToolStripMenuItem
+            // AccountStatusReportToolStripMenuItem
             // 
-            this.تقريركشفالحسابToolStripMenuItem.Name = "تقريركشفالحسابToolStripMenuItem";
-            this.تقريركشفالحسابToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-            this.تقريركشفالحسابToolStripMenuItem.Text = "تقرير كشف الحساب";
+            this.AccountStatusReportToolStripMenuItem.Name = "AccountStatusReportToolStripMenuItem";
+            this.AccountStatusReportToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.AccountStatusReportToolStripMenuItem.Text = "تقرير كشف الحساب";
+            this.AccountStatusReportToolStripMenuItem.Click += new System.EventHandler(this.AccountStatusReportToolStripMenuItem_Click);
             // 
-            // تقريرجردالمخزنToolStripMenuItem
+            // ItemsInventoryReportToolStripMenuItem
             // 
-            this.تقريرجردالمخزنToolStripMenuItem.Name = "تقريرجردالمخزنToolStripMenuItem";
-            this.تقريرجردالمخزنToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-            this.تقريرجردالمخزنToolStripMenuItem.Text = "تقرير جرد المخزن";
+            this.ItemsInventoryReportToolStripMenuItem.Name = "ItemsInventoryReportToolStripMenuItem";
+            this.ItemsInventoryReportToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.ItemsInventoryReportToolStripMenuItem.Text = "تقرير جرد المخزن";
+            this.ItemsInventoryReportToolStripMenuItem.Click += new System.EventHandler(this.ItemsInventoryReportToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
@@ -292,8 +294,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem InvoicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VouchersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem تقريركشفالحسابToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem تقريرجردالمخزنToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AccountStatusReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ItemsInventoryReportToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssUsernameLabel;
         private System.Windows.Forms.ToolStripStatusLabel tssUsername;

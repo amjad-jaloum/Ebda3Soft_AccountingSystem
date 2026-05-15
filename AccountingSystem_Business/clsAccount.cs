@@ -93,6 +93,7 @@ namespace Ebda3Soft_Business
             else
                 return null;
         }
+        
         public static clsAccount Find(string AccountName)
         {
             int AccountID = -1;
@@ -108,6 +109,7 @@ namespace Ebda3Soft_Business
                 return null;
             }
         }
+        
         public bool Save()
         {
             switch (Mode)
@@ -145,6 +147,9 @@ namespace Ebda3Soft_Business
             return clsAccountData.IsAccountExist(ID);
         }
 
-
+        public static DataTable GetStatement(int AccountID)
+        {
+            return clsAccountData.GetAccountStatement(AccountID);
+        }
     }
 }

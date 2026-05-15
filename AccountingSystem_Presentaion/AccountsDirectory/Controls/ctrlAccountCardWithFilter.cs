@@ -34,7 +34,7 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory.Controls
             set
             {
                 _ShowAddAccount = value;
-                btnAddAccount.Visible = _ShowAddAccount;
+                btnAddAccount.Enabled = _ShowAddAccount;
             }
         }
 

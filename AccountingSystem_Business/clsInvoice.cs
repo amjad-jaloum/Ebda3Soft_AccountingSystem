@@ -18,7 +18,7 @@ namespace AccountingSystem_Business
 
 
         public enum enInvoiceType { Sales = 1, Purchases = 2 };
-        public enum enPaymentMethod { Cash = 1, Deferred = 2 };
+        public enum enPaymentMethod { Cash = 1, Credit = 2 };
         public int InvoiceId { get; set; }
         public byte Type { get; set; }
         public DateTime CreatedDate { get; set; }
