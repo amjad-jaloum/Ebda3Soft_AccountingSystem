@@ -176,6 +176,7 @@
             this.showCurrentUserToolStripMenuItem.Name = "showCurrentUserToolStripMenuItem";
             this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.showCurrentUserToolStripMenuItem.Text = "معلومات المستخدم ";
+            this.showCurrentUserToolStripMenuItem.Click += new System.EventHandler(this.showCurrentUserToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
@@ -183,6 +184,7 @@
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.changePasswordToolStripMenuItem.Text = "تغيير كلمة المرور";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -266,7 +268,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "الشاشة الرئيسية";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.msMainNavBar.ResumeLayout(false);
             this.msMainNavBar.PerformLayout();

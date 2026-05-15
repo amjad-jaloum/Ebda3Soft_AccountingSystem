@@ -51,8 +51,8 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.ctrlUserCard1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ctrlUserCard1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -60,19 +60,16 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.48538F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.51462F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 523);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(705, 649);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ctrlUserCard1
             // 
-            this.ctrlUserCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ctrlUserCard1.AutoSize = true;
-            this.ctrlUserCard1.Location = new System.Drawing.Point(1, 1);
+            this.ctrlUserCard1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ctrlUserCard1.Location = new System.Drawing.Point(18, 52);
             this.ctrlUserCard1.Margin = new System.Windows.Forms.Padding(1);
             this.ctrlUserCard1.Name = "ctrlUserCard1";
-            this.ctrlUserCard1.Size = new System.Drawing.Size(672, 403);
+            this.ctrlUserCard1.Size = new System.Drawing.Size(669, 397);
             this.ctrlUserCard1.TabIndex = 0;
             // 
             // panel1
@@ -85,10 +82,10 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 407);
+            this.panel1.Location = new System.Drawing.Point(2, 504);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(670, 114);
+            this.panel1.Size = new System.Drawing.Size(701, 143);
             this.panel1.TabIndex = 1;
             // 
             // btnSave
@@ -174,7 +171,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 523);
+            this.ClientSize = new System.Drawing.Size(705, 649);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -185,7 +182,6 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.Text = "Change Password";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

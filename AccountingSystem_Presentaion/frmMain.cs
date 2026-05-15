@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using _19___Project___DVLD;
 using Ebda3Soft_AccountingSystem.AccountsDirectory;
 using Ebda3Soft_AccountingSystem.BasicData;
@@ -31,6 +32,7 @@ namespace Ebda3Soft_AccountingSystem
         {
             clsGlobal.CurrentUser = null;
             _frmLogin.Show();
+            this.Close();
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,12 +45,6 @@ namespace Ebda3Soft_AccountingSystem
         {
             frmListPeople frm = new frmListPeople();
             frm.ShowDialog();
-        }
-
-        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            clsGlobal.CurrentUser = null;
-            _frmLogin.Close();
         }
 
         private void AccountsDirectorytoolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,6 +86,18 @@ namespace Ebda3Soft_AccountingSystem
         private void ItemsInventoryReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmInventoryReport frm = new frmInventoryReport();
+            frm.ShowDialog();
+        }
+
+        private void showCurrentUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frm  = new frmUserInfo(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
     }
