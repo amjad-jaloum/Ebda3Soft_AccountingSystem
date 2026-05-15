@@ -90,17 +90,17 @@
     <Compile Include="Invoices\frmListInvoices.Designer.cs">
       <DependentUpon>frmListInvoices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoices\frmShowInvoiceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoices\frmShowInvoiceInfo.Designer.cs">
+      <DependentUpon>frmShowInvoiceInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoices\InvoiceDetails\frmAddUpdateInvoiceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Invoices\InvoiceDetails\frmAddUpdateInvoiceDetails.Designer.cs">
       <DependentUpon>frmAddUpdateInvoiceDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Invoices\InvoiceDetails\frmLisInvoiceDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Invoices\InvoiceDetails\frmLisInvoiceDetails.Designer.cs">
-      <DependentUpon>frmLisInvoiceDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemsDirectory\Controls\ctrlItemCard.cs">
       <SubType>UserControl</SubType>
@@ -238,11 +238,11 @@
     <EmbeddedResource Include="Invoices\frmListInvoices.resx">
       <DependentUpon>frmListInvoices.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Invoices\frmShowInvoiceInfo.resx">
+      <DependentUpon>frmShowInvoiceInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invoices\InvoiceDetails\frmAddUpdateInvoiceDetails.resx">
       <DependentUpon>frmAddUpdateInvoiceDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Invoices\InvoiceDetails\frmLisInvoiceDetails.resx">
-      <DependentUpon>frmLisInvoiceDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemsDirectory\Controls\ctrlItemCard.resx">
       <DependentUpon>ctrlItemCard.cs</DependentUpon>

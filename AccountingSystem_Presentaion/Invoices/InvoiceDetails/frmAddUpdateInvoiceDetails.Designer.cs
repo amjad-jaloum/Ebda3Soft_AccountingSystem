@@ -38,9 +38,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ctrlItemCardWithFilter1 = new Ebda3Soft_AccountingSystem.ItemsDirectory.Controls.ctrlItemCardWithFilter();
-            this.cbUnitTypes = new System.Windows.Forms.ComboBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtUnitType = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +80,9 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(169, 20);
             this.txtQuantity.TabIndex = 2;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
+            this.txtQuantity.Validating += new System.ComponentModel.CancelEventHandler(this.txtQuantity_Validating);
             // 
             // txtDefaultUnitPrice
             // 
@@ -100,6 +103,7 @@
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "إضافة / حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -111,6 +115,7 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // errorProvider1
             // 
@@ -124,24 +129,8 @@
             this.ctrlItemCardWithFilter1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ctrlItemCardWithFilter1.Size = new System.Drawing.Size(540, 206);
             this.ctrlItemCardWithFilter1.TabIndex = 0;
-            // 
-            // cbUnitTypes
-            // 
-            this.cbUnitTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUnitTypes.FormattingEnabled = true;
-            this.cbUnitTypes.Items.AddRange(new object[] {
-            "كيلو",
-            "جرام",
-            "حبة",
-            "كيس",
-            "كرتون",
-            "لتر",
-            "جالون",
-            "ربطة"});
-            this.cbUnitTypes.Location = new System.Drawing.Point(101, 232);
-            this.cbUnitTypes.Name = "cbUnitTypes";
-            this.cbUnitTypes.Size = new System.Drawing.Size(169, 21);
-            this.cbUnitTypes.TabIndex = 11;
+            this.ctrlItemCardWithFilter1.OnItemSelected += new System.Action<int>(this.ctrlItemCardWithFilter1_OnItemSelected);
+            this.ctrlItemCardWithFilter1.Validating += new System.ComponentModel.CancelEventHandler(this.ctrlItemCardWithFilter1_Validating);
             // 
             // txtTotal
             // 
@@ -162,14 +151,22 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "إجمالي الصنف :";
             // 
+            // txtUnitType
+            // 
+            this.txtUnitType.Enabled = false;
+            this.txtUnitType.Location = new System.Drawing.Point(101, 232);
+            this.txtUnitType.Name = "txtUnitType";
+            this.txtUnitType.Size = new System.Drawing.Size(169, 20);
+            this.txtUnitType.TabIndex = 14;
+            // 
             // frmAddUpdateInvoiceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 367);
+            this.Controls.Add(this.txtUnitType);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbUnitTypes);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
@@ -184,6 +181,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "إضافة تفاصيل الصنف";
+            this.Load += new System.EventHandler(this.frmAddUpdateInvoiceDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,6 +201,6 @@
         private ItemsDirectory.Controls.ctrlItemCardWithFilter ctrlItemCardWithFilter1;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbUnitTypes;
+        private System.Windows.Forms.TextBox txtUnitType;
     }
 }

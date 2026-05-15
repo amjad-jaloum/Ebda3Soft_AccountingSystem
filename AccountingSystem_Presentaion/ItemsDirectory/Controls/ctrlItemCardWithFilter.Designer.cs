@@ -65,6 +65,7 @@
             this.btnAddNewItem.TabIndex = 4;
             this.btnAddNewItem.Text = "اضافة";
             this.btnAddNewItem.UseVisualStyleBackColor = false;
+            this.btnAddNewItem.Click += new System.EventHandler(this.btnAddNewItem_Click);
             // 
             // btnFind
             // 
@@ -76,6 +77,7 @@
             this.btnFind.TabIndex = 3;
             this.btnFind.Text = "بحث";
             this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtFilterValue
             // 
@@ -83,6 +85,7 @@
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(160, 20);
             this.txtFilterValue.TabIndex = 2;
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // cbFilterBy
             // 
@@ -127,6 +130,7 @@
             this.Name = "ctrlItemCardWithFilter";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(540, 210);
+            this.Load += new System.EventHandler(this.ctrlItemCardWithFilter_Load);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

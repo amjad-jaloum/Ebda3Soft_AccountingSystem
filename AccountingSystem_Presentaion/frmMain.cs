@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using _19___Project___DVLD;
 using Ebda3Soft_AccountingSystem.AccountsDirectory;
 using Ebda3Soft_AccountingSystem.BasicData;
+using Ebda3Soft_AccountingSystem.Invoices;
 using Ebda3Soft_AccountingSystem.people;
 using Ebda3Soft_AccountingSystem.Users;
 
@@ -70,6 +71,12 @@ namespace Ebda3Soft_AccountingSystem
         private void VouchersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListVouchers frm = new frmListVouchers();
+            frm.ShowDialog();
+        }
+
+        private void InvoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListInvoices frm = new frmListInvoices();
             frm.ShowDialog();
         }
     }

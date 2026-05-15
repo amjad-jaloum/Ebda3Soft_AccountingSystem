@@ -116,22 +116,21 @@ namespace AccountingSystem_DataAccess
             string query = @"SELECT Invoices.InvoiceId, 
                            Invoices.Type,
                            CASE 
-                               WHEN Invoices.Type = 1 THEN 'Sales' 
-                               WHEN Invoices.Type = 2 THEN 'Purchase' 
+                               WHEN Invoices.Type = 1 THEN 'شراء' 
+                               WHEN Invoices.Type = 2 THEN 'بيع' 
                                ELSE 'Unknown' 
                            END AS TypeName,
        
                            Invoices.CreatedDate, 
                            Invoices.PaymentMethod,
                            CASE 
-                               WHEN Invoices.PaymentMethod = 1 THEN 'Cash' 
-                               WHEN Invoices.PaymentMethod = 2 THEN 'Credit' 
+                               WHEN Invoices.PaymentMethod = 1 THEN 'نقد' 
+                               WHEN Invoices.PaymentMethod = 2 THEN 'اجل' 
                                ELSE 'Unknown' 
                            END AS PaymentMethodName,
        
-                           Accounts.AccountName, 
-                           Invoices.TotalAmount, 
-                           Invoices.CreatedBy
+                           Accounts.Name, 
+                           Invoices.TotalAmount
                     FROM Invoices 
                     INNER JOIN Accounts ON Invoices.AccountId = Accounts.AccountId
                     ORDER BY Invoices.InvoiceId DESC";

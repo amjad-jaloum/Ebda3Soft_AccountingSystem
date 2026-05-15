@@ -4,20 +4,27 @@ using Ebda3Soft_Business;
 
 namespace Ebda3Soft_AccountingSystem
 {
-    public partial class frmAddEditItem : Form
+    public partial class frmAddUpdateItem : Form
     {
+        // 1. تعريف المفوض (Delegate)
+        // يرسل int وهو المعرف الخاص بالصنف الجديد
+        public delegate void DataBackEventHandler(int ItemID);
+
+        // 2. تعريف الحدث (Event) بناءً على المفوض
+        public event DataBackEventHandler DataBack;
+
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
         private int _ItemID = -1;
         private clsItem _Item;
 
-        public frmAddEditItem()
+        public frmAddUpdateItem()
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
         }
 
-        public frmAddEditItem(int ItemID)
+        public frmAddUpdateItem(int ItemID)
         {
             InitializeComponent();
             _ItemID = ItemID;
@@ -94,6 +101,7 @@ namespace Ebda3Soft_AccountingSystem
                 this.Text = "Update Item";
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataBack?.Invoke(_Item.ItemID);
             }
             else
             {

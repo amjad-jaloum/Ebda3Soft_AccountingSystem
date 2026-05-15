@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using AccountingSystem_DataAccess;
@@ -14,18 +15,40 @@ namespace AccountingSystem_Business
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
+
+
+        public enum enInvoiceType { Sales = 1, Purchases = 2 };
+        public enum enPaymentMethod { Cash = 1, Deferred = 2 };
         public int InvoiceId { get; set; }
         public byte Type { get; set; }
         public DateTime CreatedDate { get; set; }
         public byte PaymentMethod { get; set; }
-
-        // Composition: الربط مع كلاس الحسابات
         public int AccountId { get; set; }
-        public clsAccount AccountInfo { get; private set; } // خاصية للقراءة فقط لضمان سلامة البيانات
-
+        public string TypeName
+        {
+            get
+            {
+                return Type == 1 ? "بيع" : "شراء";
+            }
+        }
+        public string PaymentMethodName
+        {
+            get
+            {
+                return Type == 1 ? "نقد" : "اجل";
+            }
+        }
         public string Notes { get; set; }
         public decimal TotalAmount { get; set; }
         public int CreatedBy { get; set; }
+
+
+
+        public List<clsInvoiceDetail> ItemsDetails = new List<clsInvoiceDetail>();
+        public clsAccount AccountInfo { get; private set; } // خاصية للقراءة فقط لضمان سلامة البيانات
+        public clsUser UserInfo { get; }
+
+
 
         public clsInvoice()
         {
@@ -56,7 +79,7 @@ namespace AccountingSystem_Business
             this.Notes = Notes;
             this.TotalAmount = TotalAmount;
             this.CreatedBy = CreatedBy;
-
+            UserInfo = clsUser.FindByUserID(CreatedBy); // تحميل بيانات المستخدم الذي أنشأ الفاتورة
             Mode = enMode.Update;
         }
 
@@ -113,6 +136,34 @@ namespace AccountingSystem_Business
             }
 
             return false;
+        }
+
+
+        // 2. دالة الحفظ الكامل (Header + Details)
+        public bool SaveFullInvoice()
+        {
+            if (!this.Save())
+            {
+                return false;
+            }
+
+            if (ItemsDetails.Count == 0)
+            {
+                return false;
+            }
+
+            foreach (clsInvoiceDetail Detail in ItemsDetails)
+            {
+                // توزيع المعرف الناتج (Shared ID) على كل سطر تفاصيل
+                Detail.InvoiceId = this.InvoiceId;
+
+                if (!Detail.Save())
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public static DataTable GetAllInvoices()

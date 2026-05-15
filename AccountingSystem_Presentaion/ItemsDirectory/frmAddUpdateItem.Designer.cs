@@ -1,6 +1,6 @@
 ﻿namespace Ebda3Soft_AccountingSystem
 {
-    partial class frmAddEditItem
+    partial class frmAddUpdateItem
     {
         /// <summary>
         /// Required designer variable.

@@ -3,21 +3,22 @@ using System.Data;
 using System.Data.SqlClient;
 using AccountingSystem_DataAccess;
 
-namespace Ebda3Soft_DataAccess
+namespace Ebda3Soft_AccountingSystem_DataAccess
 {
-    public static class clsItemData
+    public class clsItemData
     {
-        public static bool GetItemInfoByID(int ItemID, ref string Name, ref int UnitTypeID)
+        public static bool GetItemInfoByID(int ItemId, ref string Name,
+            ref int UnitTypeId, ref decimal DefaultUnitPrice)
         {
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM Items WHERE ItemID = @ItemID";
+            string query = "SELECT * FROM Items WHERE ItemId = @ItemId";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ItemID", ItemID);
+            command.Parameters.AddWithValue("@ItemId", ItemId);
 
             try
             {
@@ -26,11 +27,20 @@ namespace Ebda3Soft_DataAccess
 
                 if (reader.Read())
                 {
-                    // The record was found
                     isFound = true;
 
                     Name = (string)reader["Name"];
-                    UnitTypeID = (int)reader["UnitTypeID"];
+                    DefaultUnitPrice = (decimal)reader["DefaultUnitPrice"];
+
+                    // التعامل مع UnitTypeId في حال كان يقبل Null (رغم أنه في السكيما FK)
+                    if (reader["UnitTypeId"] != DBNull.Value)
+                    {
+                        UnitTypeId = (int)reader["UnitTypeId"];
+                    }
+                    else
+                    {
+                        UnitTypeId = -1;
+                    }
                 }
                 else
                 {
@@ -51,21 +61,26 @@ namespace Ebda3Soft_DataAccess
             return isFound;
         }
 
-        public static int AddNewItem(string Name, int UnitTypeID)
+        public static int AddNewItem(string Name, int UnitTypeId, decimal DefaultUnitPrice)
         {
-            // This function returns the new ID if successful, and -1 if not
-            int ItemID = -1;
+            int ItemId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"INSERT INTO Items (Name, UnitTypeID)
-                             VALUES (@Name, @UnitTypeID);
+            // تم تحديث الاستعلام ليتناسب مع أسماء الحقول في السكيما الجديدة
+            string query = @"INSERT INTO Items (Name, UnitTypeId, DefaultUnitPrice)
+                             VALUES (@Name, @UnitTypeId, @DefaultUnitPrice);
                              SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@UnitTypeID", UnitTypeID);
+            command.Parameters.AddWithValue("@DefaultUnitPrice", DefaultUnitPrice);
+
+            if (UnitTypeId != -1)
+                command.Parameters.AddWithValue("@UnitTypeId", UnitTypeId);
+            else
+                command.Parameters.AddWithValue("@UnitTypeId", System.DBNull.Value);
 
             try
             {
@@ -75,36 +90,42 @@ namespace Ebda3Soft_DataAccess
 
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
-                    ItemID = insertedID;
+                    ItemId = insertedID;
                 }
             }
             catch (Exception ex)
             {
-                // Log error if necessary
+                // Handling Error
             }
             finally
             {
                 connection.Close();
             }
 
-            return ItemID;
+            return ItemId;
         }
 
-        public static bool UpdateItem(int ItemID, string Name, int UnitTypeID)
+        public static bool UpdateItem(int ItemId, string Name, int UnitTypeId, decimal DefaultUnitPrice)
         {
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE Items  
-                            SET Name = @Name,
-                                UnitTypeID = @UnitTypeID
-                            WHERE ItemID = @ItemID";
+                            SET Name = @Name, 
+                                UnitTypeId = @UnitTypeId, 
+                                DefaultUnitPrice = @DefaultUnitPrice
+                            WHERE ItemId = @ItemId";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ItemID", ItemID);
+            command.Parameters.AddWithValue("@ItemId", ItemId);
             command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@UnitTypeID", UnitTypeID);
+            command.Parameters.AddWithValue("@DefaultUnitPrice", DefaultUnitPrice);
+
+            if (UnitTypeId != -1)
+                command.Parameters.AddWithValue("@UnitTypeId", UnitTypeId);
+            else
+                command.Parameters.AddWithValue("@UnitTypeId", System.DBNull.Value);
 
             try
             {
@@ -128,11 +149,10 @@ namespace Ebda3Soft_DataAccess
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            // Using Join to get the Unit Name for display in DataGridView
-            string query = @"SELECT Items.ItemID, Items.Name AS ItemName, 
-                             UnitTypes.Name AS UnitName
+            // استخدام JOIN لجلب اسم الوحدة بدلاً من الرقم فقط للعرض في الـ DataGridView
+            string query = @"SELECT Items.ItemId, Items.Name, UnitTypes.Name AS UnitName, Items.DefaultUnitPrice 
                              FROM Items 
-                             INNER JOIN UnitTypes ON Items.UnitTypeID = UnitTypes.UnitTypeID
+                             LEFT JOIN UnitTypes ON Items.UnitTypeId = UnitTypes.UnitTypeId
                              ORDER BY Items.Name";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -146,11 +166,12 @@ namespace Ebda3Soft_DataAccess
                 {
                     dt.Load(reader);
                 }
+
                 reader.Close();
             }
             catch (Exception ex)
             {
-                // Handle error
+                // Handling Error
             }
             finally
             {
@@ -160,15 +181,16 @@ namespace Ebda3Soft_DataAccess
             return dt;
         }
 
-        public static bool DeleteItem(int ItemID)
+        public static bool DeleteItem(int ItemId)
         {
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"DELETE FROM Items WHERE ItemID = @ItemID";
+            string query = "DELETE FROM Items WHERE ItemId = @ItemId";
 
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@ItemID", ItemID);
+
+            command.Parameters.AddWithValue("@ItemId", ItemId);
 
             try
             {
@@ -177,7 +199,7 @@ namespace Ebda3Soft_DataAccess
             }
             catch (Exception ex)
             {
-                return false;
+                // Handling Error
             }
             finally
             {
@@ -187,32 +209,32 @@ namespace Ebda3Soft_DataAccess
             return (rowsAffected > 0);
         }
 
-        public static bool DoesItemExist(string ItemName)
+        public static bool DoesItemExist(string Name)
         {
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            // Using a query that checks for the name
+            // نستخدم LIKE أو = حسب رغبتك في حساسية البحث، هنا استخدمنا المطابقة التامة
             string query = "SELECT Found=1 FROM Items WHERE Name = @Name";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@Name", ItemName.Trim());
+            command.Parameters.AddWithValue("@Name", Name);
 
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                // If the reader has at least one row, the item exists
+                // إذا كان هناك صفوف، فهذا يعني أن الصنف موجود
                 isFound = reader.HasRows;
 
                 reader.Close();
             }
             catch (Exception ex)
             {
-                // For debugging, you could log the error: ex.Message
+                // Handling Error
                 isFound = false;
             }
             finally
@@ -221,6 +243,40 @@ namespace Ebda3Soft_DataAccess
             }
 
             return isFound;
+        }
+
+        public static int GetItemIDByName(string Name)
+        {
+            int ItemId = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP 1 ItemId FROM Items WHERE Name like @Name";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@Name", Name + "%");
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int foundId))
+                {
+                    ItemId = foundId;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+                ItemId = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ItemId;
         }
     }
 }

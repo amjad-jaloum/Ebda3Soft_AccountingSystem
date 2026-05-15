@@ -64,27 +64,26 @@
             // 
             this.tlpForm.ColumnCount = 2;
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
+            this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tlpForm.Controls.Add(this.pbItemIcon, 1, 0);
             this.tlpForm.Controls.Add(this.tlpMain, 0, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpForm.Size = new System.Drawing.Size(1604, 920);
+            this.tlpForm.Size = new System.Drawing.Size(1069, 598);
             this.tlpForm.TabIndex = 1;
             // 
             // pbItemIcon
             // 
             this.pbItemIcon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbItemIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbItemIcon.Image")));
-            this.pbItemIcon.Location = new System.Drawing.Point(30, 30);
-            this.pbItemIcon.Margin = new System.Windows.Forms.Padding(30);
+            this.pbItemIcon.Location = new System.Drawing.Point(20, 20);
+            this.pbItemIcon.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.pbItemIcon.Name = "pbItemIcon";
-            this.pbItemIcon.Padding = new System.Windows.Forms.Padding(30);
-            this.pbItemIcon.Size = new System.Drawing.Size(210, 860);
+            this.pbItemIcon.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pbItemIcon.Size = new System.Drawing.Size(140, 558);
             this.pbItemIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbItemIcon.TabIndex = 1;
             this.pbItemIcon.TabStop = false;
@@ -97,14 +96,13 @@
             this.tlpMain.Controls.Add(this.tlpMainHeader, 0, 0);
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpMain.Location = new System.Drawing.Point(274, 5);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tlpMain.Location = new System.Drawing.Point(183, 3);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tlpMain.Size = new System.Drawing.Size(1326, 910);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpMain.Size = new System.Drawing.Size(883, 592);
             this.tlpMain.TabIndex = 0;
             // 
             // dgvItems
@@ -116,14 +114,13 @@
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.ContextMenuStrip = this.cmsItemMenu;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvItems.Location = new System.Drawing.Point(4, 97);
-            this.dgvItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvItems.Location = new System.Drawing.Point(3, 63);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersWidth = 62;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(1318, 716);
+            this.dgvItems.Size = new System.Drawing.Size(877, 466);
             this.dgvItems.TabIndex = 1;
             // 
             // cmsItemMenu
@@ -134,42 +131,42 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsItemMenu.Name = "cmsItemMenu";
-            this.cmsItemMenu.Size = new System.Drawing.Size(166, 100);
+            this.cmsItemMenu.Size = new System.Drawing.Size(128, 70);
             // 
             // showItemInfoToolStripMenuItem
             // 
             this.showItemInfoToolStripMenuItem.Name = "showItemInfoToolStripMenuItem";
-            this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(165, 32);
+            this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.showItemInfoToolStripMenuItem.Text = "Show Info";
             this.showItemInfoToolStripMenuItem.Click += new System.EventHandler(this.showItemInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(165, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(165, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // tlpMainHeader
             // 
             this.tlpMainHeader.ColumnCount = 2;
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
+            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.btnAddNewItem, 1, 0);
             this.tlpMainHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpMainHeader.Location = new System.Drawing.Point(4, 5);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tlpMainHeader.Location = new System.Drawing.Point(3, 3);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMainHeader.Size = new System.Drawing.Size(1318, 82);
+            this.tlpMainHeader.Size = new System.Drawing.Size(877, 54);
             this.tlpMainHeader.TabIndex = 2;
             // 
             // MainHeaderPanel
@@ -178,18 +175,16 @@
             this.MainHeaderPanel.Controls.Add(this.cbFilter);
             this.MainHeaderPanel.Controls.Add(this.lblFilter);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainHeaderPanel.Location = new System.Drawing.Point(274, 5);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MainHeaderPanel.Location = new System.Drawing.Point(183, 3);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
-            this.MainHeaderPanel.Size = new System.Drawing.Size(1040, 72);
+            this.MainHeaderPanel.Size = new System.Drawing.Size(691, 48);
             this.MainHeaderPanel.TabIndex = 0;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(357, 23);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Location = new System.Drawing.Point(238, 15);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(298, 26);
+            this.txtSearch.Size = new System.Drawing.Size(200, 20);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -201,10 +196,9 @@
             "Item ID",
             "Item Name",
             "Unit Name"});
-            this.cbFilter.Location = new System.Drawing.Point(672, 23);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbFilter.Location = new System.Drawing.Point(448, 15);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(208, 28);
+            this.cbFilter.Size = new System.Drawing.Size(140, 21);
             this.cbFilter.TabIndex = 1;
             this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
@@ -212,10 +206,9 @@
             // 
             this.lblFilter.AutoSize = true;
             this.lblFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilter.Location = new System.Drawing.Point(907, 23);
-            this.lblFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilter.Location = new System.Drawing.Point(605, 15);
             this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(109, 26);
+            this.lblFilter.Size = new System.Drawing.Size(75, 18);
             this.lblFilter.TabIndex = 2;
             this.lblFilter.Text = "تصفية حسب:";
             // 
@@ -223,10 +216,9 @@
             // 
             this.btnAddNewItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddNewItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewItem.Location = new System.Drawing.Point(4, 5);
-            this.btnAddNewItem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddNewItem.Location = new System.Drawing.Point(3, 3);
             this.btnAddNewItem.Name = "btnAddNewItem";
-            this.btnAddNewItem.Size = new System.Drawing.Size(262, 72);
+            this.btnAddNewItem.Size = new System.Drawing.Size(174, 48);
             this.btnAddNewItem.TabIndex = 1;
             this.btnAddNewItem.Text = "إضافة صنف جديد";
             this.btnAddNewItem.Click += new System.EventHandler(this.btnAddNewItem_Click);
@@ -239,22 +231,20 @@
             this.tplMainFooter.Controls.Add(this.btnClose, 1, 0);
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tplMainFooter.Location = new System.Drawing.Point(4, 823);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tplMainFooter.Location = new System.Drawing.Point(3, 535);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
-            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tplMainFooter.Size = new System.Drawing.Size(1318, 82);
+            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tplMainFooter.Size = new System.Drawing.Size(877, 54);
             this.tplMainFooter.TabIndex = 3;
             // 
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(4, 5);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(3, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(388, 72);
+            this.btnClose.Size = new System.Drawing.Size(258, 48);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -264,20 +254,18 @@
             this.plMainfooterLable.Controls.Add(this.lblRowsCountValue);
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plMainfooterLable.Location = new System.Drawing.Point(400, 5);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.plMainfooterLable.Location = new System.Drawing.Point(267, 3);
             this.plMainfooterLable.Name = "plMainfooterLable";
-            this.plMainfooterLable.Size = new System.Drawing.Size(914, 72);
+            this.plMainfooterLable.Size = new System.Drawing.Size(607, 48);
             this.plMainfooterLable.TabIndex = 1;
             // 
             // lblRowsCountValue
             // 
             this.lblRowsCountValue.AutoSize = true;
             this.lblRowsCountValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowsCountValue.Location = new System.Drawing.Point(749, 23);
-            this.lblRowsCountValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRowsCountValue.Location = new System.Drawing.Point(499, 15);
             this.lblRowsCountValue.Name = "lblRowsCountValue";
-            this.lblRowsCountValue.Size = new System.Drawing.Size(24, 26);
+            this.lblRowsCountValue.Size = new System.Drawing.Size(16, 18);
             this.lblRowsCountValue.TabIndex = 0;
             this.lblRowsCountValue.Text = "0";
             // 
@@ -285,20 +273,18 @@
             // 
             this.lblRecordsNumber.AutoSize = true;
             this.lblRecordsNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsNumber.Location = new System.Drawing.Point(781, 23);
-            this.lblRecordsNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRecordsNumber.Location = new System.Drawing.Point(521, 15);
             this.lblRecordsNumber.Name = "lblRecordsNumber";
-            this.lblRecordsNumber.Size = new System.Drawing.Size(113, 26);
+            this.lblRecordsNumber.Size = new System.Drawing.Size(79, 18);
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد الأصناف:";
             // 
             // frmListItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 920);
+            this.ClientSize = new System.Drawing.Size(1069, 598);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListItems";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;

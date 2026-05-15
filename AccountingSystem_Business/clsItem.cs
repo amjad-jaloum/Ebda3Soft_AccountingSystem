@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using Ebda3Soft_AccountingSystem_Business;
+using Ebda3Soft_AccountingSystem_DataAccess;
 using Ebda3Soft_DataAccess;
 
 namespace Ebda3Soft_Business
@@ -13,47 +15,61 @@ namespace Ebda3Soft_Business
         public int ItemID { get; set; }
         public string Name { get; set; }
         public int UnitTypeID { get; set; }
+        public string UnitTypeName
+        {
+            get
+            {
+                return clsUnitType.Find(this.UnitTypeID).Name;
+            }
+        }
+        public decimal DefaultUnitPrice { get; set; }
+
 
         public clsItem()
         {
             this.ItemID = -1;
             this.Name = "";
             this.UnitTypeID = -1;
+            this.DefaultUnitPrice = 0m;
             Mode = enMode.AddNew;
         }
 
-        private clsItem(int ItemID, string Name, int UnitTypeID)
+        private clsItem(int ItemId, string Name, int UnitTypeId, decimal DefaultUnitPrice)
         {
-            this.ItemID = ItemID;
+            this.ItemID = ItemId;
             this.Name = Name;
-            this.UnitTypeID = UnitTypeID;
+            this.UnitTypeID = UnitTypeId;
+            this.DefaultUnitPrice = DefaultUnitPrice;
             Mode = enMode.Update;
+        }
+
+        public static clsItem Find(int ItemId)
+        {
+            string Name = "";
+            int UnitTypeId = -1;
+            decimal DefaultUnitPrice = 0m;
+
+            if (clsItemData.GetItemInfoByID(ItemId, ref Name, ref UnitTypeId, ref DefaultUnitPrice))
+            {
+                return new clsItem(ItemId, Name, UnitTypeId, DefaultUnitPrice);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private bool _AddNewItem()
         {
-            // Call Data Access Layer 
-            this.ItemID = clsItemData.AddNewItem(this.Name, this.UnitTypeID);
+            // استدعاء طبقة البيانات وإسناد المعرف الجديد للكائن
+            this.ItemID = clsItemData.AddNewItem(this.Name, this.UnitTypeID, this.DefaultUnitPrice);
             return (this.ItemID != -1);
         }
 
         private bool _UpdateItem()
         {
-            // Call Data Access Layer 
-            return clsItemData.UpdateItem(this.ItemID, this.Name, this.UnitTypeID);
-        }
-
-        public static clsItem Find(int ItemID)
-        {
-            string Name = "";
-            int UnitTypeID = -1;
-
-            bool isFound = clsItemData.GetItemInfoByID(ItemID, ref Name, ref UnitTypeID);
-
-            if (isFound)
-                return new clsItem(ItemID, Name, UnitTypeID);
-            else
-                return null;
+            // تحديث بيانات الصنف الحالي في قاعدة البيانات
+            return clsItemData.UpdateItem(this.ItemID, this.Name, this.UnitTypeID, this.DefaultUnitPrice);
         }
 
         public bool Save()
@@ -83,14 +99,20 @@ namespace Ebda3Soft_Business
             return clsItemData.GetAllItems();
         }
 
-        public static bool DeleteItem(int ID)
+        public static bool DeleteItem(int ItemId)
         {
-            return clsItemData.DeleteItem(ID);
+            return clsItemData.DeleteItem(ItemId);
         }
 
-        public static bool DoesItemExist(string ItemName)
+        public static bool DoesItemExist(string Name)
         {
-            return clsItemData.DoesItemExist(ItemName);
+            return clsItemData.DoesItemExist(Name);
+        }
+
+        public static int GetItemIDByName(string Name)
+        {
+            // استدعاء طبقة البيانات
+            return clsItemData.GetItemIDByName(Name);
         }
     }
 }

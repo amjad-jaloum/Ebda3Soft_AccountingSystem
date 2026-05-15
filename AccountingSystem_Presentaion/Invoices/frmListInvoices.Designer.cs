@@ -50,6 +50,8 @@
             this.plMainfooterLable = new System.Windows.Forms.Panel();
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbInvoiceIcon)).BeginInit();
             this.tlpMain.SuspendLayout();
@@ -80,9 +82,9 @@
             // 
             this.pbInvoiceIcon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbInvoiceIcon.Location = new System.Drawing.Point(20, 20);
-            this.pbInvoiceIcon.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pbInvoiceIcon.Margin = new System.Windows.Forms.Padding(20);
             this.pbInvoiceIcon.Name = "pbInvoiceIcon";
-            this.pbInvoiceIcon.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pbInvoiceIcon.Padding = new System.Windows.Forms.Padding(20);
             this.pbInvoiceIcon.Size = new System.Drawing.Size(140, 558);
             this.pbInvoiceIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbInvoiceIcon.TabIndex = 1;
@@ -131,25 +133,29 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsInvoiceMenu.Name = "cmsInvoiceMenu";
+            this.cmsInvoiceMenu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmsInvoiceMenu.Size = new System.Drawing.Size(183, 70);
             // 
             // showInvoiceInfoToolStripMenuItem
             // 
             this.showInvoiceInfoToolStripMenuItem.Name = "showInvoiceInfoToolStripMenuItem";
-            this.showInvoiceInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showInvoiceInfoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.showInvoiceInfoToolStripMenuItem.Text = "Show Invoice Details";
+            this.showInvoiceInfoToolStripMenuItem.Click += new System.EventHandler(this.showInvoiceInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // tlpMainHeader
             // 
@@ -168,6 +174,8 @@
             // 
             // MainHeaderPanel
             // 
+            this.MainHeaderPanel.Controls.Add(this.label2);
+            this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Controls.Add(this.cbPaymentMethod);
             this.MainHeaderPanel.Controls.Add(this.cbInvoiceType);
             this.MainHeaderPanel.Controls.Add(this.txtSearch);
@@ -184,37 +192,38 @@
             this.cbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentMethod.FormattingEnabled = true;
             this.cbPaymentMethod.Items.AddRange(new object[] {
-            "All Methods",
-            "Cash",
-            "Credit"});
-            this.cbPaymentMethod.Location = new System.Drawing.Point(31, 16);
-            this.cbPaymentMethod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            "الكل",
+            "نقد",
+            "اجل"});
+            this.cbPaymentMethod.Location = new System.Drawing.Point(35, 14);
+            this.cbPaymentMethod.Margin = new System.Windows.Forms.Padding(2);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
-            this.cbPaymentMethod.Size = new System.Drawing.Size(101, 21);
+            this.cbPaymentMethod.Size = new System.Drawing.Size(106, 21);
             this.cbPaymentMethod.TabIndex = 4;
-            this.cbPaymentMethod.Visible = false;
+            this.cbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.cbPaymentMethod_SelectedIndexChanged);
             // 
             // cbInvoiceType
             // 
             this.cbInvoiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInvoiceType.FormattingEnabled = true;
             this.cbInvoiceType.Items.AddRange(new object[] {
-            "All Types",
-            "Sales",
-            "Purchase"});
-            this.cbInvoiceType.Location = new System.Drawing.Point(136, 16);
-            this.cbInvoiceType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            "الكل",
+            "بيع",
+            "شراء"});
+            this.cbInvoiceType.Location = new System.Drawing.Point(216, 15);
+            this.cbInvoiceType.Margin = new System.Windows.Forms.Padding(2);
             this.cbInvoiceType.Name = "cbInvoiceType";
-            this.cbInvoiceType.Size = new System.Drawing.Size(101, 21);
+            this.cbInvoiceType.Size = new System.Drawing.Size(106, 21);
             this.cbInvoiceType.TabIndex = 3;
-            this.cbInvoiceType.Visible = false;
+            this.cbInvoiceType.SelectedIndexChanged += new System.EventHandler(this.cbInvoiceType_SelectedIndexChanged);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(242, 16);
+            this.txtSearch.Location = new System.Drawing.Point(370, 15);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtSearch.Size = new System.Drawing.Size(106, 20);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cbFilter
             // 
@@ -222,12 +231,12 @@
             this.cbFilter.Items.AddRange(new object[] {
             "None",
             "Invoice ID",
-            "Account ID",
             "Account Name"});
-            this.cbFilter.Location = new System.Drawing.Point(448, 15);
+            this.cbFilter.Location = new System.Drawing.Point(482, 15);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(140, 21);
+            this.cbFilter.Size = new System.Drawing.Size(106, 21);
             this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // lblFilter
             // 
@@ -248,6 +257,7 @@
             this.btnAddNewInvoice.Size = new System.Drawing.Size(174, 48);
             this.btnAddNewInvoice.TabIndex = 1;
             this.btnAddNewInvoice.Text = "إضافة فاتورة جديدة";
+            this.btnAddNewInvoice.Click += new System.EventHandler(this.btnAddNewInvoice_Click);
             // 
             // tplMainFooter
             // 
@@ -273,6 +283,7 @@
             this.btnClose.Size = new System.Drawing.Size(258, 48);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
             // 
@@ -304,6 +315,26 @@
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد الفواتير:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(327, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "النوع:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(142, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "طريقة الدفع:";
+            // 
             // frmListInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +346,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إدارة فواتير المبيعات والمشتريات";
+            this.Load += new System.EventHandler(this.frmListInvoices_Load);
             this.tlpForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbInvoiceIcon)).EndInit();
             this.tlpMain.ResumeLayout(false);
@@ -355,5 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem showInvoiceInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

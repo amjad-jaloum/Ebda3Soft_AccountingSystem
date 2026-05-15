@@ -89,14 +89,14 @@
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(168, 24);
             this.toolStripMenuItem2.Text = "دليل الحسابات";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.AccountsDirectorytoolStripMenuItem_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
-            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
             this.manageApplicationsToolStripMenuItem.Text = "دليل الأصناف";
             this.manageApplicationsToolStripMenuItem.Click += new System.EventHandler(this.ItemsDirectoryToolStripMenuItem_Click);
             // 
@@ -114,6 +114,7 @@
             this.InvoicesToolStripMenuItem.Name = "InvoicesToolStripMenuItem";
             this.InvoicesToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
             this.InvoicesToolStripMenuItem.Text = "الفواتير (بيع / شراء)";
+            this.InvoicesToolStripMenuItem.Click += new System.EventHandler(this.InvoicesToolStripMenuItem_Click);
             // 
             // VouchersToolStripMenuItem
             // 

@@ -35,6 +35,9 @@ namespace Ebda3Soft_AccountingSystem
 
                 dgvItems.Columns[2].HeaderText = "Unit Name";
                 dgvItems.Columns[2].Width = 150;
+
+                dgvItems.Columns[3].HeaderText = "Default Unit Price";
+                dgvItems.Columns[3].Width = 150;
             }
         }
 
@@ -73,7 +76,7 @@ namespace Ebda3Soft_AccountingSystem
                     FilterColumn = "ItemID";
                     break;
                 case "Item Name":
-                    FilterColumn = "ItemName";
+                    FilterColumn = "Name";
                     break;
                 case "Unit Name":
                     FilterColumn = "UnitName";
@@ -111,7 +114,7 @@ namespace Ebda3Soft_AccountingSystem
 
         private void btnAddNewItem_Click(object sender, EventArgs e)
         {
-            frmAddEditItem frm = new frmAddEditItem();
+            frmAddUpdateItem frm = new frmAddUpdateItem();
             frm.ShowDialog();
             _RefreshItemsList();
         }
@@ -119,21 +122,25 @@ namespace Ebda3Soft_AccountingSystem
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int ItemID = (int)dgvItems.CurrentRow.Cells[0].Value;
-            frmAddEditItem frm = new frmAddEditItem(ItemID);
+            frmAddUpdateItem frm = new frmAddUpdateItem(ItemID);
             frm.ShowDialog();
             _RefreshItemsList();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Are you sure you want to delelte this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                int ItemID = (int)dgvItems.CurrentRow.Cells["ItemID"].Value;
+                clsItem.DeleteItem(ItemID);
+                _RefreshItemsList();
+            }
         }
 
         private void showItemInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Implementation for a Read-Only Info form if required
-            int ItemID = (int)dgvItems.CurrentRow.Cells[0].Value;
-            MessageBox.Show("Selected Item ID: " + ItemID, "Item Info");
         }
     }
 }

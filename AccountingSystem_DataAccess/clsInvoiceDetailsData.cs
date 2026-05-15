@@ -112,7 +112,7 @@ namespace AccountingSystem_DataAccess
             // جلب التفاصيل مع اسم الصنف وحساب الإجمالي لكل سطر
             string query = @"SELECT ID.InvoiceDetailId, 
                                ID.ItemId, 
-                               I.ItemName, 
+                               I.Name, 
                                ID.Quantity, 
                                ID.UnitPrice, 
                                ID.UnitType,
