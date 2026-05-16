@@ -82,11 +82,7 @@ namespace Ebda3Soft_AccountingSystem.Reports
 
         private void btnSMS_Click(object sender, EventArgs e)
         {
-            // Feature placeholder notification
-            MessageBox.Show("هذه الميزة ستتوفر قريباً في التحديث القادم.", "قريباً",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            /*
+            
             int currentAccountId = _Account.AccountID;
             string clientPhoneNumber = _Account.PersonInfo.Phone; // E.g., "77xxxxxxx"
 
@@ -101,7 +97,7 @@ namespace Ebda3Soft_AccountingSystem.Reports
                 MessageBox.Show("فشل إرسال رسالة الـ SMS، يرجى التحقق من اتصال البوابة أو رقم الهاتف.", "خطأ في الإرسال",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            */
+            
         }
     }
 }
