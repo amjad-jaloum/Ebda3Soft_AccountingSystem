@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,15 +14,17 @@ namespace Ebda3Soft_AccountingSystem.Reports
 {
     public partial class frmAccountStateReport : Form
     {
+        private clsAccount _Account;
         public frmAccountStateReport()
         {
             InitializeComponent();
         }
-
+        private decimal _finalBalance = 0;
         private void ctrlAccountCardWithFilter1_OnAccountSelected(int AccountID)
         {
             if (AccountID == -1)
             {
+                _Account = clsAccount.Find(AccountID);
                 dgvAccountStatement.DataSource = null;
                 lblAccountBalance.Text = "0.00";
                 return;
@@ -68,13 +71,37 @@ namespace Ebda3Soft_AccountingSystem.Reports
                 totalCredit += Convert.ToDecimal(row["Credit"]);
             }
 
-            decimal finalBalance = totalDebit - totalCredit;
+            _finalBalance = totalDebit - totalCredit;
 
             // عرض الرصيد بتنسيق مالي
-            lblAccountBalance.Text = finalBalance.ToString("N2");
+            lblAccountBalance.Text = _finalBalance.ToString("N2");
 
             // تلوين الرصيد: أحمر إذا كان مديناً (عليه)، أخضر إذا كان دائناً (له)
-            lblAccountBalance.ForeColor = (finalBalance > 0) ? Color.Red : Color.Green;
+            lblAccountBalance.ForeColor = (_finalBalance > 0) ? Color.Red : Color.Green;
+        }
+
+        private void btnSMS_Click(object sender, EventArgs e)
+        {
+            // Feature placeholder notification
+            MessageBox.Show("هذه الميزة ستتوفر قريباً في التحديث القادم.", "قريباً",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            /*
+            int currentAccountId = _Account.AccountID;
+            string clientPhoneNumber = _Account.PersonInfo.Phone; // E.g., "77xxxxxxx"
+
+            // Trigger the business method to send and log the SMS
+            if (clsSMSLog.SendBalanceAlert(currentAccountId, clientPhoneNumber, _finalBalance))
+            {
+                MessageBox.Show("تم إرسال رسالة تنبيه بالرصيد بنجاح وتوثيقها في النظام.", "تم الإرسال",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("فشل إرسال رسالة الـ SMS، يرجى التحقق من اتصال البوابة أو رقم الهاتف.", "خطأ في الإرسال",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            */
         }
     }
 }

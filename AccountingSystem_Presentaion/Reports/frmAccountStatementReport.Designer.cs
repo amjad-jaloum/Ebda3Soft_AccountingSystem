@@ -33,6 +33,7 @@
             this.dgvAccountStatement = new System.Windows.Forms.DataGridView();
             this.gbAccountFilter = new System.Windows.Forms.GroupBox();
             this.ctrlAccountCardWithFilter1 = new Ebda3Soft_AccountingSystem.AccountsDirectory.Controls.ctrlAccountCardWithFilter();
+            this.btnSMS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccountStatement)).BeginInit();
             this.gbAccountFilter.SuspendLayout();
             this.SuspendLayout();
@@ -94,11 +95,24 @@
             this.ctrlAccountCardWithFilter1.TabIndex = 0;
             this.ctrlAccountCardWithFilter1.OnAccountSelected += new System.Action<int>(this.ctrlAccountCardWithFilter1_OnAccountSelected);
             // 
+            // btnSMS
+            // 
+            this.btnSMS.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSMS.Location = new System.Drawing.Point(474, 611);
+            this.btnSMS.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSMS.Name = "btnSMS";
+            this.btnSMS.Size = new System.Drawing.Size(202, 34);
+            this.btnSMS.TabIndex = 14;
+            this.btnSMS.Text = "اشعار SMS";
+            this.btnSMS.UseVisualStyleBackColor = true;
+            this.btnSMS.Click += new System.EventHandler(this.btnSMS_Click);
+            // 
             // frmAccountStateReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 661);
+            this.Controls.Add(this.btnSMS);
             this.Controls.Add(this.lblAccountBalance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvAccountStatement);
@@ -123,5 +137,6 @@
         private System.Windows.Forms.DataGridView dgvAccountStatement;
         private System.Windows.Forms.GroupBox gbAccountFilter;
         private AccountsDirectory.Controls.ctrlAccountCardWithFilter ctrlAccountCardWithFilter1;
+        private System.Windows.Forms.Button btnSMS;
     }
 }

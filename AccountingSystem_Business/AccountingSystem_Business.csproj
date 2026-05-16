@@ -46,6 +46,7 @@
     <Compile Include="clsInvoiceDetails.cs" />
     <Compile Include="clsItem.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsSMSLog.cs" />
     <Compile Include="clsUnitType.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsVoucher.cs" />
