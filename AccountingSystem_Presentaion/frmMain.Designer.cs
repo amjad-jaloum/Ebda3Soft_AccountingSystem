@@ -44,6 +44,10 @@
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRestore = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssUsernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -51,10 +55,6 @@
             this.tssDatetimeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tsmBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmRestore = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.msMainNavBar.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -194,6 +194,30 @@
             this.changePasswordToolStripMenuItem.Text = "تغيير كلمة المرور";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
+            // 
+            // tsmBackup
+            // 
+            this.tsmBackup.Name = "tsmBackup";
+            this.tsmBackup.Size = new System.Drawing.Size(276, 24);
+            this.tsmBackup.Text = "عمل نسخة احتياطية للبيانات";
+            this.tsmBackup.Click += new System.EventHandler(this.tsmBackup_Click);
+            // 
+            // tsmRestore
+            // 
+            this.tsmRestore.Name = "tsmRestore";
+            this.tsmRestore.Size = new System.Drawing.Size(276, 24);
+            this.tsmRestore.Text = "استعادة نسخة احتياطية للبيانات";
+            this.tsmRestore.Click += new System.EventHandler(this.tsmRestore_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(273, 6);
+            // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -253,28 +277,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // tsmBackup
-            // 
-            this.tsmBackup.Name = "tsmBackup";
-            this.tsmBackup.Size = new System.Drawing.Size(276, 24);
-            this.tsmBackup.Text = "عمل نسخة احتياطية للبيانات";
-            // 
-            // tsmRestore
-            // 
-            this.tsmRestore.Name = "tsmRestore";
-            this.tsmRestore.Size = new System.Drawing.Size(276, 24);
-            this.tsmRestore.Text = "استعادة نسخة احتياطية للبيانات";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(273, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(273, 6);
             // 
             // frmMain
             // 

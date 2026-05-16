@@ -100,5 +100,68 @@ namespace Ebda3Soft_AccountingSystem
             frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
+
+        private void tsmBackup_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                // تهيئة إعدادات نافذة الحفظ
+                saveFileDialog.Filter = "Backup Files (*.bak)|*.bak|All Files (*.*)|*.*";
+                saveFileDialog.Title = "اختر مسار واسم ملف النسخة الاحتياطية";
+
+                // اقتراح اسم افتراضي يحتوي على تاريخ اليوم ليكون منظماً
+                saveFileDialog.FileName = "BusinessDB_Backup_" + DateTime.Now.ToString("yyyyMMdd");
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string chosenPath = saveFileDialog.FileName;
+
+                    // استدعاء البزنس لاير وتمرير المسار الذي اختاره المستخدم
+                    if (clsBackup.Backup(chosenPath))
+                    {
+                        MessageBox.Show($"تم أخذ النسخة الاحتياطية بنجاح وحفظها في:\n {chosenPath}",
+                                        "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("فشل أخذ النسخة الاحتياطية. تأكد من صلاحيات الكتابة في المسار المحدد أو تشغيل البرنامج كمسؤول.",
+                                        "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void tsmRestore_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // تهيئة إعدادات نافذة فتح الملفات
+                openFileDialog.Filter = "Backup Files (*.bak)|*.bak";
+                openFileDialog.Title = "اختر ملف النسخة الاحتياطية لاستعادتها";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string chosenPath = openFileDialog.FileName;
+
+                    // تنبيه تأكيدي حرج جداً لأن البيانات الحالية ستُحذف تماماً
+                    string confirmMessage = "تحذير حرج: استعادة البيانات ستؤدي إلى مسح البيانات الحالية بالكامل واستبدالها بالنسخة المحددة.\n\nهل أنت متأكد من الاستمرار؟";
+
+                    if (MessageBox.Show(confirmMessage, "تأكيد استبدال البيانات",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        if (clsBackup.Restore(chosenPath))
+                        {
+                            MessageBox.Show("تم استعادة قاعدة البيانات بنجاح، سيقوم النظام بالعمل الآن بالبيانات المسترجعة.",
+                                            "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("فشل استعادة قاعدة البيانات. تأكد من أن الملف غير تالف وأن محرك SQL Server يمتلك صلاحية الوصول إليه.",
+                                            "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
