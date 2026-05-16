@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.msMainNavBar = new System.Windows.Forms.MenuStrip();
             this.BasicDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -269,7 +268,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources._gray_Ebdaa3Soft;
             this.pictureBox1.Location = new System.Drawing.Point(0, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(40, 39, 40, 39);
             this.pictureBox1.Name = "pictureBox1";

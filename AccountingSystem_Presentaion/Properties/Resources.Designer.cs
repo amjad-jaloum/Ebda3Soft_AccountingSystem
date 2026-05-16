@@ -22,7 +22,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Ebda3Soft_AccountingSystem.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,47 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap female {
+        public static System.Drawing.Bitmap _gray_Ebdaa3Soft {
+            get {
+                object obj = ResourceManager.GetObject("(gray)Ebdaa3Soft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap actions_item_list {
+            get {
+                object obj = ResourceManager.GetObject("actions_item_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap actions_item_list_config {
+            get {
+                object obj = ResourceManager.GetObject("actions_item_list_config", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Ebdaa3Soft {
+            get {
+                object obj = ResourceManager.GetObject("Ebdaa3Soft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap female {
             get {
                 object obj = ResourceManager.GetObject("female", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +113,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap femaleWrong {
+        public static System.Drawing.Bitmap femaleWrong {
             get {
                 object obj = ResourceManager.GetObject("femaleWrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +123,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap male {
+        public static System.Drawing.Bitmap male {
             get {
                 object obj = ResourceManager.GetObject("male", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +133,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maleWrong {
+        public static System.Drawing.Bitmap maleWrong {
             get {
                 object obj = ResourceManager.GetObject("maleWrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +143,7 @@ namespace Ebda3Soft_AccountingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap userWrong {
+        public static System.Drawing.Bitmap userWrong {
             get {
                 object obj = ResourceManager.GetObject("userWrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

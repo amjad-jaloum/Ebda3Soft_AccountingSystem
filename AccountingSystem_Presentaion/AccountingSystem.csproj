@@ -296,7 +296,7 @@
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -351,7 +351,9 @@
       <Name>AccountingSystem_Business</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\actions_item_list_config1.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\femaleWrong.png" />
   </ItemGroup>
@@ -366,6 +368,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actions_item_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\%28gray%29Ebdaa3Soft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ebdaa3Soft.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

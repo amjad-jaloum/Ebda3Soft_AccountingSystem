@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListItems));
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
-            this.pbItemIcon = new System.Windows.Forms.PictureBox();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new System.Windows.Forms.DataGridView();
             this.cmsItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -49,8 +47,8 @@
             this.plMainfooterLable = new System.Windows.Forms.Panel();
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
+            this.pbItemIcon = new System.Windows.Forms.PictureBox();
             this.tlpForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbItemIcon)).BeginInit();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.cmsItemMenu.SuspendLayout();
@@ -58,6 +56,7 @@
             this.MainHeaderPanel.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbItemIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpForm
@@ -74,19 +73,6 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.Size = new System.Drawing.Size(1069, 598);
             this.tlpForm.TabIndex = 1;
-            // 
-            // pbItemIcon
-            // 
-            this.pbItemIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbItemIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbItemIcon.Image")));
-            this.pbItemIcon.Location = new System.Drawing.Point(20, 20);
-            this.pbItemIcon.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
-            this.pbItemIcon.Name = "pbItemIcon";
-            this.pbItemIcon.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
-            this.pbItemIcon.Size = new System.Drawing.Size(140, 558);
-            this.pbItemIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbItemIcon.TabIndex = 1;
-            this.pbItemIcon.TabStop = false;
             // 
             // tlpMain
             // 
@@ -131,26 +117,26 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsItemMenu.Name = "cmsItemMenu";
-            this.cmsItemMenu.Size = new System.Drawing.Size(128, 70);
+            this.cmsItemMenu.Size = new System.Drawing.Size(149, 70);
             // 
             // showItemInfoToolStripMenuItem
             // 
             this.showItemInfoToolStripMenuItem.Name = "showItemInfoToolStripMenuItem";
-            this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.showItemInfoToolStripMenuItem.Text = "عرض التفاصيل";
             this.showItemInfoToolStripMenuItem.Click += new System.EventHandler(this.showItemInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.editToolStripMenuItem.Text = "تعديل الصنف";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.deleteToolStripMenuItem.Text = "حذف الصنف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -234,14 +220,13 @@
             this.tplMainFooter.Location = new System.Drawing.Point(3, 535);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
-            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tplMainFooter.Size = new System.Drawing.Size(877, 54);
             this.tplMainFooter.TabIndex = 3;
             // 
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            //this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Windows.Forms.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(3, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(258, 48);
@@ -279,6 +264,19 @@
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد الأصناف:";
             // 
+            // pbItemIcon
+            // 
+            this.pbItemIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbItemIcon.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources.actions_item_list_config;
+            this.pbItemIcon.Location = new System.Drawing.Point(20, 20);
+            this.pbItemIcon.Margin = new System.Windows.Forms.Padding(20);
+            this.pbItemIcon.Name = "pbItemIcon";
+            this.pbItemIcon.Padding = new System.Windows.Forms.Padding(20);
+            this.pbItemIcon.Size = new System.Drawing.Size(140, 558);
+            this.pbItemIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbItemIcon.TabIndex = 1;
+            this.pbItemIcon.TabStop = false;
+            // 
             // frmListItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,7 +290,6 @@
             this.Text = "دليل الأصناف المخزنية";
             this.Load += new System.EventHandler(this.frmListItems_Load);
             this.tlpForm.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbItemIcon)).EndInit();
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.cmsItemMenu.ResumeLayout(false);
@@ -302,6 +299,7 @@
             this.tplMainFooter.ResumeLayout(false);
             this.plMainfooterLable.ResumeLayout(false);
             this.plMainfooterLable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbItemIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
