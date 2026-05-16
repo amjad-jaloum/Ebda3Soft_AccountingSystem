@@ -5,6 +5,21 @@ A robust, modular, and enterprise-grade accounting and inventory management syst
 
 ---
 
+## 🖼️ System Screenshots
+Below are the key interfaces of the application, showcasing the dashboard, inventory management, and invoice processing.
+
+<p align="center">
+  <img src="Screenshots/screen (1).png" width="400" alt="Dashboard Overview" />
+  <img src="Screenshots/screen (2).png" width="400" alt="Inventory Management" />
+</p>
+<p align="center">
+  <img src="Screenshots/screen (3).png" width="260" alt="Sales Interface" />
+  <img src="Screenshots/screen (4).png" width="260" alt="Database Maintenance" />
+  <img src="Screenshots/screen (5).png" width="260" alt="Reports Module" />
+</p>
+
+---
+
 ## 🏗️ Architecture: 3-Tier Pattern
 The system strictly adheres to the **3-Tier Architecture** to maintain a clean separation of concerns, making the application highly maintainable and easily scalable:
 
@@ -48,6 +63,7 @@ You can choose **either** of the following two deployment paths depending on you
 ├── AccountingSystem_Presentation/  # Windows Forms UI Controls & Forms
 ├── AccountingSystem_Business/      # Business Logic Models & Evaluation Rules
 ├── AccountingSystem_DataAccess/    # Data Access Layer & DB Connectivity
+├── Screenshots/                    # UI Preview Images (screen(1).png to screen(5).png)
 └── Database/                       # Production Deployment Files
     ├── BusinessDB_Backup.bak       # Full Automated DB Backup Image
     └── BusinessDB_Full_Setup.sql   # Raw T-SQL Schema & Pre-seeded Data Script
