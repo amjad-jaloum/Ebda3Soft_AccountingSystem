@@ -80,14 +80,14 @@ namespace Ebda3Soft_AccountingSystem.Invoices.InvoiceDetails
             if (string.IsNullOrEmpty(txtQuantity.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtQuantity, "Quantity is required!");
+                errorProvider1.SetError(txtQuantity, "الكمية مطلوبة!");
                 return;
             }
 
             if (!int.TryParse(txtQuantity.Text, out int Qty) || Qty <= 0)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtQuantity, "Enter a valid quantity greater than 0!");
+                errorProvider1.SetError(txtQuantity, "يرجى إدخال كمية صالحة أكبر من 0!");
             }
             else
             {

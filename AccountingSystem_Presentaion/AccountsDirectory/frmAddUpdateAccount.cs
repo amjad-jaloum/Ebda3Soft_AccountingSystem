@@ -41,7 +41,7 @@ namespace Ebda3Soft_AccountingSystem
         {
             if (_Mode == enMode.AddNew)
             {
-                this.Text = "Add New Account";
+                this.Text = "إضافة حساب جديد";
                 _Account = new clsAccount();
 
                 // Keep the Account Details tab disabled until a person is selected
@@ -50,7 +50,7 @@ namespace Ebda3Soft_AccountingSystem
             }
             else
             {
-                this.Text = "Update Account";
+                this.Text = "تعديل الحساب";
                 tpAccountDetails.Enabled = true;
                 btnSave.Enabled = true;
             }
@@ -66,7 +66,7 @@ namespace Ebda3Soft_AccountingSystem
 
             if (_Account == null)
             {
-                MessageBox.Show("No Account with ID = " + _AccountID, "Account Not Found",
+                MessageBox.Show("لا يوجد حساب يحمل الرقم التعريفي = " + _AccountID, "الحساب غير موجود",
                                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
@@ -118,7 +118,7 @@ namespace Ebda3Soft_AccountingSystem
             }
             else
             {
-                MessageBox.Show("Please select a person to link with this account.", "Select Person",
+                MessageBox.Show("يرجى اختيار شخص لربطه بهذا الحساب.", "تحديد الشخص",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ctrlPersonCardWithFilter1.FilterFocus();
             }
@@ -128,8 +128,8 @@ namespace Ebda3Soft_AccountingSystem
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fields are not valid! Please hover over the red icon(s) to see the error.",
-                                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! يرجى تمرير مؤشر الفأرة فوق أيقونة الخطأ الحمراء لمعرفة السبب.",
+                                "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -148,16 +148,16 @@ namespace Ebda3Soft_AccountingSystem
 
                 // Switch mode to Update after first successful save
                 _Mode = enMode.Update;
-                this.Text = "Update Account";
+                this.Text = "تعديل الحساب";
 
-                MessageBox.Show("Data Saved Successfully.", "Saved",
+                MessageBox.Show("تم حفظ البيانات بنجاح.", "تم الحفظ",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 DataBack?.Invoke(this, _Account.PersonID);
             }
             else
             {
-                MessageBox.Show("Error: Data was not saved successfully.", "Error",
+                MessageBox.Show("خطأ: لم يتم حفظ البيانات بنجاح.", "خطأ",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -167,7 +167,7 @@ namespace Ebda3Soft_AccountingSystem
             if (string.IsNullOrEmpty(txtAccountName.Text.Trim()))
             {
                 //e.Cancel = true;
-                errorProvider1.SetError(txtAccountName, "Account Name is required.");
+                errorProvider1.SetError(txtAccountName, "اسم الحساب مطلوب.");
             }
             else
             {

@@ -32,7 +32,6 @@ namespace Ebda3Soft_AccountingSystem.Users
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ctrlUserCard1 = new Ebda3Soft_AccountingSystem.users.ctrlUserCard();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -41,6 +40,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ctrlUserCard1 = new Ebda3Soft_AccountingSystem.users.ctrlUserCard();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,15 +63,6 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.tableLayoutPanel1.Size = new System.Drawing.Size(705, 649);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // ctrlUserCard1
-            // 
-            this.ctrlUserCard1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ctrlUserCard1.Location = new System.Drawing.Point(18, 52);
-            this.ctrlUserCard1.Margin = new System.Windows.Forms.Padding(1);
-            this.ctrlUserCard1.Name = "ctrlUserCard1";
-            this.ctrlUserCard1.Size = new System.Drawing.Size(669, 397);
-            this.ctrlUserCard1.TabIndex = 0;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSave);
@@ -91,22 +82,22 @@ namespace Ebda3Soft_AccountingSystem.Users
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnSave.Location = new System.Drawing.Point(535, 73);
+            this.btnSave.Location = new System.Drawing.Point(598, 87);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 32);
             this.btnSave.TabIndex = 22;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(457, 36);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(483, 36);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(201, 26);
             this.txtConfirmPassword.TabIndex = 20;
             this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
@@ -114,30 +105,30 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label1.Location = new System.Drawing.Point(454, 15);
+            this.label1.Location = new System.Drawing.Point(570, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 20);
+            this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Confirm Password";
+            this.label1.Text = "تأكيد كلمة المرور";
             // 
             // txtNewPassword
             // 
             this.txtNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtNewPassword.Location = new System.Drawing.Point(252, 36);
+            this.txtNewPassword.Location = new System.Drawing.Point(250, 36);
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewPassword.Name = "txtNewPassword";
-            this.txtNewPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtNewPassword.Size = new System.Drawing.Size(201, 26);
             this.txtNewPassword.TabIndex = 19;
             this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
             // 
             // txtCurrentPassword
             // 
             this.txtCurrentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtCurrentPassword.Location = new System.Drawing.Point(47, 36);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(17, 36);
             this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrentPassword.Name = "txtCurrentPassword";
-            this.txtCurrentPassword.Size = new System.Drawing.Size(165, 26);
+            this.txtCurrentPassword.Size = new System.Drawing.Size(201, 26);
             this.txtCurrentPassword.TabIndex = 18;
             this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
             // 
@@ -145,23 +136,33 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label3.Location = new System.Drawing.Point(249, 14);
+            this.label3.Location = new System.Drawing.Point(320, 14);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 20);
+            this.label3.Size = new System.Drawing.Size(131, 20);
             this.label3.TabIndex = 17;
-            this.label3.Text = "New Password";
+            this.label3.Text = "كلمة المرور الجديدة";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label2.Location = new System.Drawing.Point(43, 14);
+            this.label2.Location = new System.Drawing.Point(94, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 20);
+            this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Current Password";
+            this.label2.Text = "كلمة المرور الحالية";
+            // 
+            // ctrlUserCard1
+            // 
+            this.ctrlUserCard1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ctrlUserCard1.AutoSize = true;
+            this.ctrlUserCard1.Location = new System.Drawing.Point(19, 54);
+            this.ctrlUserCard1.Margin = new System.Windows.Forms.Padding(1);
+            this.ctrlUserCard1.Name = "ctrlUserCard1";
+            this.ctrlUserCard1.Size = new System.Drawing.Size(667, 394);
+            this.ctrlUserCard1.TabIndex = 0;
             // 
             // errorProvider1
             // 
@@ -179,16 +180,16 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.Name = "frmChangePassword";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Change Password";
+            this.Text = "تغيير كلمة المرور";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

@@ -33,7 +33,7 @@ namespace Ebda3Soft_AccountingSystem.users
             if (_User == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("No User with UserID = " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لا يوجد مستخدم يحمل الرقم التعريفي = " + UserID.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -48,9 +48,9 @@ namespace Ebda3Soft_AccountingSystem.users
             lblUsername.Text = _User.UserName.ToString();
 
             if (_User.IsActive)
-                lblIsActive.Text = "Yes";
+                lblIsActive.Text = "نعم";
             else
-                lblIsActive.Text = "No";
+                lblIsActive.Text = "لا";
 
         }
 

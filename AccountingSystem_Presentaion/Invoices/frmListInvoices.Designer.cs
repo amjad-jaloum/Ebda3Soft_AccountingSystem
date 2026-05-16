@@ -140,21 +140,21 @@
             // 
             this.showInvoiceInfoToolStripMenuItem.Name = "showInvoiceInfoToolStripMenuItem";
             this.showInvoiceInfoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.showInvoiceInfoToolStripMenuItem.Text = "Show Invoice Details";
+            this.showInvoiceInfoToolStripMenuItem.Text = "عرض تفاصيل الفاتورة";
             this.showInvoiceInfoToolStripMenuItem.Click += new System.EventHandler(this.showInvoiceInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Text = "تعديل";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Text = "حذف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // tlpMainHeader
@@ -229,9 +229,9 @@
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.Items.AddRange(new object[] {
-            "None",
-            "Invoice ID",
-            "Account Name"});
+            "لا شيء",
+            "رقم الفاتورة",
+            "اسم الحساب"});
             this.cbFilter.Location = new System.Drawing.Point(482, 15);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(106, 21);
@@ -283,6 +283,7 @@
             this.btnClose.Size = new System.Drawing.Size(258, 48);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
+            this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // plMainfooterLable
@@ -361,7 +362,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpForm;

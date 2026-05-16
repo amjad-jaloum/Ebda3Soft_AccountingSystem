@@ -40,7 +40,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(204, 34);
             this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -63,12 +63,13 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmShowPersonInfo";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.ShowIcon = false;
-            this.Text = "Person information";
+            this.Text = "معلومات الشخص";
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.Button btnClose;

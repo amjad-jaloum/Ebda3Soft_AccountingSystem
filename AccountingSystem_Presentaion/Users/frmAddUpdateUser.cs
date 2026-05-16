@@ -40,7 +40,7 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (_Mode == enMode.AddNew)
             {
-                Text = "Add New User";
+                Text = "إضافة مستخدم جديد";
                 _User = new clsUser();
 
                 tpLoginInfo.Enabled = false;
@@ -49,32 +49,27 @@ namespace Ebda3Soft_AccountingSystem.Users
             }
             else
             {
-                Text = "Update User";
+                Text = "تعديل مستخدم";
 
                 tpLoginInfo.Enabled = true;
                 btnSave.Enabled = true;
-
-
             }
 
             txtUserName.Text = "";
             txtPassword.Text = "";
             txtConfirmPassword.Text = "";
             chkIsActive.Checked = true;
-
-
         }
 
         private void _LoadData()
         {
-
             _User = clsUser.FindByUserID(_UserID);
             ctrlPersonCardWithFilter1.FilterEnabled = false;
             tcUserInfo.SelectedIndex = 1;
 
             if (_User == null)
             {
-                MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا يوجد مستخدم يحمل الرقم التعريفي = " + _UserID, "المستخدم غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Close();
                 return;
             }
@@ -94,17 +89,15 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (_Mode == enMode.Update)
                 _LoadData();
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             if (!ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! قم بتمرير مؤشر الماوس فوق الأيقونة الحمراء لمشاهدة الخطأ",
+                    "خطأ في التحقق من البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -118,10 +111,10 @@ namespace Ebda3Soft_AccountingSystem.Users
                 lblUserID.Text = _User.UserID.ToString();
                 //change form mode to update.
                 _Mode = enMode.Update;
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ البيانات بنجاح.", "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("خطأ: لم يتم حفظ البيانات بنجاح.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
@@ -129,7 +122,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match Password!");
+                errorProvider1.SetError(txtConfirmPassword, "تأكيد كلمة المرور غير متطابق مع كلمة المرور!");
             }
             else
             {
@@ -142,8 +135,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
                 e.Cancel = true;
-
-                errorProvider1.SetError(txtPassword, "Password cannot be blank");
+                errorProvider1.SetError(txtPassword, "لا يمكن ترك حقل كلمة المرور فارغاً");
             }
             else
             {
@@ -156,8 +148,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
             {
                 e.Cancel = true;
-
-                errorProvider1.SetError(txtUserName, "Username cannot be blank");
+                errorProvider1.SetError(txtUserName, "لا يمكن ترك حقل اسم المستخدم فارغاً");
                 return;
             }
             else
@@ -167,12 +158,10 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (_Mode == enMode.AddNew)
             {
-
                 if (clsUser.IsUserExist(txtUserName.Text.Trim()))
                 {
                     e.Cancel = true;
-
-                    errorProvider1.SetError(txtUserName, "username is used by another user");
+                    errorProvider1.SetError(txtUserName, "اسم المستخدم هذا مستخدم من قبل مستخدم آخر");
                 }
                 else
                 {
@@ -187,7 +176,7 @@ namespace Ebda3Soft_AccountingSystem.Users
                     if (clsUser.IsUserExist(txtUserName.Text.Trim()))
                     {
                         e.Cancel = true;
-                        errorProvider1.SetError(txtUserName, "username is used by another user");
+                        errorProvider1.SetError(txtUserName, "اسم المستخدم هذا مستخدم من قبل مستخدم آخر");
                         return;
                     }
                     else
@@ -213,7 +202,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             {
                 if (clsUser.IsUserExistForPersonID(ctrlPersonCardWithFilter1.PersonID))
                 {
-                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("الشخص المختار يمتلك حساب مستخدم بالفعل، يرجى اختيار شخص آخر.", "اختر شخصاً آخر", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ctrlPersonCardWithFilter1.FilterFocus();
                 }
                 else
@@ -225,7 +214,7 @@ namespace Ebda3Soft_AccountingSystem.Users
             }
             else
             {
-                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("يرجى اختيار شخص أولاً", "اختر شخصاً", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ctrlPersonCardWithFilter1.FilterFocus();
             }
         }
@@ -239,7 +228,7 @@ namespace Ebda3Soft_AccountingSystem.Users
         {
             Close();
         }
-    
+
     }
 }
 

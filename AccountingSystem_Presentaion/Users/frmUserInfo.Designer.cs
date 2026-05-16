@@ -35,8 +35,8 @@ namespace Ebda3Soft_AccountingSystem.Users
             // 
             // ctrlUserCard1
             // 
-            this.ctrlUserCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ctrlUserCard1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ctrlUserCard1.AutoSize = true;
             this.ctrlUserCard1.Location = new System.Drawing.Point(79, 44);
@@ -61,7 +61,6 @@ namespace Ebda3Soft_AccountingSystem.Users
             this.PerformLayout();
 
         }
-
         #endregion
 
         private ctrlUserCard ctrlUserCard1;

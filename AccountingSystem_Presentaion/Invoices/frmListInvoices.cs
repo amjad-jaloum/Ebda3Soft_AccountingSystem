@@ -27,14 +27,15 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
             if (dgvInvoices.Rows.Count > 0)
             {
-                dgvInvoices.Columns["InvoiceId"].HeaderText = "ID";
-                dgvInvoices.Columns["Name"].HeaderText = "Account Name";
-                dgvInvoices.Columns["TypeName"].HeaderText = "Type";
-                dgvInvoices.Columns["PaymentMethodName"].HeaderText = "Payment Method";
-                dgvInvoices.Columns["TotalAmount"].HeaderText = "Total Amount";
-                dgvInvoices.Columns["CreatedDate"].HeaderText = "Date";
+                // Translating headers to Arabic while keeping database original column names for data mapping
+                dgvInvoices.Columns["InvoiceId"].HeaderText = "رقم الفاتورة";
+                dgvInvoices.Columns["Name"].HeaderText = "اسم الحساب";
+                dgvInvoices.Columns["TypeName"].HeaderText = "نوع الفاتورة";
+                dgvInvoices.Columns["PaymentMethodName"].HeaderText = "طريقة الدفع";
+                dgvInvoices.Columns["TotalAmount"].HeaderText = "إجمالي المبلغ";
+                dgvInvoices.Columns["CreatedDate"].HeaderText = "التاريخ";
 
-                // إخفاء الأعمدة الرقمية التي لا نحتاج لعرضها (الأعمدة الأصلية قبل التحويل لنص)
+                // Hide underlying numeric ID columns that don't need to be displayed
                 if (dgvInvoices.Columns.Contains("Type")) dgvInvoices.Columns["Type"].Visible = false;
                 if (dgvInvoices.Columns.Contains("PaymentMethod")) dgvInvoices.Columns["PaymentMethod"].Visible = false;
 
@@ -45,14 +46,17 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private string _GetSearchFilterExpression()
         {
-            if (cbFilter.Text == "None" || string.IsNullOrEmpty(txtSearch.Text.Trim()))
+            if (cbFilter.Text == "لا شيء" || cbFilter.Text == "None" || string.IsNullOrEmpty(txtSearch.Text.Trim()))
                 return "";
 
+            // Mapping the localized ComboBox text to backend data filter queries
             switch (cbFilter.Text)
             {
+                case "رقم الفاتورة":
                 case "Invoice ID":
                     return string.Format("[InvoiceId] = {0}", txtSearch.Text.Trim());
 
+                case "اسم الحساب":
                 case "Account Name":
                     return string.Format("[Name] LIKE '{0}%'", txtSearch.Text.Trim());
 
@@ -82,7 +86,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
         {
             if (_dvInvoices == null) return;
 
-            // قائمة لتخزين أجزاء الفلترة الصالحة فقط
+            // List to hold valid active filters
             List<string> filterParts = new List<string>();
 
             string searchFilter = _GetSearchFilterExpression();
@@ -98,8 +102,8 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             if (!string.IsNullOrEmpty(paymentFilter))
                 filterParts.Add(paymentFilter);
 
-            // دمج كافة العناصر الموجودة في القائمة بكلمة AND
-            // إذا كانت القائمة فارغة، سيتم إرجاع نص فارغ (عرض الكل) تلقائياً
+            // Combine all filters using AND operator
+            // If the list is empty, finalFilter will be empty string (Shows all records)
             string finalFilter = string.Join(" AND ", filterParts);
 
             _dvInvoices.RowFilter = finalFilter;
@@ -109,7 +113,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void frmListInvoices_Load(object sender, EventArgs e)
         {
-            cbFilter.SelectedIndex = 0; // "None"
+            cbFilter.SelectedIndex = 0; // "None" or "لا شيء"
             cbInvoiceType.SelectedIndex = 0; // "All"
             cbPaymentMethod.SelectedIndex = 0; // "All"
 
@@ -123,8 +127,8 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // إظهار أو إخفاء عناصر التحكم بناءً على نوع الفلتر المختار
-            bool isSearchVisible = (cbFilter.Text != "None");
+            // Toggle visibility based on selected filter type
+            bool isSearchVisible = (cbFilter.Text != "None" && cbFilter.Text != "لا شيء");
             txtSearch.Enabled = isSearchVisible;
 
             if (isSearchVisible)
@@ -151,7 +155,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void btnAddNewInvoice_Click(object sender, EventArgs e)
         {
-            // هنا تفتح شاشة إضافة فاتورة جديدة
+            // Open screen to add a new invoice
             frmAddUpdateInvoice frm = new frmAddUpdateInvoice();
             frm.ShowDialog();
             _RefreshInvoicesList();
@@ -164,19 +168,22 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Get invoice ID using safe column name mapping to avoid index breaking
             int invoiceID = (int)dgvInvoices.CurrentRow.Cells["InvoiceId"].Value;
 
-            if (MessageBox.Show($"Are you sure you want to delete invoice [{invoiceID}]?", "Confirm",
+            if (MessageBox.Show($"هل أنت متأكد من رغبتك في حذف الفاتورة رقم [{invoiceID}]؟", "تأكيد الحذف",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (clsInvoice.DeleteInvoice(invoiceID))
                 {
-                    MessageBox.Show("Invoice deleted successfully.");
+                    // Invoice deleted successfully
+                    MessageBox.Show("تم حذف الفاتورة بنجاح.");
                     _RefreshInvoicesList();
                 }
                 else
                 {
-                    MessageBox.Show("Error: Could not delete invoice.");
+                    // Failed to delete invoice
+                    MessageBox.Show("خطأ: تعذر حذف الفاتورة.");
                 }
             }
         }
@@ -190,7 +197,8 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int invoiceID = (int)dgvInvoices.CurrentRow.Cells[0].Value;
+            // Use precise string mapping instead of hardcoded 0 index for higher reference safety
+            int invoiceID = (int)dgvInvoices.CurrentRow.Cells["InvoiceId"].Value;
             frmAddUpdateInvoice frm = new frmAddUpdateInvoice(invoiceID);
             frm.ShowDialog();
             _RefreshInvoicesList();

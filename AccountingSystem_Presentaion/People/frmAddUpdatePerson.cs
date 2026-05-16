@@ -50,12 +50,12 @@ namespace Ebda3Soft_AccountingSystem.people
 
             if (_Mode == enMode.AddNew)
             {
-                Text = "Add New Person";
+                Text = "إضافة شخص جديد";
                 _Person = new clsPerson();
             }
             else
             {
-                Text = "Update Person";
+                Text = "تحديث بيانات الشخص";
             }
 
             //set default image for the person.
@@ -80,7 +80,7 @@ namespace Ebda3Soft_AccountingSystem.people
 
             if (_Person == null)
             {
-                MessageBox.Show("No Person with ID = " + _PersonID, "Person Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا يوجد شخص يحمل الرقم التعريفي = " + _PersonID, "الشخص غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -116,8 +116,7 @@ namespace Ebda3Soft_AccountingSystem.people
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, " +
-                    "put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! ضع مؤشر الماوس فوق الأيقونة الحمراء لمعرفة الخطأ.", "خطأ في التحقق من البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -139,15 +138,15 @@ namespace Ebda3Soft_AccountingSystem.people
                 lblInsertedID.Text = _Person.PersonID.ToString();
                 //change form mode to update.
                 _Mode = enMode.Update;
-                Text = "Update Person";
+                Text = "تحديث بيانات الشخص";
 
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ البيانات بنجاح.", "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Trigger the event to send data back to the caller form.
                 DataBack?.Invoke(this, _Person.PersonID);
             }
             else
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("خطأ: لم يتم حفظ البيانات بنجاح.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void rbFemale_Click(object sender, EventArgs e)
@@ -171,7 +170,7 @@ namespace Ebda3Soft_AccountingSystem.people
             TextBox Temp = ((TextBox)sender);
             if (string.IsNullOrEmpty(Temp.Text.Trim()))
             {
-                epPersonForm.SetError(Temp, "This field is required!");
+                epPersonForm.SetError(Temp, "هذا الحقل مطلوب!");
             }
             else
             {
@@ -193,7 +192,7 @@ namespace Ebda3Soft_AccountingSystem.people
             if (!clsValidation.ValidateEmail(tbEmail.Text))
             {
                 e.Cancel = true;
-                epPersonForm.SetError(tbEmail, "Invalid Email Address Format!");
+                epPersonForm.SetError(tbEmail, "صيغة البريد الإلكتروني غير صالحة!");
             }
             else
             {

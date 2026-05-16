@@ -55,12 +55,12 @@
             this.gbFilter.Size = new System.Drawing.Size(663, 77);
             this.gbFilter.TabIndex = 4;
             this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "Loggin Details";
+            this.gbFilter.Text = "تفاصيل تسجيل الدخول";
             // 
             // lblIsActive
             // 
             this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Location = new System.Drawing.Point(557, 35);
+            this.lblIsActive.Location = new System.Drawing.Point(512, 35);
             this.lblIsActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(37, 21);
@@ -70,17 +70,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(482, 35);
+            this.label5.Location = new System.Drawing.Point(553, 35);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 21);
+            this.label5.Size = new System.Drawing.Size(101, 21);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Is Active:";
+            this.label5.Text = "هل هو نشط؟:";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(365, 35);
+            this.lblUsername.Location = new System.Drawing.Point(318, 35);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(37, 21);
@@ -90,17 +90,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(277, 35);
+            this.label3.Location = new System.Drawing.Point(359, 35);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 21);
+            this.label3.Size = new System.Drawing.Size(105, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Username:";
+            this.label3.Text = "اسم المستخدم:";
             // 
             // lblUserID
             // 
             this.lblUserID.AutoSize = true;
-            this.lblUserID.Location = new System.Drawing.Point(159, 35);
+            this.lblUserID.Location = new System.Drawing.Point(50, 35);
             this.lblUserID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(37, 21);
@@ -113,9 +113,9 @@
             this.label1.Location = new System.Drawing.Point(91, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
+            this.label1.Size = new System.Drawing.Size(173, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "User ID:";
+            this.label1.Text = "الرقم التعريفي للمستخدم:";
             // 
             // ctrlPersonCard1
             // 
@@ -135,13 +135,13 @@
             this.Controls.Add(this.gbFilter);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctrlUserCard";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(669, 397);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             this.ResumeLayout(false);
 
         }
-
         #endregion
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Label lblIsActive;

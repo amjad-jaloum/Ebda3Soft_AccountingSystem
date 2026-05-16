@@ -244,6 +244,9 @@
     <EmbeddedResource Include="AccountsDirectory\frmListAccounts.resx">
       <DependentUpon>frmListAccounts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AccountsDirectory\frmShowAccountInfo.resx">
+      <DependentUpon>frmShowAccountInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invoices\frmAddupdateInvoice.resx">
       <DependentUpon>frmAddupdateInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsDirectory\frmShowItemInfo.resx">
+      <DependentUpon>frmShowItemInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

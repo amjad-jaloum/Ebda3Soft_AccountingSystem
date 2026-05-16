@@ -34,14 +34,14 @@ namespace Ebda3Soft_AccountingSystem.Invoices
         {
             if (_Mode == enMode.AddNew)
             {
-                this.Text = "Add New Invoice";
+                this.Text = "إضافة فاتورة جديدة";
                 _Invoice = new clsInvoice();
                 tpInvoiceDetails.Enabled = false;
                 btnSave.Enabled = false;
             }
             else
             {
-                this.Text = "Update Invoice";
+                this.Text = "تعديل فاتورة";
                 tpInvoiceDetails.Enabled = true;
                 btnSave.Enabled = true;
             }
@@ -79,14 +79,14 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             _dtInvoiceDetails = clsInvoiceDetail.GetInvoiceDetailsByInvoiceID(_InvoiceID);
             if (_Invoice == null)
             {
-                MessageBox.Show("No Invoice with ID = " + _InvoiceID, "Invoice Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا توجد فاتورة تحمل الرقم التعريفي = " + _InvoiceID, "الفاتورة غير موجودة", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
 
             //lblInvoiceId.Text = _Invoice.InvoiceId.ToString();
             dtpInvoiceDate.Value = _Invoice.CreatedDate;
-            cbPaymentMethod.SelectedIndex = _Invoice.PaymentMethod - 1; // افترضنا 1=نقدي، 2=آجل
+            cbPaymentMethod.SelectedIndex = _Invoice.PaymentMethod - 1; // 1 = Cash, 2 = Credit
             txtNotes.Text = _Invoice.Notes;
             lblTotalAmount.Text = _Invoice.TotalAmount.ToString("N2");
 
@@ -114,10 +114,10 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            // التحقق من اختيار حساب قبل الانتقال للتفاصيل
+            // Check if an account is selected before moving to details tab
             if (ctrlAccountCardWithFilter1.AccountID == -1)
             {
-                errorProvider1.SetError(ctrlAccountCardWithFilter1, "Please select an account first");
+                errorProvider1.SetError(ctrlAccountCardWithFilter1, "يرجى اختيار حساب أولاً!");
                 return;
             }
 
@@ -131,16 +131,16 @@ namespace Ebda3Soft_AccountingSystem.Invoices
         {
             frmAddUpdateInvoiceDetails frm = new frmAddUpdateInvoiceDetails();
 
-            // الاشتراك في الحدث (Delegate)
+            // Subscribe to the Delegate Event
             frm.OnItemAdded += frm_DataBack;
 
             frm.ShowDialog();
         }
 
-        // هذه الدالة هي التي ستستقبل البيانات "Delegated Back"
+        // This method handles the delegated data sent back from the details form
         private void frm_DataBack(int ItemID, string ItemName, int Quantity, decimal UnitPrice, string UnitType)
         {
-            // إنشاء سطر جديد في الـ DataTable الموجود في الذاكرة
+            // Create a new data row in the in-memory DataTable
             DataRow row = _dtInvoiceDetails.NewRow();
 
             row["ItemID"] = ItemID;
@@ -148,11 +148,11 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             row["Quantity"] = Quantity;
             row["UnitPrice"] = UnitPrice;
             row["UnitType"] = UnitType;
-            row["Total"] = Quantity * UnitPrice; // الحساب يتم هنا تلقائياً
+            row["Total"] = Quantity * UnitPrice; // Calculation done automatically here
 
             _dtInvoiceDetails.Rows.Add(row);
 
-            // تحديث إجمالي الفاتورة في الواجهة
+            // Update UI total amount display
             _CalculateTotalAmount();
         }
 
@@ -169,7 +169,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
         {
             if (_dtInvoiceDetails.Rows.Count == 0)
             {
-                MessageBox.Show("Cannot save an empty invoice!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لا يمكن حفظ فاتورة فارغة!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -177,7 +177,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             _Invoice.PaymentMethod = (byte)(cbPaymentMethod.SelectedIndex + 1);
             _Invoice.Notes = txtNotes.Text.Trim();
             _Invoice.TotalAmount = Convert.ToDecimal(lblTotalAmount.Text);
-            _Invoice.CreatedBy = clsGlobal.CurrentUser.UserID; 
+            _Invoice.CreatedBy = clsGlobal.CurrentUser.UserID;
             _Invoice.Type = rbSales.Checked ? (byte)clsInvoice.enInvoiceType.Sales : (byte)clsInvoice.enInvoiceType.Purchases;
 
             _Invoice.ItemsDetails.Clear();
@@ -194,13 +194,13 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
             if (_Invoice.SaveFullInvoice())
             {
-                MessageBox.Show("Invoice Saved Successfully with ID: " + _Invoice.InvoiceId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ الفاتورة بنجاح مع الرقم التعريفي: " + _Invoice.InvoiceId, "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _Mode = enMode.Update;
-                this.Text = "Update Invoice";
+                this.Text = "تعديل فاتورة";
             }
             else
             {
-                MessageBox.Show("Failed to save invoice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("فشلت عملية حفظ الفاتورة!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -186,7 +186,7 @@ namespace Ebda3Soft_DataAccess
                                 WHEN Type = 3 THEN 'Service Provider'
                                 WHEN Type = 4 THEN 'Partner'
                                 ELSE 'Unknown'
-                             END AS TypeCaption
+                             END AS Type
                              FROM Accounts 
                              LEFT JOIN People ON Accounts.PersonID = People.PersonID
                              ORDER BY Accounts.Name";

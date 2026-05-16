@@ -29,25 +29,25 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             if (dgvAccounts.Rows.Count > 0)
             {
                 // Aligning headers with the Accounts table schema
-                dgvAccounts.Columns[0].HeaderText = "Account ID";
+                dgvAccounts.Columns[0].HeaderText = "رقم الحساب";
                 dgvAccounts.Columns[0].Width = 110;
 
-                dgvAccounts.Columns[1].HeaderText = "Account Name";
+                dgvAccounts.Columns[1].HeaderText = "اسم الحساب";
                 dgvAccounts.Columns[1].Width = 200;
 
-                dgvAccounts.Columns[2].HeaderText = "Person Name";
+                dgvAccounts.Columns[2].HeaderText = "اسم العميل/الشخص";
                 dgvAccounts.Columns[2].Width = 300;
 
-                dgvAccounts.Columns[3].HeaderText = "Account Type";
+                dgvAccounts.Columns[3].HeaderText = "نوع الحساب";
                 dgvAccounts.Columns[3].Width = 120;
             }
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+            txtFilterValue.Visible = (cbFilterBy.Text != "لا شيء");
 
-            if (cbFilterBy.Text == "None")
+            if (cbFilterBy.Text == "لا شيء")
             {
                 txtFilterValue.Enabled = false;
             }
@@ -67,14 +67,17 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             // Map Selected Filter to real Business Layer Column names
             switch (cbFilterBy.Text)
             {
-                case "Account ID":
+                case "الرقم التعريفي":
                     FilterColumn = "AccountID";
                     break;
-                case "Account Name":
+                case "اسم الحساب":
                     FilterColumn = "Name";
                     break;
-                case "Person Name":
+                case "اسم العميل/الشخص":
                     FilterColumn = "FullName"; // From the Joined view in Data Access
+                    break;
+                case "النوع":
+                    FilterColumn = "Type"; // Assumed matching business column name
                     break;
                 default:
                     FilterColumn = "None";
@@ -116,7 +119,7 @@ namespace Ebda3Soft_AccountingSystem.BasicData
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this account?", "Confirm Delete",
+            if (MessageBox.Show("هل أنت متأكد من رغبتك في حذف هذا الحساب؟", "تأكيد الحذف",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 return;
 
@@ -124,19 +127,19 @@ namespace Ebda3Soft_AccountingSystem.BasicData
 
             if (clsAccount.DeleteAccount(AccountID))
             {
-                MessageBox.Show("Account has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حذف الحساب بنجاح.", "تم الحذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmListAccounts_Load(null, null);
             }
             else
             {
-                MessageBox.Show("Account cannot be deleted because it has linked data in the system.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لا يمكن حذف هذا الحساب لارتباطه ببيانات أخرى في النظام.", "فشلت العملية", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Allow only numbers if Account ID is selected
-            if (cbFilterBy.Text == "Account ID")
+            if (cbFilterBy.Text == "الرقم التعريفي")
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             }

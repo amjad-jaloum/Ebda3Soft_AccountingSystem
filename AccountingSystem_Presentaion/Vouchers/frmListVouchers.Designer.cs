@@ -58,8 +58,9 @@
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
             this.SuspendLayout();
+
             // 
-            // tlpForm
+            // tlpForm (Main Layout Splitter)
             // 
             this.tlpForm.ColumnCount = 2;
             this.tlpForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -73,6 +74,7 @@
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpForm.Size = new System.Drawing.Size(1069, 598);
             this.tlpForm.TabIndex = 1;
+
             // 
             // pbVoucherIcon
             // 
@@ -84,8 +86,9 @@
             this.pbVoucherIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbVoucherIcon.TabIndex = 1;
             this.pbVoucherIcon.TabStop = false;
+
             // 
-            // tlpMain
+            // tlpMain (Inner Content Layout)
             // 
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -101,8 +104,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpMain.Size = new System.Drawing.Size(883, 592);
             this.tlpMain.TabIndex = 0;
+
             // 
-            // dgvVouchers
+            // dgvVouchers (Data Grid View for Vouchers)
             // 
             this.dgvVouchers.AllowUserToAddRows = false;
             this.dgvVouchers.AllowUserToDeleteRows = false;
@@ -120,15 +124,17 @@
             this.dgvVouchers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVouchers.Size = new System.Drawing.Size(879, 468);
             this.dgvVouchers.TabIndex = 1;
+
             // 
-            // cmsVoucherMenu
+            // cmsVoucherMenu (Context Menu Strip)
             // 
             this.cmsVoucherMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsVoucherMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+    this.editToolStripMenuItem,
+    this.deleteToolStripMenuItem});
             this.cmsVoucherMenu.Name = "cmsVoucherMenu";
             this.cmsVoucherMenu.Size = new System.Drawing.Size(104, 48);
+
             // 
             // editToolStripMenuItem
             // 
@@ -136,6 +142,7 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.editToolStripMenuItem.Text = "تعديل";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+
             // 
             // deleteToolStripMenuItem
             // 
@@ -143,8 +150,9 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.deleteToolStripMenuItem.Text = "حذف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+
             // 
-            // tlpMainHeader
+            // tlpMainHeader (Header Area)
             // 
             this.tlpMainHeader.ColumnCount = 2;
             this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -159,8 +167,9 @@
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMainHeader.Size = new System.Drawing.Size(879, 56);
             this.tlpMainHeader.TabIndex = 2;
+
             // 
-            // MainHeaderPanel
+            // MainHeaderPanel (Filtering Components)
             // 
             this.MainHeaderPanel.Controls.Add(this.txtFilterValue);
             this.MainHeaderPanel.Controls.Add(this.cbVoucherType);
@@ -172,6 +181,7 @@
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(695, 52);
             this.MainHeaderPanel.TabIndex = 0;
+
             // 
             // txtFilterValue
             // 
@@ -183,34 +193,37 @@
             this.txtFilterValue.Visible = false;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+
             // 
-            // cbVoucherType
+            // cbVoucherType (Voucher Type Filter: All, Receipt, Expenditure)
             // 
             this.cbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVoucherType.Items.AddRange(new object[] {
-            "الكل",
-            "قبض",
-            "صرف"});
+    "الكل",
+    "قبض",
+    "صرف"});
             this.cbVoucherType.Location = new System.Drawing.Point(294, 15);
             this.cbVoucherType.Margin = new System.Windows.Forms.Padding(2);
             this.cbVoucherType.Name = "cbVoucherType";
             this.cbVoucherType.Size = new System.Drawing.Size(150, 21);
             this.cbVoucherType.TabIndex = 1;
             this.cbVoucherType.SelectedIndexChanged += new System.EventHandler(this.cbVoucherType_SelectedIndexChanged);
+
             // 
-            // cbFilterBy
+            // cbFilterBy (Field Selector Filter)
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.Items.AddRange(new object[] {
-            "لا شيء",
-            "رقم السند",
-            "اسم الحساب"});
+    "لا شيء",
+    "رقم السند",
+    "اسم الحساب"});
             this.cbFilterBy.Location = new System.Drawing.Point(448, 15);
             this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(140, 21);
             this.cbFilterBy.TabIndex = 2;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
+
             // 
             // lblFilter
             // 
@@ -222,6 +235,7 @@
             this.lblFilter.Size = new System.Drawing.Size(75, 18);
             this.lblFilter.TabIndex = 3;
             this.lblFilter.Text = "تصفية حسب:";
+
             // 
             // btnAddNewVoucher
             // 
@@ -234,8 +248,9 @@
             this.btnAddNewVoucher.TabIndex = 1;
             this.btnAddNewVoucher.Text = "إضافة سند جديد";
             this.btnAddNewVoucher.Click += new System.EventHandler(this.btnAddVoucher_Click);
+
             // 
-            // tplMainFooter
+            // tplMainFooter (Footer Area)
             // 
             this.tplMainFooter.ColumnCount = 2;
             this.tplMainFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -250,6 +265,7 @@
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tplMainFooter.Size = new System.Drawing.Size(879, 56);
             this.tplMainFooter.TabIndex = 3;
+
             // 
             // btnClose
             // 
@@ -261,8 +277,8 @@
             this.btnClose.Size = new System.Drawing.Size(260, 52);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "إغلاق";
-            this.btnClose.TextChanged += new System.EventHandler(this.btnClose_Click);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+
             // 
             // plMainfooterLable
             // 
@@ -274,6 +290,7 @@
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(611, 52);
             this.plMainfooterLable.TabIndex = 1;
+
             // 
             // lblRecordsCount
             // 
@@ -285,6 +302,7 @@
             this.lblRecordsCount.Size = new System.Drawing.Size(16, 18);
             this.lblRecordsCount.TabIndex = 0;
             this.lblRecordsCount.Text = "0";
+
             // 
             // lblRecordsNumber
             // 
@@ -296,6 +314,7 @@
             this.lblRecordsNumber.Size = new System.Drawing.Size(74, 18);
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد السندات:";
+
             // 
             // frmListVouchers
             // 
@@ -305,8 +324,8 @@
             this.Controls.Add(this.tlpForm);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmListVouchers";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes; // Support for Arabic layout direction
+            this.RightToLeftLayout = true; // Mirrors form controls and layout containers properly
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إدارة السندات المالية";
             this.Load += new System.EventHandler(this.frmListVouchers_Load);
@@ -322,9 +341,8 @@
             this.plMainfooterLable.ResumeLayout(false);
             this.plMainfooterLable.PerformLayout();
             this.ResumeLayout(false);
-
+            this.PerformLayout();
         }
-
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpForm;

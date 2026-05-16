@@ -6,11 +6,10 @@ namespace Ebda3Soft_AccountingSystem
 {
     public partial class frmAddUpdateItem : Form
     {
-        // 1. تعريف المفوض (Delegate)
-        // يرسل int وهو المعرف الخاص بالصنف الجديد
+        // 1. Define Delegate
         public delegate void DataBackEventHandler(int ItemID);
 
-        // 2. تعريف الحدث (Event) بناءً على المفوض
+        // 2. Define Event based on the Delegate
         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -35,13 +34,13 @@ namespace Ebda3Soft_AccountingSystem
         {
             if (_Mode == enMode.AddNew)
             {
-                this.Text = "Add New Item";
+                this.Text = "إضافة صنف جديد";
                 _Item = new clsItem();
                 cbUnitTypes.SelectedIndex = 0; // Default to 'Kilo'
             }
             else
             {
-                this.Text = "Update Item";
+                this.Text = "تعديل صنف";
             }
 
             txtItemName.Text = "";
@@ -54,7 +53,7 @@ namespace Ebda3Soft_AccountingSystem
 
             if (_Item == null)
             {
-                MessageBox.Show("No Item with ID = " + _ItemID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا يوجد صنف يحمل الرقم التعريفي = " + _ItemID, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -82,7 +81,7 @@ namespace Ebda3Soft_AccountingSystem
         {
             if (!ValidateChildren())
             {
-                MessageBox.Show("Complete the required field(s).", "Check Required Fileds", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("يرجى إكمال الحقول المطلوبة.", "تحقق من الحقول المطلوبة", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -98,14 +97,14 @@ namespace Ebda3Soft_AccountingSystem
 
                 // Switch mode to Update after first save
                 _Mode = enMode.Update;
-                this.Text = "Update Item";
+                this.Text = "تعديل صنف";
 
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ البيانات بنجاح.", "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataBack?.Invoke(_Item.ItemID);
             }
             else
             {
-                MessageBox.Show("Error: Data was not saved successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("خطأ: لم يتم حفظ البيانات بنجاح.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -118,11 +117,11 @@ namespace Ebda3Soft_AccountingSystem
         {
             if (string.IsNullOrEmpty(txtItemName.Text.Trim()))
             {
-                errorProvider1.SetError(txtItemName, "This filed is required");
+                errorProvider1.SetError(txtItemName, "هذا الحقل مطلوب!");
             }
             else if (clsItem.DoesItemExist(txtItemName.Text.Trim()))
             {
-                errorProvider1.SetError(txtItemName, "This item name already exists!");
+                errorProvider1.SetError(txtItemName, "اسم الصنف هذا موجود مسبقاً!");
             }
             else
             {

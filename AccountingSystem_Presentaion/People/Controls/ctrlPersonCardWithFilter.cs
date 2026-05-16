@@ -80,7 +80,7 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
         {
             switch (cbFilterBy.Text)
             {
-                case "Person ID":
+                case "الرقم التعريفي":
                     ctrlPersonCard1.LoadPersonInfo(int.Parse(txtFilterValue.Text));
                     break;
 
@@ -104,8 +104,8 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! ضع مؤشر الماوس فوق الأيقونة الحمراء لمعرفة الخطأ.",
+                    "خطأ في التحقق من البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -124,7 +124,7 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             if (string.IsNullOrEmpty(txtFilterValue.Text.Trim()))
             {
                 //e.Cancel = true;
-                errorProvider1.SetError(txtFilterValue, "This field is required!");
+                errorProvider1.SetError(txtFilterValue, "هذا الحقل مطلوب!");
             }
             else if (chxIsServiceProvider.Checked)
             {
@@ -167,7 +167,7 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             }
 
             //this will allow only digits if person id is selected
-            if (cbFilterBy.Text == "Person ID")
+            if (cbFilterBy.Text == "الرقم التعريفي")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 

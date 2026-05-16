@@ -7,10 +7,7 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 {
     public partial class frmAddUpdateVoucher : Form
     {
-        // Declare a delegate for data back
         public delegate void DataBackEventHandler(object sender, int VoucherID);
-
-        // Declare the event
         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -59,8 +56,7 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
             if (_Voucher == null)
             {
-                MessageBox.Show("لا يوجد سند بهذا الرقم = " + _VoucherID,
-                    "سند غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا يوجد سند بهذا الرقم = " + _VoucherID, "سند غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -75,7 +71,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
             else
                 rbPayment.Checked = true;
 
-            // تحميل بيانات الحساب في الكنترول
             ctrlAccountCardWithFilter1.LoadAccountInfo(_Voucher.AccountID);
             ctrlAccountCardWithFilter1.FilterEnabled = false;
         }
@@ -109,6 +104,7 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Triggers WinForms control validation built-in mechanism
             if (!this.ValidateChildren())
             {
                 MessageBox.Show("بعض الحقول غير صالحة! يرجى التأكد من الحقول التي تحمل علامة الخطأ.", "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -129,7 +125,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
                 MessageBox.Show("تم حفظ بيانات السند بنجاح.", "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Trigger the event
                 DataBack?.Invoke(this, _Voucher.VoucherID);
             }
             else
@@ -154,12 +149,21 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Allow only numbers and decimal point
+            // Allows numbers, control keys, and only one decimal point
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((TextBox)sender).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

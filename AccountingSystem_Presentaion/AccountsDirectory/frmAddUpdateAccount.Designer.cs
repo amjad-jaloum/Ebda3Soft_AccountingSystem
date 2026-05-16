@@ -33,6 +33,7 @@ namespace Ebda3Soft_AccountingSystem
             this.components = new System.ComponentModel.Container();
             this.tcAccountInfo = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new Ebda3Soft_AccountingSystem.people.Controls.ctrlPersonCardWithFilter();
             this.btnNextTab = new System.Windows.Forms.Button();
             this.tpAccountDetails = new System.Windows.Forms.TabPage();
             this.gbAccountDetails = new System.Windows.Forms.GroupBox();
@@ -45,7 +46,6 @@ namespace Ebda3Soft_AccountingSystem
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlPersonCardWithFilter1 = new Ebda3Soft_AccountingSystem.people.Controls.ctrlPersonCardWithFilter();
             this.tcAccountInfo.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpAccountDetails.SuspendLayout();
@@ -73,8 +73,20 @@ namespace Ebda3Soft_AccountingSystem
             this.tpPersonInfo.Padding = new System.Windows.Forms.Padding(10);
             this.tpPersonInfo.Size = new System.Drawing.Size(1061, 595);
             this.tpPersonInfo.TabIndex = 0;
-            this.tpPersonInfo.Text = "Person Info";
+            this.tpPersonInfo.Text = "معلومات الشخص";
             this.tpPersonInfo.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(174, 76);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.ctrlPersonCardWithFilter1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(694, 401);
+            this.ctrlPersonCardWithFilter1.TabIndex = 1;
             // 
             // btnNextTab
             // 
@@ -83,7 +95,7 @@ namespace Ebda3Soft_AccountingSystem
             this.btnNextTab.Name = "btnNextTab";
             this.btnNextTab.Size = new System.Drawing.Size(150, 45);
             this.btnNextTab.TabIndex = 0;
-            this.btnNextTab.Text = "Next";
+            this.btnNextTab.Text = "التالي";
             this.btnNextTab.UseVisualStyleBackColor = true;
             this.btnNextTab.Click += new System.EventHandler(this.btnNextTab_Click);
             // 
@@ -97,7 +109,7 @@ namespace Ebda3Soft_AccountingSystem
             this.tpAccountDetails.Padding = new System.Windows.Forms.Padding(3);
             this.tpAccountDetails.Size = new System.Drawing.Size(1061, 595);
             this.tpAccountDetails.TabIndex = 1;
-            this.tpAccountDetails.Text = "Account Details";
+            this.tpAccountDetails.Text = "تفاصيل الحساب";
             this.tpAccountDetails.UseVisualStyleBackColor = true;
             // 
             // gbAccountDetails
@@ -114,12 +126,12 @@ namespace Ebda3Soft_AccountingSystem
             this.gbAccountDetails.Size = new System.Drawing.Size(534, 273);
             this.gbAccountDetails.TabIndex = 0;
             this.gbAccountDetails.TabStop = false;
-            this.gbAccountDetails.Text = "Account Financial Info";
+            this.gbAccountDetails.Text = "البيانات المالية للحساب";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 40);
+            this.label1.Location = new System.Drawing.Point(321, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 21);
             this.label1.TabIndex = 5;
@@ -128,15 +140,15 @@ namespace Ebda3Soft_AccountingSystem
             // lblAccountId
             // 
             this.lblAccountId.AutoSize = true;
-            this.lblAccountId.Location = new System.Drawing.Point(45, 40);
+            this.lblAccountId.Location = new System.Drawing.Point(364, 40);
             this.lblAccountId.Name = "lblAccountId";
-            this.lblAccountId.Size = new System.Drawing.Size(88, 21);
+            this.lblAccountId.Size = new System.Drawing.Size(90, 21);
             this.lblAccountId.TabIndex = 4;
-            this.lblAccountId.Text = "Account ID:";
+            this.lblAccountId.Text = "رقم الحساب:";
             // 
             // txtAccountName
             // 
-            this.txtAccountName.Location = new System.Drawing.Point(170, 93);
+            this.txtAccountName.Location = new System.Drawing.Point(78, 93);
             this.txtAccountName.Name = "txtAccountName";
             this.txtAccountName.Size = new System.Drawing.Size(280, 29);
             this.txtAccountName.TabIndex = 0;
@@ -147,12 +159,12 @@ namespace Ebda3Soft_AccountingSystem
             this.cbAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAccountType.FormattingEnabled = true;
             this.cbAccountType.Items.AddRange(new object[] {
-            "Customer",
-            "Supplier",
-            "Employee",
-            "ServiceProvider",
-            "Partner"});
-            this.cbAccountType.Location = new System.Drawing.Point(170, 161);
+            "عميل",
+            "مورد",
+            "موظف",
+            "مزود خدمة",
+            "شريك"});
+            this.cbAccountType.Location = new System.Drawing.Point(78, 161);
             this.cbAccountType.Name = "cbAccountType";
             this.cbAccountType.Size = new System.Drawing.Size(280, 29);
             this.cbAccountType.TabIndex = 1;
@@ -160,20 +172,20 @@ namespace Ebda3Soft_AccountingSystem
             // labelAccountName
             // 
             this.labelAccountName.AutoSize = true;
-            this.labelAccountName.Location = new System.Drawing.Point(45, 96);
+            this.labelAccountName.Location = new System.Drawing.Point(364, 96);
             this.labelAccountName.Name = "labelAccountName";
-            this.labelAccountName.Size = new System.Drawing.Size(115, 21);
+            this.labelAccountName.Size = new System.Drawing.Size(93, 21);
             this.labelAccountName.TabIndex = 2;
-            this.labelAccountName.Text = "Account Name:";
+            this.labelAccountName.Text = "اسم الحساب:";
             // 
             // labelAccountType
             // 
             this.labelAccountType.AutoSize = true;
-            this.labelAccountType.Location = new System.Drawing.Point(45, 164);
+            this.labelAccountType.Location = new System.Drawing.Point(364, 164);
             this.labelAccountType.Name = "labelAccountType";
-            this.labelAccountType.Size = new System.Drawing.Size(105, 21);
+            this.labelAccountType.Size = new System.Drawing.Size(89, 21);
             this.labelAccountType.TabIndex = 3;
-            this.labelAccountType.Text = "Account Type:";
+            this.labelAccountType.Text = "نوع الحساب:";
             // 
             // btnSave
             // 
@@ -182,7 +194,7 @@ namespace Ebda3Soft_AccountingSystem
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 45);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -193,24 +205,13 @@ namespace Ebda3Soft_AccountingSystem
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 45);
             this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(174, 76);
-            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(694, 401);
-            this.ctrlPersonCardWithFilter1.TabIndex = 1;
             // 
             // frmAddUpdateAccount
             // 
@@ -222,9 +223,11 @@ namespace Ebda3Soft_AccountingSystem
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateAccount";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Account";
+            this.Text = "إضافة حساب";
             this.Activated += new System.EventHandler(this.frmAddUpdateAccount_Activated);
             this.Load += new System.EventHandler(this.frmAddUpdateAccount_Load);
             this.tcAccountInfo.ResumeLayout(false);
@@ -236,6 +239,7 @@ namespace Ebda3Soft_AccountingSystem
             this.ResumeLayout(false);
 
         }
+        
         #endregion
 
         private System.Windows.Forms.TabControl tcAccountInfo;

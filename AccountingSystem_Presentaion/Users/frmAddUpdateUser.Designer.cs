@@ -76,7 +76,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabPage1.Size = new System.Drawing.Size(720, 449);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Person info";
+            this.tabPage1.Text = "معلومات الشخص";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // ctrlPersonCardWithFilter1
@@ -84,7 +84,7 @@
             this.ctrlPersonCardWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ctrlPersonCardWithFilter1.FilterEnabled = true;
             this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 6);
-            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
             this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
@@ -101,7 +101,7 @@
             this.btnNextTab.Name = "btnNextTab";
             this.btnNextTab.Size = new System.Drawing.Size(706, 31);
             this.btnNextTab.TabIndex = 8;
-            this.btnNextTab.Text = "Next";
+            this.btnNextTab.Text = "التالي";
             this.btnNextTab.UseVisualStyleBackColor = true;
             this.btnNextTab.Click += new System.EventHandler(this.btnPersonInfoNext_Click);
             // 
@@ -114,7 +114,7 @@
             this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tpLoginInfo.Size = new System.Drawing.Size(720, 449);
             this.tpLoginInfo.TabIndex = 1;
-            this.tpLoginInfo.Text = "Login info";
+            this.tpLoginInfo.Text = "معلومات تسجيل الدخول";
             this.tpLoginInfo.UseVisualStyleBackColor = true;
             // 
             // gbUserDetails
@@ -137,7 +137,7 @@
             this.gbUserDetails.Size = new System.Drawing.Size(322, 337);
             this.gbUserDetails.TabIndex = 0;
             this.gbUserDetails.TabStop = false;
-            this.gbUserDetails.Text = "User Details";
+            this.gbUserDetails.Text = "تفاصيل المستخدم";
             // 
             // lblUserID
             // 
@@ -167,9 +167,9 @@
             this.label1.Location = new System.Drawing.Point(57, 141);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 21);
+            this.label1.Size = new System.Drawing.Size(117, 21);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Confirm Password";
+            this.label1.Text = "تأكيد كلمة المرور";
             // 
             // chkIsActive
             // 
@@ -180,9 +180,9 @@
             this.chkIsActive.Location = new System.Drawing.Point(119, 199);
             this.chkIsActive.Margin = new System.Windows.Forms.Padding(2);
             this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(84, 25);
+            this.chkIsActive.Size = new System.Drawing.Size(117, 25);
             this.chkIsActive.TabIndex = 13;
-            this.chkIsActive.Text = "Is active";
+            this.chkIsActive.Text = "هل هو نشط؟";
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
             // btnClose
@@ -193,7 +193,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(201, 27);
             this.btnClose.TabIndex = 14;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -205,7 +205,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(202, 27);
             this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -236,9 +236,9 @@
             this.label3.Location = new System.Drawing.Point(57, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 21);
+            this.label3.Size = new System.Drawing.Size(83, 21);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Password";
+            this.label3.Text = "كلمة المرور";
             // 
             // label2
             // 
@@ -247,9 +247,9 @@
             this.label2.Location = new System.Drawing.Point(57, 46);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 21);
+            this.label2.Size = new System.Drawing.Size(102, 21);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Username";
+            this.label2.Text = "اسم المستخدم";
             // 
             // errorProvider1
             // 
@@ -275,9 +275,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateUser";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add/Update User";
+            this.Text = "إضافة / تعديل مستخدم";
             this.Activated += new System.EventHandler(this.frmAddUpdateUser_Activated);
             this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
             this.tcUserInfo.ResumeLayout(false);
@@ -290,7 +292,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.TabControl tcUserInfo;

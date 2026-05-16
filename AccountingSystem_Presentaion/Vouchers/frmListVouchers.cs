@@ -22,7 +22,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
             if (dgvVouchers.Rows.Count > 0)
             {
-                // ضبط أسماء الأعمدة بالعربية وتنسيقها
                 dgvVouchers.Columns["VoucherId"].HeaderText = "رقم السند";
                 dgvVouchers.Columns["VoucherId"].Width = 110;
 
@@ -38,7 +37,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
                 dgvVouchers.Columns["TypeName"].HeaderText = "نوع السند";
                 dgvVouchers.Columns["TypeName"].Width = 100;
 
-                // hide type - used only for filtering, not for display
                 dgvVouchers.Columns["Type"].Visible = false;
 
                 dgvVouchers.Columns["CreatedDate"].HeaderText = "التاريخ";
@@ -49,8 +47,8 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
         private void frmListVouchers_Load(object sender, EventArgs e)
         {
             _RefreshVouchersList();
-            cbFilterBy.SelectedIndex = 0; // الافتراضي: لا شيء
-            cbVoucherType.SelectedIndex = 0; // إعادة تعيين نوع السند إلى "الكل"
+            cbFilterBy.SelectedIndex = 0;
+            cbVoucherType.SelectedIndex = 0;
         }
 
         private void btnAddVoucher_Click(object sender, EventArgs e)
@@ -62,6 +60,9 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Prevent NullReferenceException if DataGridView is empty
+            if (dgvVouchers.CurrentRow == null) return;
+
             int VoucherID = (int)dgvVouchers.CurrentRow.Cells[0].Value;
             frmAddUpdateVoucher frm = new frmAddUpdateVoucher(VoucherID);
             frm.ShowDialog();
@@ -70,6 +71,9 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Prevent NullReferenceException if DataGridView is empty
+            if (dgvVouchers.CurrentRow == null) return;
+
             if (MessageBox.Show("هل أنت متأكد من حذف هذا السند؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 int VoucherID = (int)dgvVouchers.CurrentRow.Cells[0].Value;
@@ -91,7 +95,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // السماح بالأرقام فقط إذا كان الفلتر هو رقم السند
             if (cbFilterBy.Text == "رقم السند")
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -110,7 +113,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // إظهار أو إخفاء حقل النص بناءً على خيار الفلترة
             txtFilterValue.Visible = (cbFilterBy.SelectedIndex != 0);
 
             if (txtFilterValue.Visible)
@@ -124,16 +126,16 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
         private void _ApplyCombinedFilter()
         {
+            // Defensive check to handle uninitialized grid
+            if (_dtAllVouchers == null) return;
+
             string FilterClause = "";
 
-            // 1. منطق فلترة النوع (Type)
-            // بفرض أن Index 0 = الكل، 1 = قبض، 2 = صرف
             if (cbVoucherType.SelectedIndex > 0)
             {
                 FilterClause = string.Format("Type = {0}", cbVoucherType.SelectedIndex);
             }
 
-            // 2. منطق فلترة نص البحث (Search Value)
             string SearchValue = txtFilterValue.Text.Trim();
             string FilterColumn = "";
 
@@ -149,7 +151,6 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
 
             if (!string.IsNullOrEmpty(SearchValue) && FilterColumn != "")
             {
-                // إذا كان هناك فلتر نوع مسبقاً، نضيف AND
                 if (FilterClause != "")
                     FilterClause += " AND ";
 
@@ -159,10 +160,7 @@ namespace Ebda3Soft_AccountingSystem.AccountsDirectory
                     FilterClause += string.Format("[{0}] LIKE '{1}%'", FilterColumn, SearchValue);
             }
 
-            // تطبيق الفلتر النهائي
             _dtAllVouchers.DefaultView.RowFilter = FilterClause;
-
-            // تحديث عدد السجلات
             lblRecordsCount.Text = dgvVouchers.Rows.Count.ToString();
         }
     }

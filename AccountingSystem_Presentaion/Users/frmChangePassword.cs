@@ -40,8 +40,8 @@ namespace Ebda3Soft_AccountingSystem.Users
             if (_User == null)
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Could not Find User with id = " + _UserID,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لم يتم العثور على مستخدم بالرقم التعريفي = " + _UserID,
+                    "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
 
                 return;
@@ -54,7 +54,7 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (string.IsNullOrEmpty(txtCurrentPassword.Text.Trim()))
             {
-                errorProvider1.SetError(txtCurrentPassword, "Current password cannot be blank");
+                errorProvider1.SetError(txtCurrentPassword, "لا يمكن ترك حقل كلمة المرور الحالية فارغاً");
                 return;
             }
             else
@@ -64,7 +64,7 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (_User.Password != txtCurrentPassword.Text.Trim())
             {
-                errorProvider1.SetError(txtCurrentPassword, "Current password is wrong!");
+                errorProvider1.SetError(txtCurrentPassword, "كلمة المرور الحالية غير صحيحة!");
                 return;
             }
             else
@@ -77,7 +77,7 @@ namespace Ebda3Soft_AccountingSystem.Users
         {
             if (string.IsNullOrEmpty(txtNewPassword.Text.Trim()))
             {
-                errorProvider1.SetError(txtNewPassword, "New Password cannot be blank");
+                errorProvider1.SetError(txtNewPassword, "لا يمكن ترك حقل كلمة المرور الجديدة فارغاً");
             }
             else
             {
@@ -89,7 +89,7 @@ namespace Ebda3Soft_AccountingSystem.Users
         {
             if (txtConfirmPassword.Text.Trim() != txtNewPassword.Text.Trim())
             {
-                errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match New Password!");
+                errorProvider1.SetError(txtConfirmPassword, "تأكيد كلمة المرور غير متطابق مع كلمة المرور الجديدة!");
             }
             else
             {
@@ -102,8 +102,8 @@ namespace Ebda3Soft_AccountingSystem.Users
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! قم بتمرير مؤشر الماوس فوق الأيقونة الحمراء لمشاهدة الخطأ",
+                    "خطأ في التحقق من البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -111,14 +111,14 @@ namespace Ebda3Soft_AccountingSystem.Users
 
             if (_User.Save())
             {
-                MessageBox.Show("Password Changed Successfully.",
-                   "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم تغيير كلمة المرور بنجاح.",
+                   "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _ResetDefualtValues();
             }
             else
             {
-                MessageBox.Show("An Erro Occured, Password did not change.",
-                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("حدث خطأ، لم يتم تغيير كلمة المرور.",
+                   "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

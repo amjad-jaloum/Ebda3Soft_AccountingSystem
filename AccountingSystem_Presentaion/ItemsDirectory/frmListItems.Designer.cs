@@ -137,21 +137,21 @@
             // 
             this.showItemInfoToolStripMenuItem.Name = "showItemInfoToolStripMenuItem";
             this.showItemInfoToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.showItemInfoToolStripMenuItem.Text = "Show Info";
+            this.showItemInfoToolStripMenuItem.Text = "عرض التفاصيل";
             this.showItemInfoToolStripMenuItem.Click += new System.EventHandler(this.showItemInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Text = "تعديل الصنف";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Text = "حذف الصنف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // tlpMainHeader
@@ -192,10 +192,10 @@
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.Items.AddRange(new object[] {
-            "None",
-            "Item ID",
-            "Item Name",
-            "Unit Name"});
+            "لا شيء",
+            "الرقم التعريفي",
+            "اسم الصنف",
+            "اسم الوحدة"});
             this.cbFilter.Location = new System.Drawing.Point(448, 15);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(140, 21);
@@ -241,7 +241,7 @@
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Windows.Forms.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(3, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(258, 48);
@@ -305,7 +305,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpForm;

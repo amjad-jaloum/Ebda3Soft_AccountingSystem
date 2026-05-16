@@ -168,10 +168,10 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.Items.AddRange(new object[] {
-            "None",
-            "Account ID",
-            "Account Name",
-            "Type"});
+            "لا شيء",
+            "الرقم التعريفي",
+            "اسم الحساب",
+            "النوع"});
             this.cbFilterBy.Location = new System.Drawing.Point(478, 15);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(140, 21);
@@ -266,21 +266,21 @@ namespace Ebda3Soft_AccountingSystem.BasicData
             // 
             this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
             this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.editAccountToolStripMenuItem.Text = "Edit Account";
+            this.editAccountToolStripMenuItem.Text = "تعديل الحساب";
             this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteAccountToolStripMenuItem
             // 
             this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
             this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.deleteAccountToolStripMenuItem.Text = "Delete Account";
+            this.deleteAccountToolStripMenuItem.Text = "حذف الحساب";
             this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // showAccountInfoToolStripMenuItem
             // 
             this.showAccountInfoToolStripMenuItem.Name = "showAccountInfoToolStripMenuItem";
             this.showAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.showAccountInfoToolStripMenuItem.Text = "Show Account Info";
+            this.showAccountInfoToolStripMenuItem.Text = "عرض تفاصيل الحساب";
             this.showAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // frmListAccounts

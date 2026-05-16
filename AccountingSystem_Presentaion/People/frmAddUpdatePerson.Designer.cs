@@ -83,7 +83,7 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.24022F));
@@ -102,11 +102,11 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 114);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 179F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(801, 179);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -114,8 +114,8 @@ namespace Ebda3Soft_AccountingSystem.people
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(208, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(591, 175);
             this.panel1.TabIndex = 0;
@@ -135,7 +135,7 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -145,12 +145,11 @@ namespace Ebda3Soft_AccountingSystem.people
             // 
             // tbEmail
             // 
-            this.tbEmail.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbEmail.Location = new System.Drawing.Point(149, 58);
-            this.tbEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbEmail.Location = new System.Drawing.Point(299, 45);
+            this.tbEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(173, 26);
+            this.tbEmail.Size = new System.Drawing.Size(143, 26);
             this.tbEmail.TabIndex = 8;
             this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmail_Validating);
             // 
@@ -159,19 +158,18 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 43);
+            this.label3.Location = new System.Drawing.Point(446, 43);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 43);
             this.label3.TabIndex = 34;
-            this.label3.Text = "Email:";
+            this.label3.Text = "البريد الإلكتروني:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tbPhone
             // 
-            this.tbPhone.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbPhone.Location = new System.Drawing.Point(443, 15);
+            this.tbPhone.Location = new System.Drawing.Point(20, 2);
             this.tbPhone.Margin = new System.Windows.Forms.Padding(2, 2, 20, 2);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(128, 26);
@@ -183,12 +181,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 0);
+            this.label2.Location = new System.Drawing.Point(152, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 43);
             this.label2.TabIndex = 32;
-            this.label2.Text = "Phone:";
+            this.label2.Text = "الهاتف:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // panel2
@@ -196,8 +194,8 @@ namespace Ebda3Soft_AccountingSystem.people
             this.panel2.Controls.Add(this.rbFemale);
             this.panel2.Controls.Add(this.rbMale);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(149, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(269, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(173, 39);
             this.panel2.TabIndex = 31;
@@ -207,11 +205,11 @@ namespace Ebda3Soft_AccountingSystem.people
             this.rbFemale.AutoSize = true;
             this.rbFemale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbFemale.Location = new System.Drawing.Point(67, 12);
-            this.rbFemale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbFemale.Margin = new System.Windows.Forms.Padding(2);
             this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(78, 25);
+            this.rbFemale.Size = new System.Drawing.Size(55, 25);
             this.rbFemale.TabIndex = 6;
-            this.rbFemale.Text = "Female";
+            this.rbFemale.Text = "أنثى";
             this.rbFemale.UseVisualStyleBackColor = true;
             this.rbFemale.Click += new System.EventHandler(this.rbFemale_Click);
             // 
@@ -221,12 +219,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.rbMale.Checked = true;
             this.rbMale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMale.Location = new System.Drawing.Point(1, 12);
-            this.rbMale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbMale.Margin = new System.Windows.Forms.Padding(2);
             this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(62, 25);
+            this.rbMale.Size = new System.Drawing.Size(51, 25);
             this.rbMale.TabIndex = 5;
             this.rbMale.TabStop = true;
-            this.rbMale.Text = "Male";
+            this.rbMale.Text = "ذكر";
             this.rbMale.UseVisualStyleBackColor = true;
             this.rbMale.Click += new System.EventHandler(this.rbMale_Click);
             // 
@@ -235,12 +233,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(2, 0);
+            this.label12.Location = new System.Drawing.Point(446, 0);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(143, 43);
             this.label12.TabIndex = 30;
-            this.label12.Text = "Gender:";
+            this.label12.Text = "الجنس:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tableLayoutPanel5
@@ -249,8 +247,8 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.pbUserImage, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(597, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.55975F));
@@ -262,7 +260,7 @@ namespace Ebda3Soft_AccountingSystem.people
             this.pbUserImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbUserImage.Image = global::Ebda3Soft_AccountingSystem.Properties.Resources.male;
             this.pbUserImage.Location = new System.Drawing.Point(2, 2);
-            this.pbUserImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbUserImage.Margin = new System.Windows.Forms.Padding(2);
             this.pbUserImage.Name = "pbUserImage";
             this.pbUserImage.Size = new System.Drawing.Size(198, 171);
             this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -290,7 +288,7 @@ namespace Ebda3Soft_AccountingSystem.people
             this.tableLayoutPanel6.Controls.Add(this.tbFirstName, 1, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.43956F));
@@ -303,20 +301,18 @@ namespace Ebda3Soft_AccountingSystem.people
             // 
             // tbLastName
             // 
-            this.tbLastName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbLastName.Location = new System.Drawing.Point(595, 86);
-            this.tbLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbLastName.Location = new System.Drawing.Point(63, 86);
+            this.tbLastName.Margin = new System.Windows.Forms.Padding(2);
             this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(204, 26);
+            this.tbLastName.Size = new System.Drawing.Size(143, 26);
             this.tbLastName.TabIndex = 4;
             this.tbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbThirdName
             // 
-            this.tbThirdName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbThirdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbThirdName.Location = new System.Drawing.Point(446, 86);
+            this.tbThirdName.Location = new System.Drawing.Point(228, 86);
             this.tbThirdName.Margin = new System.Windows.Forms.Padding(2, 2, 20, 2);
             this.tbThirdName.Name = "tbThirdName";
             this.tbThirdName.Size = new System.Drawing.Size(127, 26);
@@ -324,10 +320,9 @@ namespace Ebda3Soft_AccountingSystem.people
             // 
             // tbSecondName
             // 
-            this.tbSecondName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbSecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbSecondName.Location = new System.Drawing.Point(329, 86);
-            this.tbSecondName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSecondName.Location = new System.Drawing.Point(359, 86);
+            this.tbSecondName.Margin = new System.Windows.Forms.Padding(2);
             this.tbSecondName.Name = "tbSecondName";
             this.tbSecondName.Size = new System.Drawing.Size(113, 26);
             this.tbSecondName.TabIndex = 2;
@@ -337,12 +332,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(2, 84);
+            this.label8.Location = new System.Drawing.Point(654, 84);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(145, 24);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Name:";
+            this.label8.Text = "الاسم:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
@@ -350,12 +345,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(595, 51);
+            this.label11.Location = new System.Drawing.Point(2, 51);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(204, 33);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Last";
+            this.label11.Text = "الأخير";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
@@ -363,12 +358,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(446, 51);
+            this.label10.Location = new System.Drawing.Point(210, 51);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(145, 33);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Third";
+            this.label10.Text = "الثالث";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -376,12 +371,12 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(329, 51);
+            this.label9.Location = new System.Drawing.Point(359, 51);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 33);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Second";
+            this.label9.Text = "الثاني";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblInsertedID
@@ -389,13 +384,13 @@ namespace Ebda3Soft_AccountingSystem.people
             this.lblInsertedID.AutoSize = true;
             this.lblInsertedID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblInsertedID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInsertedID.Location = new System.Drawing.Point(151, 0);
+            this.lblInsertedID.Location = new System.Drawing.Point(476, 0);
             this.lblInsertedID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInsertedID.Name = "lblInsertedID";
             this.lblInsertedID.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.lblInsertedID.Size = new System.Drawing.Size(174, 51);
             this.lblInsertedID.TabIndex = 0;
-            this.lblInsertedID.Text = "N/A";
+            this.lblInsertedID.Text = "غير متاح";
             this.lblInsertedID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -403,13 +398,13 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Location = new System.Drawing.Point(654, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(145, 51);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Person ID:";
+            this.label1.Text = "الرقم التعريفي:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
@@ -417,22 +412,21 @@ namespace Ebda3Soft_AccountingSystem.people
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(151, 51);
+            this.label4.Location = new System.Drawing.Point(476, 51);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(174, 33);
             this.label4.TabIndex = 0;
-            this.label4.Text = "First";
+            this.label4.Text = "الأول";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbFirstName.Location = new System.Drawing.Point(151, 86);
-            this.tbFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbFirstName.Location = new System.Drawing.Point(507, 86);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(174, 26);
+            this.tbFirstName.Size = new System.Drawing.Size(143, 26);
             this.tbFirstName.TabIndex = 1;
             this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
@@ -441,9 +435,8 @@ namespace Ebda3Soft_AccountingSystem.people
             this.flowLayoutPanel1.Controls.Add(this.btnSave);
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 297);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(801, 39);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -452,23 +445,24 @@ namespace Ebda3Soft_AccountingSystem.people
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSave.Location = new System.Drawing.Point(596, 2);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(203, 37);
             this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnClose.Location = new System.Drawing.Point(389, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(203, 37);
             this.btnClose.TabIndex = 10;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -484,12 +478,14 @@ namespace Ebda3Soft_AccountingSystem.people
             this.ClientSize = new System.Drawing.Size(825, 358);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAddUpdatePerson";
-            this.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Padding = new System.Windows.Forms.Padding(10);
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adding a new Person";
+            this.Text = "إضافة شخص جديد";
             this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -507,7 +503,6 @@ namespace Ebda3Soft_AccountingSystem.people
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

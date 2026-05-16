@@ -39,7 +39,7 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             if (_Person == null)
             {
                 ResetPersonInfo();
-                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لا يوجد شخص يحمل الرقم التعريفي = " + PersonID.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
             lblPersonID.Text = _Person.PersonID.ToString();
             _PersonID = _Person.PersonID;
             lblName.Text = _Person.FullName;
-            lblGender.Text = Convert.ToBoolean(_Person.Gender) ? "Female" : "Male";
+            lblGender.Text = Convert.ToBoolean(_Person.Gender) ? "أنثى" : "ذكر";
             lblEmail.Text = _Person.Email;
             lblPhone.Text = _Person.Phone;
             pbPersonImage.Image = GetDefaultImage();
@@ -75,14 +75,14 @@ namespace Ebda3Soft_AccountingSystem.people.Controls
 
         public void FilterFocus()
         {
-            
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(_Person == null)
+            if (_Person == null)
             {
-                MessageBox.Show("No Person Selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لم يتم اختيار أي شخص", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

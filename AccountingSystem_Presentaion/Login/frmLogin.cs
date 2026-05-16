@@ -22,8 +22,8 @@ namespace _19___Project___DVLD
         {
             if (!ValidateChildren())
             {
-                MessageBox.Show("Please fix the validation errors before login",
-                    "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("يرجى إصلاح أخطاء التحقق من البيانات قبل تسجيل الدخول",
+                    "خطأ في التحقق من البيانات", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -44,14 +44,14 @@ namespace _19___Project___DVLD
                     frm.ShowDialog();
                 }
                 else
-                    MessageBox.Show("The user is not allowed to login, please try another user",
-                        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("هذا المستخدم غير مسموح له بتسجيل الدخول، يرجى المحاولة بمستخدم آخر",
+                        "تم رفض التصريح", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
-                MessageBox.Show("The Username/Password is wrong",
-                    "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("اسم المستخدم أو كلمة المرور غير صحيحة",
+                    "تم رفض التصريح", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -77,7 +77,7 @@ namespace _19___Project___DVLD
         {
             if (string.IsNullOrEmpty(tbUsername.Text.Trim()))
             {
-                errorProvider1.SetError(tbUsername, "Username is required");
+                errorProvider1.SetError(tbUsername, "اسم المستخدم مطلوب!");
                 e.Cancel = true;
             }
             else
@@ -90,7 +90,7 @@ namespace _19___Project___DVLD
         {
             if (string.IsNullOrEmpty(tbPassword.Text.Trim()))
             {
-                errorProvider1.SetError(tbPassword, "Password is required");
+                errorProvider1.SetError(tbPassword, "كلمة المرور مطلوبة!");
                 e.Cancel = true;
             }
             else

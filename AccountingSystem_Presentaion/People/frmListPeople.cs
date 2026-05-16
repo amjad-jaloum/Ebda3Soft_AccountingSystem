@@ -35,31 +35,31 @@ namespace Ebda3Soft_AccountingSystem.people
 
             if (dgvPeople.Rows.Count > 0)
             {
-                dgvPeople.Columns[0].HeaderText = "Person ID";
+                dgvPeople.Columns[0].HeaderText = "الرقم التعريفي";
                 dgvPeople.Columns[0].Width = 110;
 
-                dgvPeople.Columns[1].HeaderText = "First Name";
+                dgvPeople.Columns[1].HeaderText = "الاسم الأول";
                 dgvPeople.Columns[1].Width = 120;
 
-                dgvPeople.Columns[2].HeaderText = "Second Name";
+                dgvPeople.Columns[2].HeaderText = "الاسم الثاني";
                 dgvPeople.Columns[2].Width = 140;
 
-                dgvPeople.Columns[3].HeaderText = "Third Name";
+                dgvPeople.Columns[3].HeaderText = "الاسم الثالث";
                 dgvPeople.Columns[3].Width = 120;
 
-                dgvPeople.Columns[4].HeaderText = "Last Name";
+                dgvPeople.Columns[4].HeaderText = "الاسم الأخير";
                 dgvPeople.Columns[4].Width = 120;
 
-                dgvPeople.Columns[5].HeaderText = "Gender";
+                dgvPeople.Columns[5].HeaderText = "الجنس";
                 dgvPeople.Columns[5].Width = 120;
 
-                dgvPeople.Columns[6].HeaderText = "Gender Caption";
+                dgvPeople.Columns[6].HeaderText = "حالة الجنس";
                 dgvPeople.Columns[6].Width = 170;
 
-                dgvPeople.Columns[7].HeaderText = "Phone";
+                dgvPeople.Columns[7].HeaderText = "الهاتف";
                 dgvPeople.Columns[7].Width = 120;
 
-                dgvPeople.Columns[8].HeaderText = "Email";
+                dgvPeople.Columns[8].HeaderText = "البريد الإلكتروني";
                 dgvPeople.Columns[8].Width = 200;
             }
         }
@@ -85,7 +85,7 @@ namespace Ebda3Soft_AccountingSystem.people
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mtxbSearch.Enabled = cbFilter.Text != "None";
+            mtxbSearch.Enabled = cbFilter.Text != "لا شيء";
             if (mtxbSearch.Enabled)
             {
                 mtxbSearch.Text = string.Empty;
@@ -97,37 +97,38 @@ namespace Ebda3Soft_AccountingSystem.people
         {
             string FilterColumn = "";
 
+            // Matches the localized items in your ComboBox
             switch (cbFilter.Text)
             {
-                case "Person ID":
+                case "الرقم التعريفي":
                     FilterColumn = "PersonID";
                     break;
 
-                case "First Name":
+                case "الاسم الأول":
                     FilterColumn = "FirstName";
                     break;
 
-                case "Second Name":
+                case "الاسم الثاني":
                     FilterColumn = "SecondName";
                     break;
 
-                case "Third Name":
+                case "الاسم الثالث":
                     FilterColumn = "ThirdName";
                     break;
 
-                case "Last Name":
+                case "الاسم الأخير":
                     FilterColumn = "LastName";
                     break;
 
-                case "Gender":
+                case "الجنس":
                     FilterColumn = "GenderCaption";
                     break;
 
-                case "Phone":
+                case "الهاتف":
                     FilterColumn = "Phone";
                     break;
 
-                case "Email":
+                case "البريد الإلكتروني":
                     FilterColumn = "Email";
                     break;
 
@@ -157,16 +158,15 @@ namespace Ebda3Soft_AccountingSystem.people
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete Person [" + dgvPeople.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("هل أنت متأكد أنك تريد حذف الشخص الذي يحمل الرقم التعريفي [" + dgvPeople.CurrentRow.Cells[0].Value + "]؟", "تأكيد الحذف", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (clsPerson.DeletePerson((int)dgvPeople.CurrentRow.Cells[0].Value))
                 {
-                    MessageBox.Show("Person Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("تم حذف الشخص بنجاح.", "عملية ناجحة", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _RefreshPeopleList();
                 }
                 else
-                    MessageBox.Show("Person was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    MessageBox.Show("لم يتم حذف الشخص لوجود بيانات أخرى مرتبطة به.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -179,7 +179,7 @@ namespace Ebda3Soft_AccountingSystem.people
 
         private void mtxbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbFilter.Text == "Person ID")
+            if (cbFilter.Text == "الرقم التعريفي")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {

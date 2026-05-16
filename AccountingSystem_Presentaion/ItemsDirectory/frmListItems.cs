@@ -27,16 +27,16 @@ namespace Ebda3Soft_AccountingSystem
 
             if (dgvItems.Rows.Count > 0)
             {
-                dgvItems.Columns[0].HeaderText = "Item ID";
+                dgvItems.Columns[0].HeaderText = "رقم الصنف";
                 dgvItems.Columns[0].Width = 110;
 
-                dgvItems.Columns[1].HeaderText = "Item Name";
+                dgvItems.Columns[1].HeaderText = "اسم الصنف";
                 dgvItems.Columns[1].Width = 350;
 
-                dgvItems.Columns[2].HeaderText = "Unit Name";
+                dgvItems.Columns[2].HeaderText = "اسم الوحدة";
                 dgvItems.Columns[2].Width = 150;
 
-                dgvItems.Columns[3].HeaderText = "Default Unit Price";
+                dgvItems.Columns[3].HeaderText = "سعر الوحدة الإفتراضي";
                 dgvItems.Columns[3].Width = 150;
             }
         }
@@ -51,7 +51,7 @@ namespace Ebda3Soft_AccountingSystem
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtSearch.Visible = (cbFilter.Text != "None");
+            txtSearch.Visible = (cbFilter.Text != "لا شيء");
 
             if (txtSearch.Visible)
             {
@@ -69,16 +69,16 @@ namespace Ebda3Soft_AccountingSystem
         {
             string FilterColumn = "";
 
-            // Map UI filter selection to DataTable column names
+            // Map Arabic UI selection to backend DataTable column names
             switch (cbFilter.Text)
             {
-                case "Item ID":
+                case "الرقم التعريفي":
                     FilterColumn = "ItemID";
                     break;
-                case "Item Name":
+                case "اسم الصنف":
                     FilterColumn = "Name";
                     break;
-                case "Unit Name":
+                case "اسم الوحدة":
                     FilterColumn = "UnitName";
                     break;
                 default:
@@ -95,12 +95,12 @@ namespace Ebda3Soft_AccountingSystem
 
             if (FilterColumn == "ItemID")
             {
-                // Numerical filter for ID
+                // Exact numerical filter for Item ID
                 _dtAllItems.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtSearch.Text.Trim());
             }
             else
             {
-                // String filter using LIKE for Names
+                // String filter using LIKE operator for textual columns
                 _dtAllItems.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtSearch.Text.Trim());
             }
 
@@ -129,7 +129,7 @@ namespace Ebda3Soft_AccountingSystem
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delelte this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("هل أنت متأكد من رغبتك في حذف هذا الصنف؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                 int ItemID = (int)dgvItems.CurrentRow.Cells["ItemID"].Value;

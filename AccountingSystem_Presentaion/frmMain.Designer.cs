@@ -149,15 +149,15 @@
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
-            this.usersToolStripMenuItem.Text = "المستخدمين";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
+            this.usersToolStripMenuItem.Text = "إدارة المستخدمين";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // PeopleToolStripMenuItem
             // 
             this.PeopleToolStripMenuItem.Name = "PeopleToolStripMenuItem";
-            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
-            this.PeopleToolStripMenuItem.Text = "الاشخاص";
+            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(113, 24);
+            this.PeopleToolStripMenuItem.Text = "إدارة الأشخاص";
             this.PeopleToolStripMenuItem.Click += new System.EventHandler(this.PeopleToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
@@ -168,21 +168,21 @@
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
-            this.accountToolStripMenuItem.Text = "اعدادات الحساب";
+            this.accountToolStripMenuItem.Text = "إعدادات الحساب";
             // 
             // showCurrentUserToolStripMenuItem
             // 
             this.showCurrentUserToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.showCurrentUserToolStripMenuItem.Name = "showCurrentUserToolStripMenuItem";
-            this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.showCurrentUserToolStripMenuItem.Text = "معلومات المستخدم ";
+            this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.showCurrentUserToolStripMenuItem.Text = "معلومات المستخدم";
             this.showCurrentUserToolStripMenuItem.Click += new System.EventHandler(this.showCurrentUserToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
             this.changePasswordToolStripMenuItem.Text = "تغيير كلمة المرور";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -190,8 +190,8 @@
             // 
             this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.logoutToolStripMenuItem.Text = "تسجيل خروج";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.logoutToolStripMenuItem.Text = "تسجيل الخروج";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // statusStrip1
@@ -254,6 +254,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(958, 583);
+            this.ControlBox = false;
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.msMainNavBar);
@@ -268,7 +269,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "الشاشة الرئيسية";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.msMainNavBar.ResumeLayout(false);
             this.msMainNavBar.PerformLayout();
@@ -279,7 +279,6 @@
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.MenuStrip msMainNavBar;
