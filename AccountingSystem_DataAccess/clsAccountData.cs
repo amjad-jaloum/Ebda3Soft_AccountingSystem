@@ -12,52 +12,45 @@ namespace Ebda3Soft_DataAccess
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * FROM Accounts WHERE AccountID = @AccountID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@AccountID", AccountID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetAccountInfoByID", connection))
                 {
-                    isFound = true;
-
-                    Name = (string)reader["Name"];
-                    Type = (byte)reader["Type"];
-
-                    // PersonID: handling potential nulls if the relationship is optional
-                    if (reader["PersonID"] != DBNull.Value)
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
+                    try
                     {
-                        PersonID = (int)reader["PersonID"];
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                Name = (string)reader["Name"];
+                                Type = (byte)reader["Type"];
+
+                                // PersonID: handling potential nulls if the relationship is optional
+                                if (reader["PersonID"] != DBNull.Value)
+                                {
+                                    PersonID = (int)reader["PersonID"];
+                                }
+                                else
+                                {
+                                    PersonID = -1; // Or any default value you prefer
+                                }
+                            }
+                        }
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        PersonID = -1; // Or any default value you prefer
+                        isFound = false;
                     }
                 }
-                else
-                {
-                    isFound = false;
-                }
 
-                reader.Close();
             }
-            catch (Exception ex)
-            {
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
             return isFound;
         }
 
@@ -65,42 +58,35 @@ namespace Ebda3Soft_DataAccess
         {
             int AccountID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"INSERT INTO Accounts (Name, PersonID, Type)
-                             VALUES (@Name, @PersonID, @Type);
-                             SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@Type", Type);
-
-            // Handle optional PersonID
-            if (PersonID != -1)
-                command.Parameters.AddWithValue("@PersonID", PersonID);
-            else
-                command.Parameters.AddWithValue("@PersonID", System.DBNull.Value);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlCommand command = new SqlCommand("sp_AddNewAccount", connection))
                 {
-                    AccountID = insertedID;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@Name", Name);
+                    command.Parameters.AddWithValue("@Type", Type);
+                    if (PersonID != -1)
+                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                    else
+                        command.Parameters.AddWithValue("@PersonID", DBNull.Value);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int newAccountID))
+                        {
+                            AccountID = newAccountID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Error log here if needed
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                // Error log here if needed
-            }
-            finally
-            {
-                connection.Close();
-            }
+
 
             return AccountID;
         }
@@ -108,37 +94,31 @@ namespace Ebda3Soft_DataAccess
         public static bool UpdateAccount(int AccountID, string Name, int PersonID, byte Type)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"UPDATE Accounts  
-                             SET Name = @Name,
-                                 PersonID = @PersonID,
-                                 Type = @Type
-                             WHERE AccountID = @AccountID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@AccountID", AccountID);
-            command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@Type", Type);
-
-            if (PersonID != -1)
-                command.Parameters.AddWithValue("@PersonID", PersonID);
-            else
-                command.Parameters.AddWithValue("@PersonID", System.DBNull.Value);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            finally
-            {
-                connection.Close();
+                using (SqlCommand command = new SqlCommand("sp_UpdateAccount", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
+                    command.Parameters.AddWithValue("@Name", Name);
+                    command.Parameters.AddWithValue("@Type", Type);
+
+                    if (PersonID != -1)
+                        command.Parameters.AddWithValue("@PersonID", PersonID);
+                    else
+                        command.Parameters.AddWithValue("@PersonID", System.DBNull.Value);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
             }
 
             return (rowsAffected > 0);
@@ -147,157 +127,124 @@ namespace Ebda3Soft_DataAccess
         public static bool DeleteAccount(int AccountID)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"DELETE FROM Accounts WHERE AccountID = @AccountID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AccountID", AccountID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+                using (SqlCommand command = new SqlCommand("sp_DeleteAccount", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
 
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+            }
             return (rowsAffected > 0);
         }
 
         public static DataTable GetAllAccounts()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            // Using Inner Join to get Person Names if needed, or simple select
-            string query = @"SELECT Accounts.AccountID, Accounts.Name, 
-                             ISNULL(People.FirstName + ' ' + People.LastName, 'N/A') as FullName,
-                             CASE 
-                                WHEN Type = 0 THEN 'Customer'
-                                WHEN Type = 1 THEN 'Supplier'
-                                WHEN Type = 2 THEN 'Employee'
-                                WHEN Type = 3 THEN 'Service Provider'
-                                WHEN Type = 4 THEN 'Partner'
-                                ELSE 'Unknown'
-                             END AS Type
-                             FROM Accounts 
-                             LEFT JOIN People ON Accounts.PersonID = People.PersonID
-                             ORDER BY Accounts.Name";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                using (SqlCommand command = new SqlCommand("sp_GetAllAccounts", connection))
                 {
-                    dt.Load(reader);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
                 }
-
-                reader.Close();
             }
-            catch (Exception ex)
-            {
-                // Error handling
-            }
-            finally
-            {
-                connection.Close();
-            }
-
             return dt;
         }
 
         public static bool IsAccountExist(int AccountID)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT Found=1 FROM Accounts WHERE AccountID = @AccountID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AccountID", AccountID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                isFound = reader.HasRows;
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+                using (SqlCommand command = new SqlCommand("sp_IsAccountExist", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
+                    command.Parameters.AddWithValue("@AccountID", AccountID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+                }
+            }
             return isFound;
         }
 
-        public static bool GetAccountInfoByName(string AccountName, ref int AccountID, ref int PersonID, ref short AccountType)
+        public static bool GetAccountInfoByName(string AccountName,
+            ref int AccountID, ref int PersonID, ref short AccountType)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            // نستخدم N قبل علامة التنصيص لدعم اللغة العربية في SQL
-            string query = "SELECT * FROM Accounts WHERE AccountName = @AccountName";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AccountName", AccountName);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetAccountInfoByName", connection))
                 {
-                    isFound = true;
-                    AccountID = (int)reader["AccountID"];
-                    PersonID = (int)reader["PersonID"];
-                    AccountType = Convert.ToInt16(reader["AccountType"]);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@AccountName", AccountName);
 
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                AccountID = (int)reader["AccountID"];
+                                PersonID = (int)reader["PersonID"];
+                                AccountType = Convert.ToInt16(reader["AccountType"]);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        isFound = false;
+                    } 
+                }
+            }
             return isFound;
         }
-       
+
         public static DataTable GetAccountStatement(int AccountID)
         {
             DataTable dt = new DataTable();
 
-            // تأكد من استخدام اسم كلاس الاتصال الخاص بك (مثلاً clsDataAccessSettings)
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                // استدعاء البيانات من الـ View التي أنشأناها
-                string query = @"SELECT TransactionDate, ReferenceNo, Description, Debit, Credit 
-                         FROM View_AccountStatement 
-                         WHERE AccountID = @AccountID 
-                         ORDER BY TransactionDate";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("sp_GetAccountStatement", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@AccountID", AccountID);
 
                     try
@@ -313,7 +260,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // سجل الخطأ هنا (مثلاً في الـ Event Viewer)
+                        throw;
                     }
                 }
             }
