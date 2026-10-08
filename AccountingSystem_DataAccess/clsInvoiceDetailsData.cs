@@ -14,146 +14,156 @@ namespace AccountingSystem_DataAccess
             ref int ItemId, ref int Quantity, ref decimal UnitPrice, ref string UnitType)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "SELECT * FROM InvoiceDetails WHERE InvoiceDetailId = @InvoiceDetailId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetInvoiceDetailInfoByID", connection))
                 {
-                    isFound = true;
-                    InvoiceId = (int)reader["InvoiceId"];
-                    ItemId = (int)reader["ItemId"];
-                    Quantity = (int)reader["Quantity"];
-                    UnitPrice = (decimal)reader["UnitPrice"];
-                    UnitType = (string)reader["UnitType"];
-                }
-                reader.Close();
-            }
-            catch (Exception) { isFound = false; }
-            finally { connection.Close(); }
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
 
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                InvoiceId = (int)reader["InvoiceId"];
+                                ItemId = (int)reader["ItemId"];
+                                Quantity = (int)reader["Quantity"];
+                                UnitPrice = (decimal)reader["UnitPrice"];
+                                UnitType = (string)reader["UnitType"];
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        isFound = false;
+                    }
+                }
+            }
             return isFound;
         }
 
         public static int AddNewInvoiceDetail(int InvoiceId, int ItemId, int Quantity, decimal UnitPrice, string UnitType)
         {
-            int InvoiceDetailId = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            int invoiceDetailId = -1;
 
-            string query = @"INSERT INTO InvoiceDetails (InvoiceId, ItemId, Quantity, UnitPrice, UnitType)
-                         VALUES (@InvoiceId, @ItemId, @Quantity, @UnitPrice, @UnitType);
-                         SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-            command.Parameters.AddWithValue("@ItemId", ItemId);
-            command.Parameters.AddWithValue("@Quantity", Quantity);
-            command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
-            command.Parameters.AddWithValue("@UnitType", UnitType);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlCommand command = new SqlCommand("sp_AddNewInvoiceDetail", connection))
                 {
-                    InvoiceDetailId = insertedID;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+                    command.Parameters.AddWithValue("@ItemId", ItemId);
+                    command.Parameters.AddWithValue("@Quantity", Quantity);
+                    command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+                    command.Parameters.AddWithValue("@UnitType", string.IsNullOrEmpty(UnitType) ? DBNull.Value : (object)UnitType);
+
+                    SqlParameter outputDetailId = new SqlParameter("@InvoiceDetailId", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputDetailId);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+
+                        if (outputDetailId.Value is int insertedId)
+                        {
+                            invoiceDetailId = insertedId;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        invoiceDetailId = -1;
+                    }
                 }
             }
-            catch (Exception) { }
-            finally { connection.Close(); }
 
-            return InvoiceDetailId;
+            return invoiceDetailId;
         }
 
         public static bool UpdateInvoiceDetail(int InvoiceDetailId, int InvoiceId, int ItemId, int Quantity, decimal UnitPrice, string UnitType)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"UPDATE InvoiceDetails  
-                        SET InvoiceId = @InvoiceId,
-                            ItemId = @ItemId,
-                            Quantity = @Quantity,
-                            UnitPrice = @UnitPrice,
-                            UnitType = @UnitType
-                        WHERE InvoiceDetailId = @InvoiceDetailId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
-            command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-            command.Parameters.AddWithValue("@ItemId", ItemId);
-            command.Parameters.AddWithValue("@Quantity", Quantity);
-            command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
-            command.Parameters.AddWithValue("@UnitType", UnitType);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception) { return false; }
-            finally { connection.Close(); }
+                using (SqlCommand command = new SqlCommand("sp_UpdateInvoiceDetail", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
+                    command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
+                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+                    command.Parameters.AddWithValue("@ItemId", ItemId);
+                    command.Parameters.AddWithValue("@Quantity", Quantity);
+                    command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+                    command.Parameters.AddWithValue("@UnitType", string.IsNullOrEmpty(UnitType) ? DBNull.Value : (object)UnitType);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception) { return false; }
+                }
+            }
             return (rowsAffected > 0);
         }
 
         public static DataTable GetInvoiceDetailsByInvoiceID(int InvoiceId)
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            // جلب التفاصيل مع اسم الصنف وحساب الإجمالي لكل سطر
-            string query = @"SELECT ID.InvoiceDetailId, 
-                               ID.ItemId, 
-                               I.Name, 
-                               ID.Quantity, 
-                               ID.UnitPrice, 
-                               ID.UnitType,
-                               (ID.Quantity * ID.UnitPrice) AS Total
-                        FROM InvoiceDetails ID
-                        INNER JOIN Items I ON ID.ItemId = I.ItemID
-                        WHERE ID.InvoiceId = @InvoiceId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows) dt.Load(reader);
-                reader.Close();
-            }
-            catch (Exception) { }
-            finally { connection.Close(); }
+                using (SqlCommand command = new SqlCommand("sp_GetInvoiceDetailsByInvoiceID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
 
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception) { }
+                }
+            }
             return dt;
         }
 
         public static bool DeleteInvoiceDetail(int InvoiceDetailId)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"DELETE FROM InvoiceDetails WHERE InvoiceDetailId = @InvoiceDetailId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand("sp_DeleteInvoiceDetail", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@InvoiceDetailId", InvoiceDetailId);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
             }
-            catch (Exception) { return false; }
-            finally { connection.Close(); }
 
             return (rowsAffected > 0);
         }
@@ -161,20 +171,25 @@ namespace AccountingSystem_DataAccess
         public static bool DeleteAllInvoiceDetails(int InvoiceId)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"DELETE FROM InvoiceDetails WHERE InvoiceId = @InvoiceId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception) { return false; }
-            finally { connection.Close(); }
+                using (SqlCommand command = new SqlCommand("sp_DeleteAllInvoiceDetailsByInvoiceID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+            } 
 
             return (rowsAffected > 0);
         }
