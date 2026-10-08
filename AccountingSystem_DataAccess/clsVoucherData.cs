@@ -8,37 +8,39 @@ namespace Ebda3Soft_AccountingDataLayer
     public class clsVoucherData
     {
         public static bool GetVoucherInfoByID(int VoucherID, ref int AccountID, ref decimal Amount,
-            ref byte Type, ref DateTime Date, ref string Notes)
+    ref byte Type, ref DateTime Date, ref string Notes)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "SELECT * FROM Vouchers WHERE VoucherId = @VoucherId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@VoucherId", VoucherID);
 
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetVoucherInfoByID", connection))
                 {
-                    isFound = true;
-                    AccountID = (int)reader["AccountId"];
-                    Amount = (decimal)reader["Amount"];
-                    Type = (byte)reader["Type"];
-                    Date = (DateTime)reader["CreatedDate"];
-                    Notes = (reader["Notes"] == DBNull.Value) ? "" : (string)reader["Notes"];
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@VoucherID", VoucherID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                AccountID = (int)reader["AccountId"];
+                                Amount = (decimal)reader["Amount"];
+                                Type = (byte)reader["Type"];
+                                Date = (DateTime)reader["CreatedDate"];
+                                Notes = (reader["Notes"] == DBNull.Value) ? string.Empty : (string)reader["Notes"];
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
                 }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
@@ -46,146 +48,140 @@ namespace Ebda3Soft_AccountingDataLayer
 
         public static int AddNewVoucher(int AccountID, decimal Amount, byte Type, DateTime CreatedDate, string Notes)
         {
-            int VoucherID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"INSERT INTO Vouchers (AccountId, Amount, Type, CreatedDate, Notes)
-                             VALUES (@AccountId, @Amount, @Type, @CreatedDate, @Notes);
-                             SELECT SCOPE_IDENTITY();";
+            int voucherID = -1;
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AccountId", AccountID);
-            command.Parameters.AddWithValue("@Amount", Amount);
-            command.Parameters.AddWithValue("@Type", Type);
-            command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
-            if (string.IsNullOrEmpty(Notes))
-                command.Parameters.AddWithValue("@Notes", DBNull.Value);
-            else
-                command.Parameters.AddWithValue("@Notes", Notes);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlCommand command = new SqlCommand("sp_AddNewVoucher", connection))
                 {
-                    VoucherID = insertedID;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@AccountId", AccountID);
+                    command.Parameters.AddWithValue("@Amount", Amount);
+                    command.Parameters.AddWithValue("@Type", Type);
+                    command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+
+                    if (string.IsNullOrEmpty(Notes))
+                        command.Parameters.AddWithValue("@Notes", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@Notes", Notes);
+
+                    SqlParameter outputVoucherIDParam = new SqlParameter("@VoucherID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputVoucherIDParam);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+
+                        if (outputVoucherIDParam.Value != DBNull.Value)
+                        {
+                            voucherID = Convert.ToInt32(outputVoucherIDParam.Value);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                // Handle Exception
-            }
-            finally
-            {
-                connection.Close();
-            }
 
-            return VoucherID;
+            return voucherID;
         }
 
         public static bool UpdateVoucher(int VoucherID, int AccountID, decimal Amount, byte Type, DateTime CreatedDate, string Notes)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"UPDATE Vouchers
-                             SET AccountId = @AccountId,
-                                 Amount = @Amount,
-                                 Type = @Type,
-                                 CreatedDate = @CreatedDate,
-                                 Notes = @Notes
-                             WHERE VoucherId = @VoucherId";
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@VoucherId", VoucherID);
-            command.Parameters.AddWithValue("@AccountId", AccountID);
-            command.Parameters.AddWithValue("@Amount", Amount);
-            command.Parameters.AddWithValue("@Type", Type);
-            command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
-            command.Parameters.AddWithValue("@Notes", (object)Notes ?? DBNull.Value);
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_UpdateVoucher", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            finally
-            {
-                connection.Close();
+                    command.Parameters.AddWithValue("@VoucherID", VoucherID);
+                    command.Parameters.AddWithValue("@AccountId", AccountID);
+                    command.Parameters.AddWithValue("@Amount", Amount);
+                    command.Parameters.AddWithValue("@Type", Type);
+                    command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+
+                    if (string.IsNullOrEmpty(Notes))
+                        command.Parameters.AddWithValue("@Notes", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@Notes", Notes);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
-            return (rowsAffected > 0);
+            return rowsAffected > 0;
         }
 
         public static bool DeleteVoucher(int VoucherID)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "DELETE FROM Vouchers WHERE VoucherId = @VoucherId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@VoucherId", VoucherID);
 
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                // Handle Exception
-            }
-            finally
-            {
-                connection.Close();
+                using (SqlCommand command = new SqlCommand("sp_DeleteVoucher", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@VoucherID", VoucherID);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
-            return (rowsAffected > 0);
+            return rowsAffected > 0;
         }
 
         public static DataTable GetAllVouchers()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"SELECT 
-                            Vouchers.VoucherId, 
-                            Vouchers.AccountId, 
-                            Accounts.Name, 
-                            Vouchers.Amount, 
-                            CASE 
-                                WHEN Vouchers.Type = 1 THEN 'قبض'
-                                WHEN Vouchers.Type = 2 THEN 'صرف'
-                                ELSE 'Unknown'
-                            END AS TypeName,
-                            Vouchers.Type, -- نتركه إذا كنا نحتاجه للفلترة الرقمية خلف الكواليس
-                            Vouchers.CreatedDate 
-                        FROM Vouchers 
-                        INNER JOIN Accounts ON Vouchers.AccountId = Accounts.AccountId
-                        ORDER BY Vouchers.CreatedDate DESC";
 
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                using (SqlCommand command = new SqlCommand("sp_GetAllVouchers", connection))
                 {
-                    dt.Load(reader);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
                 }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                // Handle Exception
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return dt;
@@ -194,25 +190,30 @@ namespace Ebda3Soft_AccountingDataLayer
         public static bool IsVoucherExist(int VoucherID)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "SELECT Found=1 FROM Vouchers WHERE VoucherId = @VoucherId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@VoucherId", VoucherID);
 
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                isFound = reader.HasRows;
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
+                using (SqlCommand command = new SqlCommand("sp_IsVoucherExistByID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@VoucherID", VoucherID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            isFound = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
             return isFound;

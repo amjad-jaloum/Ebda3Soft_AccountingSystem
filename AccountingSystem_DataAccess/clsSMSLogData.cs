@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -16,15 +17,13 @@ namespace AccountingSystem_DataAccess
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                string query = @"INSERT INTO SMS_Log (AccountId, Phone, Content, CreatedDate)
-                             VALUES (@AccountId, @Phone, @Content, GETDATE());
-                             SELECT SCOPE_IDENTITY();";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("sp_AddNewSMSLog", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.Parameters.AddWithValue("@AccountId", accountId);
-                    command.Parameters.AddWithValue("@Phone", phone);
-                    command.Parameters.AddWithValue("@Content", content);
+                    command.Parameters.AddWithValue("@Phone", string.IsNullOrEmpty(phone) ? DBNull.Value : (object)phone);
+                    command.Parameters.AddWithValue("@Content", string.IsNullOrEmpty(content) ? DBNull.Value : (object)content);
 
                     try
                     {
@@ -38,8 +37,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Log exception locally or handle it appropriately
-                        insertedId = -1;
+                        // Handling Error
                     }
                 }
             }

@@ -11,39 +11,30 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * FROM UnitTypes WHERE UnitTypeId = @UnitTypeId";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@UnitTypeId", UnitTypeId);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetUnitTypeInfoByID", connection))
                 {
-                    isFound = true;
-                    Name = (string)reader["Name"];
-                }
-                else
-                {
-                    isFound = false;
-                }
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UnitTypeId", UnitTypeId);
 
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                // Handling Error
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                Name = (string)reader["Name"];
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
             return isFound;
