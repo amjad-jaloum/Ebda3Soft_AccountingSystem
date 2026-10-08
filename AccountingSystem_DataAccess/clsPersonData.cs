@@ -8,81 +8,43 @@ namespace AccountingSystem_DataAccess
     public class clsPersonData
     {
 
-        public static bool GetPersonInfoByID(int PersonID, ref string FirstName, ref string SecondName,
-          ref string ThirdName, ref string LastName,
-           ref short Gender, ref string Phone, ref string Email)
+        public static bool GetPersonInfoByID(int PersonID, ref string FirstName,
+            ref string SecondName, ref string ThirdName, ref string LastName, 
+            ref short Gender, ref string Phone, ref string Email)
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * FROM People WHERE PersonID = @PersonID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("sp_GetPersonInfoByID", connection))
                 {
-                    // The record was found
-                    isFound = true;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
 
-                    FirstName = (string)reader["FirstName"];
-                    if (reader["ThirdName"] != DBNull.Value)
+                    try
                     {
-                        SecondName = (string)reader["SecondName"];
-                    }
-                    else
-                    {
-                        SecondName = "";
-                    }
-                    //ThirdName: allows null in database so we should handle null
-                    if (reader["ThirdName"] != DBNull.Value)
-                    {
-                        ThirdName = (string)reader["ThirdName"];
-                    }
-                    else
-                    {
-                        ThirdName = "";
-                    }
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
 
-                    LastName = (string)reader["LastName"];
-                    Gender = (byte)reader["Gender"];
-                    Phone = (string)reader["Phone"];
-
-
-                    //Email: allows null in database so we should handle null
-                    if (reader["Email"] != DBNull.Value)
-                    {
-                        Email = (string)reader["Email"];
+                                FirstName = reader["FirstName"] != DBNull.Value ? (string)reader["FirstName"] : string.Empty;
+                                SecondName = reader["SecondName"] != DBNull.Value ? (string)reader["SecondName"] : string.Empty;
+                                ThirdName = reader["ThirdName"] != DBNull.Value ? (string)reader["ThirdName"] : string.Empty;
+                                LastName = reader["LastName"] != DBNull.Value ? (string)reader["LastName"] : string.Empty;
+                                Gender = reader["Gender"] != DBNull.Value ? Convert.ToInt16(reader["Gender"]) : (short)0;
+                                Phone = reader["Phone"] != DBNull.Value ? (string)reader["Phone"] : string.Empty;
+                                Email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : string.Empty;
+                            }
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Email = "";
+                        isFound = false;
                     }
                 }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
@@ -90,126 +52,74 @@ namespace AccountingSystem_DataAccess
 
 
         public static int AddNewPerson(string FirstName, string SecondName,
-           string ThirdName, string LastName,
-           short Gender, string Phone, string Email
-            )
+            string ThirdName, string LastName, short Gender, string Phone, string Email)
         {
-            //this function will return the new person id if succeeded and -1 if not.
             int PersonID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"INSERT INTO People (FirstName, SecondName, ThirdName,LastName,
-                                                   Gender,Phone, Email)
-                             VALUES (@FirstName, @SecondName,@ThirdName, @LastName,
-                                     @Gender,@Phone, @Email);
-                             SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@FirstName", FirstName);
-            command.Parameters.AddWithValue("@SecondName", SecondName);
-
-            if (ThirdName != "" && ThirdName != null)
-                command.Parameters.AddWithValue("@ThirdName", ThirdName);
-            else
-                command.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
-
-            command.Parameters.AddWithValue("@LastName", LastName);
-            command.Parameters.AddWithValue("@Gender", Gender);
-            command.Parameters.AddWithValue("@Phone", Phone);
-
-            if (Email != "" && Email != null)
-                command.Parameters.AddWithValue("@Email", Email);
-            else
-                command.Parameters.AddWithValue("@Email", System.DBNull.Value);
-
-
-            
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlCommand command = new SqlCommand("sp_AddNewPerson", connection))
                 {
-                    PersonID = insertedID;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@FirstName", FirstName);
+                    command.Parameters.AddWithValue("@SecondName", SecondName);
+                    command.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? DBNull.Value : (object)ThirdName);
+                    command.Parameters.AddWithValue("@LastName", LastName);
+                    command.Parameters.AddWithValue("@Gender", Gender);
+                    command.Parameters.AddWithValue("@Phone", Phone);
+                    command.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
+                            PersonID = insertedID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
                 }
-            }
-
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-
-            }
-
-            finally
-            {
-                connection.Close();
             }
 
             return PersonID;
         }
 
         public static bool UpdatePerson(int PersonID, string FirstName, string SecondName,
-           string ThirdName, string LastName,
-           short Gender, string Phone, string Email)
+            string ThirdName, string LastName, short Gender, string Phone, string Email)
         {
-
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update  People  
-                            set FirstName = @FirstName,
-                                SecondName = @SecondName,
-                                ThirdName = @ThirdName,
-                                LastName = @LastName, 
-                                Gender=@Gender,
-                                Phone = @Phone,
-                                Email = @Email
-                                where PersonID = @PersonID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-            command.Parameters.AddWithValue("@FirstName", FirstName);
-
-            if (ThirdName != "" && ThirdName != null)
-                command.Parameters.AddWithValue("@SecondName", SecondName);
-            else
-                command.Parameters.AddWithValue("@SecondName", System.DBNull.Value);
-
-            if (ThirdName != "" && ThirdName != null)
-                command.Parameters.AddWithValue("@ThirdName", ThirdName);
-            else
-                command.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
-
-
-            command.Parameters.AddWithValue("@LastName", LastName);
-            command.Parameters.AddWithValue("@Gender", Gender);
-            command.Parameters.AddWithValue("@Phone", Phone);
-
-            if (Email != "" && Email != null)
-                command.Parameters.AddWithValue("@Email", Email);
-            else
-                command.Parameters.AddWithValue("@Email", System.DBNull.Value);
-          
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand("sp_UpdatePerson", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                return false;
-            }
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    command.Parameters.AddWithValue("@FirstName", FirstName);
+                    command.Parameters.AddWithValue("@SecondName", SecondName);
+                    command.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? DBNull.Value : (object)ThirdName);
+                    command.Parameters.AddWithValue("@LastName", LastName);
+                    command.Parameters.AddWithValue("@Gender", Gender);
+                    command.Parameters.AddWithValue("@Phone", Phone);
+                    command.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
 
-            finally
-            {
-                connection.Close();
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
             return (rowsAffected > 0);
@@ -218,124 +128,87 @@ namespace AccountingSystem_DataAccess
 
         public static DataTable GetAllPeople()
         {
-
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query =
-              @"SELECT People.PersonID,
-              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
-			  People.Gender,  
-				  CASE
-                  WHEN People.Gender = 0 THEN 'Male'
-
-                  ELSE 'Female'
-
-                  END as GenderCaption ,
-			  People.Phone, People.Email
-              FROM            People 
-                ORDER BY People.FirstName";
-
-
-
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-
+                using (SqlCommand command = new SqlCommand("sp_GetAllPeople", connection))
                 {
-                    dt.Load(reader);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
                 }
-
-                reader.Close();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return dt;
-
         }
 
         public static bool DeletePerson(int PersonID)
         {
-
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"Delete People 
-                                where PersonID = @PersonID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
+                using (SqlCommand command = new SqlCommand("sp_DeletePerson", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
 
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-
-                connection.Close();
-
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
             return (rowsAffected > 0);
-
         }
 
         public static bool IsPersonExist(int PersonID)
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT Found=1 FROM People WHERE PersonID = @PersonID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                using (SqlCommand command = new SqlCommand("sp_IsPersonExistByID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
 
-                isFound = reader.HasRows;
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
 
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
+                        if (result != null)
+                        {
+                            isFound = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handling Error
+                    }
+                }
             }
 
             return isFound;
