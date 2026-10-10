@@ -37,6 +37,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -76,6 +77,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         itemId = -1;
                     }
                 }
@@ -106,6 +108,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }
@@ -137,7 +140,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -163,7 +166,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -192,7 +195,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -224,6 +227,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         itemId = -1;
                     }
                 }
@@ -255,7 +259,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }

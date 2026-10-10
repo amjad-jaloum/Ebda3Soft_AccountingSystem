@@ -38,7 +38,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -84,7 +84,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -120,7 +120,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -147,7 +147,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -179,7 +179,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -211,7 +211,7 @@ namespace Ebda3Soft_AccountingDataLayer
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }

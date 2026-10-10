@@ -80,6 +80,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         invoiceDetailId = -1;
                     }
                 }
@@ -109,7 +110,11 @@ namespace AccountingSystem_DataAccess
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception) { return false; }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                        return false;
+                    }
                 }
             }
             return (rowsAffected > 0);
@@ -136,7 +141,10 @@ namespace AccountingSystem_DataAccess
                             }
                         }
                     }
-                    catch (Exception) { }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                    }
                 }
             }
             return dt;
@@ -160,6 +168,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }
@@ -186,6 +195,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }

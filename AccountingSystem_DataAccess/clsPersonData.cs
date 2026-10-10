@@ -42,6 +42,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -82,7 +83,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -117,7 +118,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -149,7 +150,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -175,7 +176,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -206,7 +207,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }

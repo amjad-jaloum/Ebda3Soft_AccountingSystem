@@ -45,6 +45,7 @@
     <Compile Include="clsAccountData.cs" />
     <Compile Include="clsBackupData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
+    <Compile Include="clsEventLog.cs" />
     <Compile Include="clsInvoiceData.cs" />
     <Compile Include="clsInvoiceDetailsData.cs" />
     <Compile Include="clsItemData.cs" />

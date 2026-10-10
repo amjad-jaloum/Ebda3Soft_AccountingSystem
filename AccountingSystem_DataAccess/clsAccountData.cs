@@ -46,6 +46,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -82,7 +83,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Error log here if needed
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -116,6 +117,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }
@@ -141,6 +143,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         return false;
                     }
                 }
@@ -168,7 +171,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        throw;
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -195,7 +198,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        throw;
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
@@ -229,6 +232,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     } 
                 }
@@ -260,7 +264,7 @@ namespace Ebda3Soft_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        throw;
+                        clsEventLog.LogException(ex);
                     }
                 }
             }

@@ -23,7 +23,7 @@ public static class clsBackupDataAccess
                 }
                 catch (Exception ex)
                 {
-                    // يمكن تسجيل الخطأ هنا في ملف Log عند الحاجة
+                    clsEventLog.LogException(ex);
                     isSuccess = false;
                 }
             }
@@ -51,6 +51,7 @@ public static class clsBackupDataAccess
                 }
                 catch (Exception ex)
                 {
+                    clsEventLog.LogException(ex);
                     isSuccess = false;
                 }
             }

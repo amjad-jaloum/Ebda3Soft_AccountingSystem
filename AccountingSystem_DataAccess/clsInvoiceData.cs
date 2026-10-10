@@ -42,7 +42,7 @@ namespace AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // يُفضل تسجيل الخطأ ex بدلاً من إخفائه تماماً
+                        clsEventLog.LogException(ex);
                         isFound = false;
                     }
                 }
@@ -82,7 +82,10 @@ namespace AccountingSystem_DataAccess
                         if (InvoiceID.Value is int ID)
                             InvoiceId = ID;
                     }
-                    catch (Exception) { }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                    }
 
                     return InvoiceId;
                 }
@@ -110,7 +113,11 @@ namespace AccountingSystem_DataAccess
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception) { return false; }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                        return false;
+                    }
                 }
             }
             return (rowsAffected > 0);
@@ -133,7 +140,10 @@ namespace AccountingSystem_DataAccess
                                 dt.Load(reader);
                         }
                     }
-                    catch (Exception) { }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                    }
                 }
             }
 
@@ -155,7 +165,11 @@ namespace AccountingSystem_DataAccess
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception) { return false; }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                        return false;
+                    }
                 }
             }
 
@@ -180,7 +194,11 @@ namespace AccountingSystem_DataAccess
                             isFound = reader.HasRows;
                         }
                     }
-                    catch (Exception) { isFound = false; }
+                    catch (Exception ex)
+                    {
+                        clsEventLog.LogException(ex);
+                        isFound = false;
+                    }
                 }
             }
 

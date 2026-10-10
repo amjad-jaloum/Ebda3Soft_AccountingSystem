@@ -32,7 +32,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        // Handling Error
+                        clsEventLog.LogException(ex);
                     }
                 }
             }
