@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using AccountingSystem_DataAccess;
@@ -153,29 +154,7 @@ namespace Ebda3Soft_DataAccess
 
         public static DataTable GetAllAccounts()
         {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllAccounts", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                                dt.Load(reader);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllAccounts");
         }
 
         public static bool IsAccountExist(int AccountID)
@@ -234,7 +213,7 @@ namespace Ebda3Soft_DataAccess
                     {
                         clsEventLog.LogException(ex);
                         isFound = false;
-                    } 
+                    }
                 }
             }
             return isFound;
@@ -242,33 +221,12 @@ namespace Ebda3Soft_DataAccess
 
         public static DataTable GetAccountStatement(int AccountID)
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            var parameters = new List<SqlParameter>
             {
-                using (SqlCommand command = new SqlCommand("sp_GetAccountStatement", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@AccountID", AccountID);
+                new SqlParameter("@AccountID", AccountID)
+            };
 
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAccountStatement", parameters);
         }
     }
 }

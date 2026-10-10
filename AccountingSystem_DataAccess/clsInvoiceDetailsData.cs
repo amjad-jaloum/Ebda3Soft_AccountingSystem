@@ -121,33 +121,13 @@ namespace AccountingSystem_DataAccess
         }
 
         public static DataTable GetInvoiceDetailsByInvoiceID(int InvoiceId)
-        {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+        { 
+            var parameters = new List<SqlParameter>
             {
-                using (SqlCommand command = new SqlCommand("sp_GetInvoiceDetailsByInvoiceID", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+                new SqlParameter("@InvoiceId", InvoiceId)
+            };
 
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetInvoiceDetailsByInvoiceID", parameters);
         }
 
         public static bool DeleteInvoiceDetail(int InvoiceDetailId)

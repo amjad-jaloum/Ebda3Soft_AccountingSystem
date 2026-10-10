@@ -250,34 +250,7 @@ namespace AccountingSystem_DataAccess
         }
         public static DataTable GetAllUsers()
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllUsers", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllUsers");
         }
         public static int AddNewUser(int PersonID, string username, string Passwrod, bool IsActive)
         {

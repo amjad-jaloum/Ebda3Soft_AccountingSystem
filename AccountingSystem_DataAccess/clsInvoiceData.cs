@@ -125,29 +125,7 @@ namespace AccountingSystem_DataAccess
 
         public static DataTable GetAllInvoices()
         {
-            DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllInvoices", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows) 
-                                dt.Load(reader);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllInvoices");
         }
 
         public static bool DeleteInvoice(int InvoiceId)

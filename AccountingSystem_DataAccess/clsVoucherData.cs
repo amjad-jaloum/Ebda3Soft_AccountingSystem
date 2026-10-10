@@ -157,36 +157,8 @@ namespace Ebda3Soft_AccountingDataLayer
 
         public static DataTable GetAllVouchers()
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllVouchers", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllVouchers");
         }
-
         public static bool IsVoucherExist(int VoucherID)
         {
             bool isFound = false;

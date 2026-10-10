@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="clsAccountData.cs" />
     <Compile Include="clsBackupData.cs" />
+    <Compile Include="clsDataAccessHelper.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsEventLog.cs" />
     <Compile Include="clsInvoiceData.cs" />

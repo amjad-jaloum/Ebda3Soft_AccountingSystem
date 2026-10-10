@@ -119,33 +119,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
 
         public static DataTable GetAllItems()
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllItems", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllItems");
         }
 
         public static bool DeleteItem(int ItemId)
@@ -238,33 +212,7 @@ namespace Ebda3Soft_AccountingSystem_DataAccess
 
         public static DataTable GetItemsInventory()
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetItemsInventory", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetItemsInventory");
         }
     }
 }

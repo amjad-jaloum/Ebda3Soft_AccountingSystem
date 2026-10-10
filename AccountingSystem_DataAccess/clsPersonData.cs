@@ -126,36 +126,9 @@ namespace AccountingSystem_DataAccess
             return (rowsAffected > 0);
         }
 
-
         public static DataTable GetAllPeople()
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("sp_GetAllPeople", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                    }
-                }
-            }
-
-            return dt;
+            return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllPeople");
         }
 
         public static bool DeletePerson(int PersonID)
