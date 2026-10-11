@@ -53,14 +53,11 @@ namespace Ebda3Soft_AccountingSystem.people
                 dgvPeople.Columns[5].HeaderText = "الجنس";
                 dgvPeople.Columns[5].Width = 120;
 
-                dgvPeople.Columns[6].HeaderText = "حالة الجنس";
-                dgvPeople.Columns[6].Width = 170;
+                dgvPeople.Columns[6].HeaderText = "الهاتف";
+                dgvPeople.Columns[6].Width = 120;
 
-                dgvPeople.Columns[7].HeaderText = "الهاتف";
-                dgvPeople.Columns[7].Width = 120;
-
-                dgvPeople.Columns[8].HeaderText = "البريد الإلكتروني";
-                dgvPeople.Columns[8].Width = 200;
+                dgvPeople.Columns[7].HeaderText = "البريد الإلكتروني";
+                dgvPeople.Columns[7].Width = 200;
             }
         }
 
