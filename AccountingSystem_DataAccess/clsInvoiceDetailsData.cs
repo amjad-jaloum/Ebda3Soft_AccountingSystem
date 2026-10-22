@@ -125,7 +125,7 @@ namespace AccountingSystem_DataAccess
             var parameters = new List<SqlParameter>
             {
                 new SqlParameter("@InvoiceId", InvoiceId)
-            };
+            }; 
 
             return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetInvoiceDetailsByInvoiceID", parameters);
         }

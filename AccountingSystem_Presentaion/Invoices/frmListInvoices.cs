@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Security.Policy;
 using System.Windows.Forms;
+using _19___Project___DVLD;
 using AccountingSystem_Business;
 
 namespace Ebda3Soft_AccountingSystem.Invoices
@@ -174,7 +175,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             if (MessageBox.Show($"هل أنت متأكد من رغبتك في حذف الفاتورة رقم [{invoiceID}]؟", "تأكيد الحذف",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (clsInvoice.DeleteInvoice(invoiceID))
+                if (clsInvoice.DeleteInvoice(invoiceID, clsGlobal.CurrentUser.UserID))
                 {
                     // Invoice deleted successfully
                     MessageBox.Show("تم حذف الفاتورة بنجاح.");

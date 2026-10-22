@@ -163,5 +163,16 @@ namespace Ebda3Soft_AccountingSystem
                 }
             }
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (_frmLogin != null)
+                {
+                    _frmLogin.Close();
+                }
+            }
+        }
     }
 }

@@ -92,32 +92,40 @@ namespace AccountingSystem_DataAccess
             }
         }
 
-        public static bool UpdateInvoice(int InvoiceId, byte Type, byte PaymentMethod, int AccountId, string Notes, decimal TotalAmount)
+        public static bool UpdateInvoice(int InvoiceId, byte Type, byte PaymentMethod, int AccountId, string Notes, decimal TotalAmount, DateTime CreatedDate, int SessionUserID)
         {
             int rowsAffected = 0;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                using (SqlCommand command = new SqlCommand("sp_UpdateInvoice", connection))
+                try
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-                    command.Parameters.AddWithValue("@Type", Type);
-                    command.Parameters.AddWithValue("@PaymentMethod", PaymentMethod);
-                    command.Parameters.AddWithValue("@AccountId", AccountId);
-                    command.Parameters.AddWithValue("@Notes", (object)Notes ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-
-                    try
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_SetSessionUser", connection))
                     {
-                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", SessionUserID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    using (SqlCommand command = new SqlCommand("sp_UpdateInvoice", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+                        command.Parameters.AddWithValue("@Type", Type);
+                        command.Parameters.AddWithValue("@PaymentMethod", PaymentMethod);
+                        command.Parameters.AddWithValue("@AccountId", AccountId);
+                        command.Parameters.AddWithValue("@Notes", (object)Notes ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                        command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+
+
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                        return false;
-                    }
+                }
+                catch (Exception ex)
+                {
+                    clsEventLog.LogException(ex);
+                    return false;
                 }
             }
             return (rowsAffected > 0);
@@ -128,26 +136,34 @@ namespace AccountingSystem_DataAccess
             return clsDataAccessHelper.GetDataTableByStoredProcedure("sp_GetAllInvoices");
         }
 
-        public static bool DeleteInvoice(int InvoiceId)
+        public static bool DeleteInvoice(int InvoiceId, int SessionUserID)
         {
             int rowsAffected = 0;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                using (SqlCommand command = new SqlCommand("sp_DeleteInvoice", connection))
+                try
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
-
-                    try
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_SetSessionUser", connection))
                     {
-                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", SessionUserID);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    using (SqlCommand command = new SqlCommand("sp_DeleteInvoice", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@InvoiceId", InvoiceId);
+
+
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
-                    {
-                        clsEventLog.LogException(ex);
-                        return false;
-                    }
+                }
+                catch (Exception ex)
+                {
+                    clsEventLog.LogException(ex);
+                    return false;
                 }
             }
 

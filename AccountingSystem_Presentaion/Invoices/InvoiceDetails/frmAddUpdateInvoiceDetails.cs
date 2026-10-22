@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccountingSystem_Business;
 
 namespace Ebda3Soft_AccountingSystem.Invoices.InvoiceDetails
 {
     public partial class frmAddUpdateInvoiceDetails : Form
     {
         // تعريف الـ Delegate والحدث لإرسال البيانات للخلف
-        public delegate void DataBackEventHandler(int ItemID, string ItemName, int Quantity, decimal UnitPrice, string UnitType);
+        public delegate void DataBackEventHandler(clsInvoiceDetail invoiceDetail);
         public event DataBackEventHandler OnItemAdded;
 
         public frmAddUpdateInvoiceDetails()
@@ -108,8 +109,18 @@ namespace Ebda3Soft_AccountingSystem.Invoices.InvoiceDetails
             string itemName = ctrlItemCardWithFilter1.ItemInfo.Name;
             string unitType = txtUnitType.Text;
 
+            clsInvoiceDetail newInvoiceDetail = new clsInvoiceDetail
+            {
+                InvoiceId = -1, // سيتم تعيينه لاحقًا عند حفظ الفاتورة
+                ItemId = ctrlItemCardWithFilter1.ItemID,
+                Quantity = Qty,
+                UnitPrice = Price,
+                UnitType = unitType
+            };
+
+
             // استدعاء المفوض لإرسال البيانات للخلف
-            OnItemAdded?.Invoke(ctrlItemCardWithFilter1.ItemID, itemName, Qty, Price, unitType);
+            OnItemAdded?.Invoke(newInvoiceDetail);
 
             this.Close();
         }

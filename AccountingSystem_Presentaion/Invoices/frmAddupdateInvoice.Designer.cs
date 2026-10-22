@@ -32,7 +32,6 @@
             this.tcInvoiceInfo = new System.Windows.Forms.TabControl();
             this.tpAccountInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlAccountCardWithFilter1 = new Ebda3Soft_AccountingSystem.AccountsDirectory.Controls.ctrlAccountCardWithFilter();
             this.tpInvoiceDetails = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +39,8 @@
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.dgvInvoiceDetails = new System.Windows.Forms.DataGridView();
             this.gbInvoiceHeader = new System.Windows.Forms.GroupBox();
+            this.rbPurchase = new System.Windows.Forms.RadioButton();
+            this.rbSales = new System.Windows.Forms.RadioButton();
             this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.dtpInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.btnAddItem = new System.Windows.Forms.Button();
@@ -47,8 +48,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rbPurchase = new System.Windows.Forms.RadioButton();
-            this.rbSales = new System.Windows.Forms.RadioButton();
+            this.ctrlAccountCardWithFilter1 = new Ebda3Soft_AccountingSystem.AccountsDirectory.Controls.ctrlAccountCardWithFilter();
             this.tcInvoiceInfo.SuspendLayout();
             this.tpAccountInfo.SuspendLayout();
             this.tpInvoiceDetails.SuspendLayout();
@@ -86,17 +86,6 @@
             this.btnNext.Text = "التالي";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ctrlAccountCardWithFilter1
-            // 
-            this.ctrlAccountCardWithFilter1.FilterEnabled = true;
-            this.ctrlAccountCardWithFilter1.Location = new System.Drawing.Point(97, 134);
-            this.ctrlAccountCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
-            this.ctrlAccountCardWithFilter1.Name = "ctrlAccountCardWithFilter1";
-            this.ctrlAccountCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.ctrlAccountCardWithFilter1.ShowAddAccount = true;
-            this.ctrlAccountCardWithFilter1.Size = new System.Drawing.Size(652, 233);
-            this.ctrlAccountCardWithFilter1.TabIndex = 0;
             // 
             // tpInvoiceDetails
             // 
@@ -181,6 +170,34 @@
             this.gbInvoiceHeader.TabStop = false;
             this.gbInvoiceHeader.Text = "معلومات الفاتورة العامة";
             // 
+            // rbPurchase
+            // 
+            this.rbPurchase.AutoSize = true;
+            this.rbPurchase.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbPurchase.Location = new System.Drawing.Point(19, 24);
+            this.rbPurchase.Margin = new System.Windows.Forms.Padding(2);
+            this.rbPurchase.Name = "rbPurchase";
+            this.rbPurchase.Size = new System.Drawing.Size(53, 23);
+            this.rbPurchase.TabIndex = 8;
+            this.rbPurchase.Text = "شراء";
+            this.rbPurchase.UseVisualStyleBackColor = true;
+            this.rbPurchase.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
+            // 
+            // rbSales
+            // 
+            this.rbSales.AutoSize = true;
+            this.rbSales.Checked = true;
+            this.rbSales.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbSales.Location = new System.Drawing.Point(76, 24);
+            this.rbSales.Margin = new System.Windows.Forms.Padding(2);
+            this.rbSales.Name = "rbSales";
+            this.rbSales.Size = new System.Drawing.Size(45, 23);
+            this.rbSales.TabIndex = 7;
+            this.rbSales.TabStop = true;
+            this.rbSales.Text = "بيع";
+            this.rbSales.UseVisualStyleBackColor = true;
+            this.rbSales.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
+            // 
             // cbPaymentMethod
             // 
             this.cbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -222,17 +239,17 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(750, 570);
+            this.btnSave.Location = new System.Drawing.Point(677, 570);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.Size = new System.Drawing.Size(193, 40);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "حفظ الفاتورة";
+            this.btnSave.Text = "حفظ معلومات الفاتورة العامة";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(620, 570);
+            this.btnClose.Location = new System.Drawing.Point(551, 570);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 40);
             this.btnClose.TabIndex = 5;
@@ -244,33 +261,16 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // rbPurchase
+            // ctrlAccountCardWithFilter1
             // 
-            this.rbPurchase.AutoSize = true;
-            this.rbPurchase.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbPurchase.Location = new System.Drawing.Point(19, 24);
-            this.rbPurchase.Margin = new System.Windows.Forms.Padding(2);
-            this.rbPurchase.Name = "rbPurchase";
-            this.rbPurchase.Size = new System.Drawing.Size(53, 23);
-            this.rbPurchase.TabIndex = 8;
-            this.rbPurchase.Text = "شراء";
-            this.rbPurchase.UseVisualStyleBackColor = true;
-            this.rbPurchase.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
-            // 
-            // rbSales
-            // 
-            this.rbSales.AutoSize = true;
-            this.rbSales.Checked = true;
-            this.rbSales.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbSales.Location = new System.Drawing.Point(76, 24);
-            this.rbSales.Margin = new System.Windows.Forms.Padding(2);
-            this.rbSales.Name = "rbSales";
-            this.rbSales.Size = new System.Drawing.Size(45, 23);
-            this.rbSales.TabIndex = 7;
-            this.rbSales.TabStop = true;
-            this.rbSales.Text = "بيع";
-            this.rbSales.UseVisualStyleBackColor = true;
-            this.rbSales.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
+            this.ctrlAccountCardWithFilter1.FilterEnabled = true;
+            this.ctrlAccountCardWithFilter1.Location = new System.Drawing.Point(97, 134);
+            this.ctrlAccountCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlAccountCardWithFilter1.Name = "ctrlAccountCardWithFilter1";
+            this.ctrlAccountCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.ctrlAccountCardWithFilter1.ShowAddAccount = true;
+            this.ctrlAccountCardWithFilter1.Size = new System.Drawing.Size(652, 233);
+            this.ctrlAccountCardWithFilter1.TabIndex = 0;
             // 
             // frmAddUpdateInvoice
             // 

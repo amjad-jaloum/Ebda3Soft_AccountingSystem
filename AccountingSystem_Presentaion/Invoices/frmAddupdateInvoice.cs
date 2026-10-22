@@ -39,44 +39,29 @@ namespace Ebda3Soft_AccountingSystem.Invoices
                 tpInvoiceDetails.Enabled = false;
                 btnSave.Enabled = false;
             }
-            else
-            {
-                this.Text = "تعديل فاتورة";
-                tpInvoiceDetails.Enabled = true;
-                btnSave.Enabled = true;
-            }
 
-            _LoadInvoiceDetailsStructure();
+            _dtInvoiceDetails = new DataTable();
+            _dtInvoiceDetails.Columns.Add("ItemID", typeof(int));
+            _dtInvoiceDetails.Columns.Add("Name", typeof(string));
+            _dtInvoiceDetails.Columns.Add("Quantity", typeof(int));
+            _dtInvoiceDetails.Columns.Add("UnitPrice", typeof(decimal));
+            _dtInvoiceDetails.Columns.Add("UnitType", typeof(string));
+            _dtInvoiceDetails.Columns.Add("Total", typeof(decimal));
+
             cbPaymentMethod.SelectedIndex = 0;
             dtpInvoiceDate.Value = DateTime.Now;
             txtNotes.Text = "";
             lblTotalAmount.Text = "0.00";
         }
 
-        private void _LoadInvoiceDetailsStructure()
-        {
-            if (_Mode == enMode.AddNew)
-            {
-                _dtInvoiceDetails = new DataTable();
-                _dtInvoiceDetails.Columns.Add("ItemID", typeof(int));
-                _dtInvoiceDetails.Columns.Add("ItemName", typeof(string));
-                _dtInvoiceDetails.Columns.Add("Quantity", typeof(int));
-                _dtInvoiceDetails.Columns.Add("UnitPrice", typeof(decimal));
-                _dtInvoiceDetails.Columns.Add("UnitType", typeof(string));
-                _dtInvoiceDetails.Columns.Add("Total", typeof(decimal));
-            }
-            else
-            {
-                _dtInvoiceDetails = clsInvoiceDetail.GetInvoiceDetailsByInvoiceID(_InvoiceID);
-            }
-
-            dgvInvoiceDetails.DataSource = _dtInvoiceDetails;
-        }
-
         private void _LoadData()
         {
+            this.Text = "تعديل فاتورة";
+            tpInvoiceDetails.Enabled = true;
+            btnSave.Enabled = true;
+
             _Invoice = clsInvoice.Find(_InvoiceID);
-            _dtInvoiceDetails = clsInvoiceDetail.GetInvoiceDetailsByInvoiceID(_InvoiceID);
+
             if (_Invoice == null)
             {
                 MessageBox.Show("لا توجد فاتورة تحمل الرقم التعريفي = " + _InvoiceID, "الفاتورة غير موجودة", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -84,24 +69,59 @@ namespace Ebda3Soft_AccountingSystem.Invoices
                 return;
             }
 
+            _dtInvoiceDetails = clsInvoiceDetail.GetInvoiceDetailsByInvoiceID(_InvoiceID);
+            dgvInvoiceDetails.DataSource = _dtInvoiceDetails;
+
             //lblInvoiceId.Text = _Invoice.InvoiceId.ToString();
             dtpInvoiceDate.Value = _Invoice.CreatedDate;
             cbPaymentMethod.SelectedIndex = _Invoice.PaymentMethod - 1; // 1 = Cash, 2 = Credit
+            rbPurchase.Checked = _Invoice.Type == (byte)clsInvoice.enInvoiceType.Purchases;
             txtNotes.Text = _Invoice.Notes;
             lblTotalAmount.Text = _Invoice.TotalAmount.ToString("N2");
+            _FormatDataGridView();
 
             ctrlAccountCardWithFilter1.LoadAccountInfo(_Invoice.AccountId);
+        }
+
+        private void _FormatDataGridView()
+        {
+            if (dgvInvoiceDetails.Rows.Count > 0)
+            {
+                dgvInvoiceDetails.Columns[0].HeaderText = "الرقم التعريفي";
+                dgvInvoiceDetails.Columns[0].Width = 100;
+
+                dgvInvoiceDetails.Columns[1].HeaderText = "اسم الصنف";
+                dgvInvoiceDetails.Columns[1].Width = 250;
+
+                dgvInvoiceDetails.Columns[2].HeaderText = "الكمية";
+                dgvInvoiceDetails.Columns[2].Width = 100;
+
+                dgvInvoiceDetails.Columns[3].HeaderText = "نوع الوحدة";
+                dgvInvoiceDetails.Columns[3].Width = 100;
+
+                dgvInvoiceDetails.Columns[4].HeaderText = "سعر الوحدة";
+                dgvInvoiceDetails.Columns[4].DefaultCellStyle.Format = "N2";
+                dgvInvoiceDetails.Columns[4].Width = 120;
+
+                dgvInvoiceDetails.Columns[5].HeaderText = "الإجمالي";
+                dgvInvoiceDetails.Columns[5].DefaultCellStyle.Format = "N0";
+                dgvInvoiceDetails.Columns[5].Width = 100;
+            }
         }
 
         private void _CalculateTotalAmount()
         {
             decimal total = 0;
-            foreach (DataRow row in _dtInvoiceDetails.Rows)
+            if (dgvInvoiceDetails.RowCount > 0)
             {
-                if (row.RowState != DataRowState.Deleted)
-                    total += Convert.ToDecimal(row["Total"]);
+                foreach (DataGridViewRow row in dgvInvoiceDetails.Rows)
+                {
+                    total += Convert.ToDecimal(row.Cells["Total"].Value);
+                }
+                lblTotalAmount.Text = total.ToString("N2");
             }
-            lblTotalAmount.Text = total.ToString("N2");
+            else
+                lblTotalAmount.Text = "0.00";
         }
 
         private void frmAddUpdateInvoice_Load(object sender, EventArgs e)
@@ -109,7 +129,10 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             _ResetDefaultValues();
 
             if (_Mode == enMode.Update)
+            {
+                tcInvoiceInfo.SelectedTab = tpInvoiceDetails;
                 _LoadData();
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -138,30 +161,31 @@ namespace Ebda3Soft_AccountingSystem.Invoices
         }
 
         // This method handles the delegated data sent back from the details form
-        private void frm_DataBack(int ItemID, string ItemName, int Quantity, decimal UnitPrice, string UnitType)
+        private void frm_DataBack(clsInvoiceDetail invoiceDetail)
         {
-            // Create a new data row in the in-memory DataTable
-            DataRow row = _dtInvoiceDetails.NewRow();
-
-            row["ItemID"] = ItemID;
-            row["ItemName"] = ItemName;
-            row["Quantity"] = Quantity;
-            row["UnitPrice"] = UnitPrice;
-            row["UnitType"] = UnitType;
-            row["Total"] = Quantity * UnitPrice; // Calculation done automatically here
-
-            _dtInvoiceDetails.Rows.Add(row);
-
-            // Update UI total amount display
-            _CalculateTotalAmount();
+            invoiceDetail.InvoiceId = _InvoiceID;
+            if (invoiceDetail.Save())
+            {
+                frmAddUpdateInvoice_Load(null, null);
+            }
+            else
+            {
+                MessageBox.Show("لم يتم الحفظ. خطأ في الحصول على البيانات", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
             if (dgvInvoiceDetails.CurrentRow != null)
             {
-                dgvInvoiceDetails.Rows.RemoveAt(dgvInvoiceDetails.CurrentRow.Index);
-                _CalculateTotalAmount();
+                if (clsInvoiceDetail.DeleteDetail((int)dgvInvoiceDetails.CurrentRow.Cells[0].Value))
+                {
+                    frmAddUpdateInvoice_Load(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("لم يتم حذف الصنف. قد يكون السبب ارتباط البيانات", "لم يتم الحذف", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -178,21 +202,11 @@ namespace Ebda3Soft_AccountingSystem.Invoices
             _Invoice.Notes = txtNotes.Text.Trim();
             _Invoice.TotalAmount = Convert.ToDecimal(lblTotalAmount.Text);
             _Invoice.CreatedBy = clsGlobal.CurrentUser.UserID;
+            _Invoice.CreatedDate = dtpInvoiceDate.Value;
             _Invoice.Type = rbSales.Checked ? (byte)clsInvoice.enInvoiceType.Sales : (byte)clsInvoice.enInvoiceType.Purchases;
 
-            _Invoice.ItemsDetails.Clear();
-            foreach (DataRow row in _dtInvoiceDetails.Rows)
-            {
-                clsInvoiceDetail detail = new clsInvoiceDetail();
-                detail.ItemId = (int)row["ItemID"];
-                detail.Quantity = (int)row["Quantity"];
-                detail.UnitPrice = (decimal)row["UnitPrice"];
-                detail.UnitType = (string)row["UnitType"];
-
-                _Invoice.ItemsDetails.Add(detail);
-            }
-
-            if (_Invoice.SaveFullInvoice())
+            _Invoice.SessionUserID = clsGlobal.CurrentUser.UserID;
+            if (_Invoice.Save())
             {
                 MessageBox.Show("تم حفظ الفاتورة بنجاح مع الرقم التعريفي: " + _Invoice.InvoiceId, "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _Mode = enMode.Update;

@@ -54,6 +54,7 @@ namespace Ebda3Soft_AccountingSystem.Invoices
 
             // دالة افتراضية لتنسيق الجدول بعد تعبئته
             _FormatDataGridView();
+            lblRowCount.Text = _dtInvoiceDetails.Rows.Count.ToString() ?? "0";
         }
 
         private void _FormatDataGridView()
@@ -69,13 +70,16 @@ namespace Ebda3Soft_AccountingSystem.Invoices
                 dgvInvoiceItems.Columns[2].HeaderText = "الكمية";
                 dgvInvoiceItems.Columns[2].Width = 100;
 
-                dgvInvoiceItems.Columns[3].HeaderText = "سعر الوحدة";
-                dgvInvoiceItems.Columns[3].DefaultCellStyle.Format = "N2";
-                dgvInvoiceItems.Columns[3].Width = 120;
+                dgvInvoiceItems.Columns[3].HeaderText = "نوع الوحدة";
+                dgvInvoiceItems.Columns[3].Width = 100;
 
-                dgvInvoiceItems.Columns[4].HeaderText = "الإجمالي";
+                dgvInvoiceItems.Columns[4].HeaderText = "سعر الوحدة";
                 dgvInvoiceItems.Columns[4].DefaultCellStyle.Format = "N2";
-                dgvInvoiceItems.Columns[4].Width = 150;
+                dgvInvoiceItems.Columns[4].Width = 120;
+
+                dgvInvoiceItems.Columns[5].HeaderText = "الإجمالي";
+                dgvInvoiceItems.Columns[5].DefaultCellStyle.Format = "N0";
+                dgvInvoiceItems.Columns[5].Width = 100;
             }
         }
 

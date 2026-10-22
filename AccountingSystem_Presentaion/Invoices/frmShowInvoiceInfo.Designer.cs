@@ -46,6 +46,8 @@
             this.dgvInvoiceItems = new System.Windows.Forms.DataGridView();
             this.lblTotalAmountValue = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblRowCount = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.gbInvoiceHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).BeginInit();
             this.SuspendLayout();
@@ -223,23 +225,44 @@
             // lblTotalAmountValue
             // 
             this.lblTotalAmountValue.AutoSize = true;
-            this.lblTotalAmountValue.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotalAmountValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmountValue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalAmountValue.Location = new System.Drawing.Point(159, 616);
+            this.lblTotalAmountValue.Location = new System.Drawing.Point(98, 632);
             this.lblTotalAmountValue.Name = "lblTotalAmountValue";
-            this.lblTotalAmountValue.Size = new System.Drawing.Size(53, 23);
+            this.lblTotalAmountValue.Size = new System.Drawing.Size(36, 18);
             this.lblTotalAmountValue.TabIndex = 4;
             this.lblTotalAmountValue.Text = "0.00";
+            this.lblTotalAmountValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(25, 619);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(9, 632);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 19);
+            this.label8.Size = new System.Drawing.Size(87, 18);
             this.label8.TabIndex = 5;
             this.label8.Text = "إجمالي الفاتورة:";
+            // 
+            // lblRowCount
+            // 
+            this.lblRowCount.AutoSize = true;
+            this.lblRowCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowCount.Location = new System.Drawing.Point(98, 608);
+            this.lblRowCount.Name = "lblRowCount";
+            this.lblRowCount.Size = new System.Drawing.Size(75, 18);
+            this.lblRowCount.TabIndex = 6;
+            this.lblRowCount.Text = "عدد الاصناف";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 608);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 18);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "عدد الاصناف: ";
             // 
             // frmShowInvoiceInfo
             // 
@@ -247,6 +270,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(834, 661);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblRowCount);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblTotalAmountValue);
             this.Controls.Add(this.dgvInvoiceItems);
@@ -290,5 +315,7 @@
         private System.Windows.Forms.DataGridView dgvInvoiceItems;
         private System.Windows.Forms.Label lblTotalAmountValue;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblRowCount;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -17,7 +17,7 @@ namespace AccountingSystem_Business
 
 
 
-        public enum enInvoiceType { Sales = 1, Purchases = 2 };
+        public enum enInvoiceType { Purchases = 1, Sales = 2 };
         public enum enPaymentMethod { Cash = 1, Credit = 2 };
         public int InvoiceId { get; set; }
         public byte Type { get; set; }
@@ -42,7 +42,7 @@ namespace AccountingSystem_Business
         public decimal TotalAmount { get; set; }
         public int CreatedBy { get; set; }
 
-
+        public int SessionUserID { get; set; }
 
         public List<clsInvoiceDetail> ItemsDetails = new List<clsInvoiceDetail>();
         public clsAccount AccountInfo { get; private set; } // خاصية للقراءة فقط لضمان سلامة البيانات
@@ -111,10 +111,10 @@ namespace AccountingSystem_Business
             return (this.InvoiceId != -1);
         }
 
-        private bool _UpdateInvoice()
+        private bool _UpdateInvoice(int SessionUserID)
         {
             return clsInvoiceData.UpdateInvoice(this.InvoiceId, this.Type, this.PaymentMethod,
-                                                this.AccountId, this.Notes, this.TotalAmount);
+                                                this.AccountId, this.Notes, this.TotalAmount, CreatedDate, SessionUserID);
         }
         public bool Save()
         {
@@ -132,48 +132,21 @@ namespace AccountingSystem_Business
                     }
 
                 case enMode.Update:
-                    return _UpdateInvoice();
+                    return _UpdateInvoice(SessionUserID);
             }
 
             return false;
         }
 
 
-        // 2. دالة الحفظ الكامل (Header + Details)
-        public bool SaveFullInvoice()
-        {
-            if (!this.Save())
-            {
-                return false;
-            }
-
-            if (ItemsDetails.Count == 0)
-            {
-                return false;
-            }
-
-            foreach (clsInvoiceDetail Detail in ItemsDetails)
-            {
-                // توزيع المعرف الناتج (Shared ID) على كل سطر تفاصيل
-                Detail.InvoiceId = this.InvoiceId;
-
-                if (!Detail.Save())
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public static DataTable GetAllInvoices()
         {
             return clsInvoiceData.GetAllInvoices();
         }
 
-        public static bool DeleteInvoice(int InvoiceId)
+        public static bool DeleteInvoice(int InvoiceId, int SessionUserID)
         {
-            return clsInvoiceData.DeleteInvoice(InvoiceId);
+            return clsInvoiceData.DeleteInvoice(InvoiceId, SessionUserID);
         }
 
         public static bool IsInvoiceExist(int InvoiceId)

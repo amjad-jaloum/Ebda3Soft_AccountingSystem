@@ -39,6 +39,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.cbInvoiceType = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -50,8 +52,6 @@
             this.plMainfooterLable = new System.Windows.Forms.Panel();
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tlpForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbInvoiceIcon)).BeginInit();
             this.tlpMain.SuspendLayout();
@@ -134,26 +134,26 @@
             this.deleteToolStripMenuItem});
             this.cmsInvoiceMenu.Name = "cmsInvoiceMenu";
             this.cmsInvoiceMenu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmsInvoiceMenu.Size = new System.Drawing.Size(183, 70);
+            this.cmsInvoiceMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // showInvoiceInfoToolStripMenuItem
             // 
             this.showInvoiceInfoToolStripMenuItem.Name = "showInvoiceInfoToolStripMenuItem";
-            this.showInvoiceInfoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.showInvoiceInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showInvoiceInfoToolStripMenuItem.Text = "عرض تفاصيل الفاتورة";
             this.showInvoiceInfoToolStripMenuItem.Click += new System.EventHandler(this.showInvoiceInfoToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "تعديل";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "حذف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -186,6 +186,26 @@
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(691, 48);
             this.MainHeaderPanel.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(142, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "طريقة الدفع:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(327, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "النوع:";
             // 
             // cbPaymentMethod
             // 
@@ -315,26 +335,6 @@
             this.lblRecordsNumber.Size = new System.Drawing.Size(70, 18);
             this.lblRecordsNumber.TabIndex = 1;
             this.lblRecordsNumber.Text = "عدد الفواتير:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(327, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "النوع:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(142, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "طريقة الدفع:";
             // 
             // frmListInvoices
             // 
